@@ -1,0 +1,280 @@
+@import "tailwindcss";
+
+:root {
+  --ivory: #fcf6ea;
+  --cream: #f4e6ce;
+  --parchment: #e8d2ae;
+  --maroon: #4f0e1c;
+  --maroon-deep: #2b060e;
+  --crimson: #7a192d;
+  --gold: #c8943e;
+  --gold-light: #f1d48e;
+  --gold-dark: #8e611b;
+  --sage: #1e4637;
+  --ink: #271316;
+  --muted: #65474b;
+}
+
+@theme inline {
+  --color-ivory: var(--ivory);
+  --color-cream: var(--cream);
+  --color-parchment: var(--parchment);
+  --color-maroon: var(--maroon);
+  --color-maroon-deep: var(--maroon-deep);
+  --color-crimson: var(--crimson);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-sage: var(--sage);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --font-display: var(--font-cormorant);
+  --font-script: var(--font-great-vibes);
+  --font-sans: var(--font-jakarta);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-jakarta), Georgia, serif;
+  overflow-x: hidden;
+}
+
+/* Imperial 24k Gold Foil Typography */
+.text-gold-foil {
+  background: linear-gradient(
+    135deg,
+    #8d5e18 0%,
+    #d6a34e 25%,
+    #fae5a8 50%,
+    #cc953d 75%,
+    #825614 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gold-foil {
+  background: linear-gradient(
+    135deg,
+    #9c6a1f 0%,
+    #d8a44e 42%,
+    #f6de9c 65%,
+    #b5802d 100%
+  );
+}
+
+.bg-royal-velvet {
+  background: radial-gradient(
+    circle at 50% 22%,
+    #6e1528 0%,
+    #490c19 52%,
+    #29040c 100%
+  );
+}
+
+.bg-royal-emerald {
+  background: radial-gradient(
+    circle at 50% 25%,
+    #255240 0%,
+    #16372a 58%,
+    #0b2118 100%
+  );
+}
+
+/* Heritage Jaali & Gold Lattice Pattern */
+.bg-jaali-pattern {
+  background-image: radial-gradient(rgba(200, 148, 62, 0.16) 1px, transparent 1px),
+    radial-gradient(rgba(79, 14, 28, 0.08) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: 0 0, 13px 13px;
+}
+
+/* Dynamic Animations */
+@keyframes floatPetal {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg) scale(0.9);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.82;
+  }
+  85% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate3d(65px, 105vh, 0) rotate(320deg) scale(1.06);
+    opacity: 0;
+  }
+}
+
+@keyframes floatPetalReverse {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg) scale(0.85);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.72;
+  }
+  85% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(-75px, 105vh, 0) rotate(-290deg) scale(1.04);
+    opacity: 0;
+  }
+}
+
+@keyframes riseEmber {
+  0% {
+    transform: translateY(0) scale(0.7);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateY(-140px) scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate3d(-1%, -1.5%, 0);
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes gentleSway {
+  0%,
+  100% {
+    transform: rotate(-2deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(2deg) translateY(-4px);
+  }
+}
+
+@keyframes sealPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(241, 212, 142, 0.58), 0 16px 38px rgba(41, 4, 12, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgba(241, 212, 142, 0), 0 20px 48px rgba(41, 4, 12, 0.65);
+    transform: scale(1.04);
+  }
+}
+
+@keyframes fadeUpSoft {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+@keyframes burstDrop {
+  0% {
+    transform: translate3d(0, -20px, 0) rotate(0deg) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--tx, 40px), 260px, 0) rotate(360deg) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.animate-petal {
+  animation: floatPetal linear infinite;
+}
+
+.animate-petal-reverse {
+  animation: floatPetalReverse linear infinite;
+}
+
+.animate-ember {
+  animation: riseEmber 5.5s ease-in-out infinite;
+}
+
+.animate-ken-burns {
+  animation: kenBurns 18s ease-in-out infinite;
+}
+
+.animate-sway {
+  animation: gentleSway 6s ease-in-out infinite;
+}
+
+.animate-seal-pulse {
+  animation: sealPulse 2.5s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fadeUpSoft 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-burst-drop {
+  animation: burstDrop 2.4s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 248, 225, 0.45) 50%,
+    transparent 100%
+  );
+  animation: shimmerSweep 3.5s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4e6ce;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c8943e, #4f0e1c);
+  border-radius: 999px;
+}
