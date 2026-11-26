@@ -7,6 +7,7 @@ A collection of themed digital wedding invitation prototypes built with Next.js 
 | Folder | Theme | Notes |
 | --- | --- | --- |
 | `royal-floral-invite/` | Royal Maroon, Emerald & Antique Gold Floral | Wax-seal palace reveal, drifting petals, live countdown, itinerary with `.ics` export, Udaipur venue & gallery, and dynamic RSVP (`/api/rsvp`). |
+| `indigo-terracotta-invite/` | Neel Indigo, Warm Limestone & Terracotta Editorial | Linen folio slide cover, asymmetric split spread, interactive ceremony switcher with attire color swatches, Jodhpur concierge ledger, and inline RSVP (`/api/rsvp`). |
 
 ## Running a Prototype Locally
 
