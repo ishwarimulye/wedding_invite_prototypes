@@ -2,8 +2,10 @@ export interface Ceremony {
   code: string;
   day: string;
   title: string;
+  vibe: string;
   time: string;
   location: string;
+  image: string;
   isoStart: string;
   isoEnd: string;
   note: string;
@@ -26,7 +28,6 @@ export const INVITE_INFO = {
   dates: "20 – 22 November 2027",
   targetISO: "2027-11-21T16:30:00+05:30",
   city: "Jodhpur, Rajasthan",
-  coordinates: "26.2389° N · 73.0243° E",
   venue: "Umaid Heritage Haveli",
   address: "Ratanada Palace Road, Jodhpur 342011",
   mapsUrl: "https://maps.google.com/?q=Jodhpur+Rajasthan",
@@ -35,50 +36,56 @@ export const INVITE_INFO = {
 export const CEREMONIES: Ceremony[] = [
   {
     code: "01",
-    day: "Saturday · Nov 20",
+    day: "Sat · 20 Nov",
     title: "Phoolon Ki Mehendi",
+    vibe: "Marigolds, Henna & Rose Sherbet",
     time: "1:00 PM — 5:30 PM",
-    location: "Neel Baori Courtyard",
+    location: "Bougainvillea Garden Lawn",
+    image: "/images/jodhpur-hero.jpg",
     isoStart: "20271120T130000",
     isoEnd: "20271120T173000",
-    note: "Afternoon henna, chilled rose-cardamom sherbet, and acoustic folk melodies under bougainvillea shade.",
-    dressLabel: "Linen, Olive & Sunwashed Ochre",
+    note: "Sunlit afternoon henna, chilled rose-cardamom thandai, live dholak folk songs, and floral bangles under blooming bougainvillea.",
+    dressLabel: "Blush Pink, Sage Green & Sunwashed Florals",
     swatches: [
-      { name: "Olive", hex: "#465947" },
-      { name: "Ochre", hex: "#C68B2C" },
-      { name: "Limestone", hex: "#EAE0D0" },
+      { name: "Peony Pink", hex: "#E48586" },
+      { name: "Garden Sage", hex: "#2B5945" },
+      { name: "Marigold", hex: "#EF9C4D" },
     ],
   },
   {
     code: "02",
-    day: "Saturday · Nov 20",
-    title: "Sangeet & Courtyard Supper",
+    day: "Sat · 20 Nov",
+    title: "Sangeet & Starlight Supper",
+    vibe: "Fairy Lights, Music & Joyful Dances",
     time: "7:30 PM Onwards",
-    location: "Darbar Sandstone Terrace",
+    location: "The Candlelit Courtyard",
+    image: "/images/jodhpur-table.jpg",
     isoStart: "20271120T193000",
     isoEnd: "20271120T234500",
-    note: "Candlelit music, family dances, and a long-table Marwari harvest supper beneath the November stars.",
-    dressLabel: "Midnight Indigo & Burnished Brass",
+    note: "An evening bursting with family performances, clinking glasses, warm brass candles, and a celebratory Rajasthani feast under the stars.",
+    dressLabel: "Berry Wine, Honey Gold & Shimmer",
     swatches: [
-      { name: "Indigo", hex: "#14223B" },
-      { name: "Brass", hex: "#C68B2C" },
-      { name: "Slate", hex: "#384B6E" },
+      { name: "Berry Rose", hex: "#7C1F42" },
+      { name: "Honey Gold", hex: "#D59244" },
+      { name: "Blush Silk", hex: "#FDECE4" },
     ],
   },
   {
     code: "03",
-    day: "Sunday · Nov 21",
-    title: "The Sunset Pheras",
-    time: "4:30 PM Baraat · 6:00 PM Vows",
-    location: "Surya Jharokha Lawns",
+    day: "Sun · 21 Nov",
+    title: "Sunset Pheras & Celebration",
+    vibe: "Sacred Vows Amidst Showering Petals",
+    time: "4:30 PM Baraat · 6:00 PM Pheras",
+    location: "The Lotus Rose Mandap",
+    image: "/images/garden-florals.jpg",
     isoStart: "20271121T163000",
     isoEnd: "20271121T223000",
-    note: "Sacred Vedic vows as the desert sun dips behind Mehrangarh silhouette, followed by a warm reception toast.",
-    dressLabel: "Terracotta Rose, Ivory Silk & Heritage Weaves",
+    note: "A lively baraat procession followed by sacred vows inside a mandap overflowing with blush roses, jasmine garlands, and warm blessings.",
+    dressLabel: "Coral Rose, Ivory Silk & Heritage Weaves",
     swatches: [
-      { name: "Terracotta", hex: "#B34738" },
-      { name: "Raw Silk", hex: "#F6F1E7" },
-      { name: "Saffron", hex: "#C68B2C" },
+      { name: "Coral Rose", hex: "#DE645E" },
+      { name: "Petal Ivory", hex: "#FFF8F4" },
+      { name: "Forest Sage", hex: "#2B5945" },
     ],
   },
 ];
@@ -89,13 +96,13 @@ export const INITIAL_RSVPS: RsvpEntry[] = [
     name: "Rohan & Anjali Deshmukh",
     attending: "yes",
     guests: 2,
-    note: "Wouldn't miss Jodhpur in November for the world.",
+    note: "So excited to dance at the Sangeet and celebrate with you in Jodhpur!",
   },
   {
     id: "r2",
     name: "Chacha Ji & Family",
     attending: "yes",
     guests: 4,
-    note: "Arriving Friday evening — excited for the courtyard supper!",
+    note: "Arriving Friday evening — counting down the days with big hugs!",
   },
 ];

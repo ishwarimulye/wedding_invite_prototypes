@@ -1,24 +1,34 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  Plus_Jakarta_Sans,
+  Sacramento,
+} from "next/font/google";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const sacramento = Sacramento({
+  variable: "--font-sacramento",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400"],
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Meera & Kabir • Jodhpur • 20–22 November 2027",
+  title: "Meera & Kabir • A Floral Wedding Celebration in Jodhpur",
   description:
-    "You are warmly invited to the wedding celebrations of Meera Rathore & Kabir Mehta at Umaid Heritage Haveli, Jodhpur.",
+    "Come celebrate with us! Meera & Kabir invite you to three joyful days of flowers, music, and vows at Umaid Heritage Haveli, Jodhpur (20–22 Nov 2027).",
 };
 
 export default function RootLayout({
@@ -27,8 +37,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${dmSans.variable} antialiased`}>
-      <body className="min-h-screen bg-limestone text-ink selection:bg-indigo selection:text-limestone">
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${sacramento.variable} ${jakarta.variable} antialiased`}
+    >
+      <body className="min-h-screen bg-petal-milk text-berry-ink selection:bg-berry selection:text-petal-milk">
         {children}
       </body>
     </html>

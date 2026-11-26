@@ -1,29 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  --limestone: #f6f1e7;
-  --sand: #eae0d0;
-  --indigo: #14223b;
-  --indigo-deep: #0b1426;
-  --terracotta: #b34738;
-  --saffron: #c68b2c;
-  --olive: #465947;
-  --ink: #181c24;
-  --muted: #5a5d66;
+  --petal-milk: #fff8f4;
+  --blush-silk: #fdece4;
+  --rose-mist: #f9d9d2;
+  --berry: #7c1f42;
+  --berry-deep: #4e1129;
+  --berry-ink: #2c1520;
+  --coral-rose: #de645e;
+  --sage: #2b5945;
+  --sage-soft: #4e8068;
+  --honey-gold: #d59244;
+  --marigold: #ef9c4d;
+  --muted: #6e4e5a;
 }
 
 @theme inline {
-  --color-limestone: var(--limestone);
-  --color-sand: var(--sand);
-  --color-indigo: var(--indigo);
-  --color-indigo-deep: var(--indigo-deep);
-  --color-terracotta: var(--terracotta);
-  --color-saffron: var(--saffron);
-  --color-olive: var(--olive);
-  --color-ink: var(--ink);
+  --color-petal-milk: var(--petal-milk);
+  --color-blush-silk: var(--blush-silk);
+  --color-rose-mist: var(--rose-mist);
+  --color-berry: var(--berry);
+  --color-berry-deep: var(--berry-deep);
+  --color-berry-ink: var(--berry-ink);
+  --color-coral-rose: var(--coral-rose);
+  --color-sage: var(--sage);
+  --color-sage-soft: var(--sage-soft);
+  --color-honey-gold: var(--honey-gold);
+  --color-marigold: var(--marigold);
   --color-muted: var(--muted);
-  --font-editorial: var(--font-fraunces);
-  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-cormorant);
+  --font-script: var(--font-sacramento);
+  --font-sans: var(--font-jakarta);
 }
 
 html {
@@ -31,29 +38,149 @@ html {
 }
 
 body {
-  background-color: var(--limestone);
-  color: var(--ink);
-  font-family: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--petal-milk);
+  color: var(--berry-ink);
+  font-family: var(--font-jakarta), sans-serif;
   overflow-x: hidden;
 }
 
-/* Subtle tactile linen paper grain */
-.paper-grain {
-  background-image: radial-gradient(rgba(20, 34, 59, 0.045) 1px, transparent 0);
-  background-size: 20px 20px;
+.bg-garden-gradient {
+  background: radial-gradient(circle at 18% 12%, #fde3da 0%, transparent 45%),
+    radial-gradient(circle at 86% 20%, #e4f0e8 0%, transparent 40%),
+    radial-gradient(circle at 50% 85%, #fcebd8 0%, transparent 50%),
+    #fff8f4;
 }
 
-@keyframes panelFade {
+.bg-berry-garden {
+  background: radial-gradient(circle at 20% 20%, #92274f 0%, #6b1939 52%, #470d24 100%);
+}
+
+/* Lively Floral Animations */
+@keyframes floatDown {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg) scale(0.9);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.88;
+  }
+  85% {
+    opacity: 0.72;
+  }
+  100% {
+    transform: translate3d(60px, 106vh, 0) rotate(340deg) scale(1.06);
+    opacity: 0;
+  }
+}
+
+@keyframes floatDownLeft {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg) scale(0.88);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.82;
+  }
+  85% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate3d(-70px, 106vh, 0) rotate(-300deg) scale(1.02);
+    opacity: 0;
+  }
+}
+
+@keyframes swayBloom {
+  0%,
+  100% {
+    transform: rotate(-3deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(3deg) translateY(-5px);
+  }
+}
+
+@keyframes floatBadge {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseRing {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(222, 100, 94, 0.45), 0 14px 30px rgba(124, 31, 66, 0.25);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(222, 100, 94, 0), 0 18px 36px rgba(124, 31, 66, 0.32);
+    transform: scale(1.04);
+  }
+}
+
+@keyframes panelPop {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px) scale(0.985);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-.animate-panel {
-  animation: panelFade 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+@keyframes confettiFall {
+  0% {
+    transform: translate3d(0, -15px, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--dx, 35px), 240px, 0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-petal {
+  animation: floatDown linear infinite;
+}
+
+.animate-float-petal-left {
+  animation: floatDownLeft linear infinite;
+}
+
+.animate-sway-bloom {
+  animation: swayBloom 5.5s ease-in-out infinite;
+}
+
+.animate-float-badge {
+  animation: floatBadge 4.2s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 2.5s ease-in-out infinite;
+}
+
+.animate-panel-pop {
+  animation: panelPop 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-confetti {
+  animation: confettiFall 2.2s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdece4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #de645e, #7c1f42);
+  border-radius: 999px;
 }

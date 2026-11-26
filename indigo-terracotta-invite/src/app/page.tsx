@@ -22,7 +22,7 @@ export default function Home() {
   const [opened, setOpened] = useState(false);
 
   return (
-    <main className="min-h-screen bg-limestone text-ink">
+    <main className="min-h-screen bg-petal-milk text-berry-ink">
       <FolioCover
         guestName={guestName}
         isOpen={opened}
