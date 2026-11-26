@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --petal-milk: #fff8f4;
-  --blush-silk: #fdece4;
-  --rose-mist: #f9d9d2;
-  --berry: #7c1f42;
-  --berry-deep: #4e1129;
-  --berry-ink: #2c1520;
-  --coral-rose: #de645e;
-  --sage: #2b5945;
-  --sage-soft: #4e8068;
-  --honey-gold: #d59244;
-  --marigold: #ef9c4d;
-  --muted: #6e4e5a;
+  --petal-milk: #fdf9f5;
+  --blush-silk: #f8eae4;
+  --rose-mist: #f3d7cf;
+  --berry: #6b213b;
+  --berry-deep: #461125;
+  --berry-ink: #27151c;
+  --coral-rose: #d66863;
+  --sage: #24493a;
+  --sage-soft: #4b7864;
+  --honey-gold: #c79652;
+  --marigold: #e29b4d;
+  --muted: #674b54;
 }
 
 @theme inline {
@@ -45,47 +45,47 @@ body {
 }
 
 .bg-garden-gradient {
-  background: radial-gradient(circle at 18% 12%, #fde3da 0%, transparent 45%),
-    radial-gradient(circle at 86% 20%, #e4f0e8 0%, transparent 40%),
-    radial-gradient(circle at 50% 85%, #fcebd8 0%, transparent 50%),
-    #fff8f4;
+  background: radial-gradient(circle at 15% 10%, #fae4dc 0%, transparent 44%),
+    radial-gradient(circle at 86% 18%, #e5efe9 0%, transparent 40%),
+    radial-gradient(circle at 50% 88%, #f8ebdc 0%, transparent 48%),
+    #fdf9f5;
 }
 
 .bg-berry-garden {
-  background: radial-gradient(circle at 20% 20%, #92274f 0%, #6b1939 52%, #470d24 100%);
+  background: radial-gradient(circle at 20% 20%, #832648 0%, #5d1932 55%, #3d0d1f 100%);
 }
 
-/* Lively Floral Animations */
+/* Refined Floral & Motion Animations */
 @keyframes floatDown {
   0% {
-    transform: translate3d(0, -10vh, 0) rotate(0deg) scale(0.9);
+    transform: translate3d(0, -10vh, 0) rotate(0deg) scale(0.88);
     opacity: 0;
   }
   12% {
-    opacity: 0.88;
-  }
-  85% {
     opacity: 0.72;
   }
+  85% {
+    opacity: 0.58;
+  }
   100% {
-    transform: translate3d(60px, 106vh, 0) rotate(340deg) scale(1.06);
+    transform: translate3d(55px, 106vh, 0) rotate(320deg) scale(1.02);
     opacity: 0;
   }
 }
 
 @keyframes floatDownLeft {
   0% {
-    transform: translate3d(0, -10vh, 0) rotate(0deg) scale(0.88);
+    transform: translate3d(0, -10vh, 0) rotate(0deg) scale(0.86);
     opacity: 0;
   }
   15% {
-    opacity: 0.82;
+    opacity: 0.68;
   }
   85% {
-    opacity: 0.65;
+    opacity: 0.52;
   }
   100% {
-    transform: translate3d(-70px, 106vh, 0) rotate(-300deg) scale(1.02);
+    transform: translate3d(-65px, 106vh, 0) rotate(-290deg) scale(1);
     opacity: 0;
   }
 }
@@ -93,10 +93,10 @@ body {
 @keyframes swayBloom {
   0%,
   100% {
-    transform: rotate(-3deg) translateY(0px);
+    transform: rotate(-2.5deg) translateY(0px);
   }
   50% {
-    transform: rotate(3deg) translateY(-5px);
+    transform: rotate(2.5deg) translateY(-4px);
   }
 }
 
@@ -106,26 +106,26 @@ body {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
   }
 }
 
 @keyframes pulseRing {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(222, 100, 94, 0.45), 0 14px 30px rgba(124, 31, 66, 0.25);
+    box-shadow: 0 0 0 0 rgba(199, 150, 82, 0.42), 0 14px 32px rgba(70, 17, 37, 0.22);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 0 14px rgba(222, 100, 94, 0), 0 18px 36px rgba(124, 31, 66, 0.32);
-    transform: scale(1.04);
+    box-shadow: 0 0 0 12px rgba(199, 150, 82, 0), 0 18px 38px rgba(70, 17, 37, 0.28);
+    transform: scale(1.03);
   }
 }
 
 @keyframes panelPop {
   from {
     opacity: 0;
-    transform: translateY(10px) scale(0.985);
+    transform: translateY(10px) scale(0.99);
   }
   to {
     opacity: 1;
@@ -153,19 +153,19 @@ body {
 }
 
 .animate-sway-bloom {
-  animation: swayBloom 5.5s ease-in-out infinite;
+  animation: swayBloom 6s ease-in-out infinite;
 }
 
 .animate-float-badge {
-  animation: floatBadge 4.2s ease-in-out infinite;
+  animation: floatBadge 4.5s ease-in-out infinite;
 }
 
 .animate-pulse-ring {
-  animation: pulseRing 2.5s ease-in-out infinite;
+  animation: pulseRing 2.6s ease-in-out infinite;
 }
 
 .animate-panel-pop {
-  animation: panelPop 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: panelPop 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .animate-confetti {
@@ -177,10 +177,10 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #fdece4;
+  background: #f8eae4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #de645e, #7c1f42);
+  background: linear-gradient(180deg, #c79652, #6b213b);
   border-radius: 999px;
 }
