@@ -403,19 +403,40 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
         </div>
       </section>
 
-      {/* Section 3: Unique Feature #2 — Interactive Palace Courtyard Map & Celebrations */}
+      {/* Section 3: Unique Feature #2 — Interactive Palace Courtyard Map & All 4 Ceremonies */}
       <section id="courtyard" className="px-4 sm:px-8 py-14">
-        <RevealBlock className="mx-auto max-w-6xl rounded-[2.5rem] bg-berry-garden p-6 sm:p-11 text-petal-milk shadow-[0_28px_85px_rgba(61,13,31,0.28)]">
-          <div className="text-center max-w-xl mx-auto">
+        <RevealBlock className="mx-auto max-w-6xl rounded-[2.5rem] bg-berry-garden p-6 sm:p-11 text-petal-milk shadow-[0_28px_85px_rgba(11,51,48,0.28)]">
+          <div className="text-center max-w-2xl mx-auto">
             <p className="font-script text-3xl sm:text-4xl text-marigold">
-              Explore The Haveli Grounds
+              Four Celebrations · One Heritage Estate
             </p>
             <h2 className="mt-1 font-display text-4xl sm:text-5xl font-semibold">
-              Courtyard Map &amp; Ceremonies
+              Wedding Itinerary &amp; Courtyard Map
             </h2>
           </div>
 
-          <div className="mt-9 grid items-center gap-8 lg:grid-cols-12">
+          {/* Clear 4-Ceremony Pill Switcher */}
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-2.5">
+            {CEREMONIES.map((c) => {
+              const active = c.code === activeCeremony.code;
+              return (
+                <button
+                  key={c.code}
+                  type="button"
+                  onClick={() => setActiveCode(c.code)}
+                  className={`rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all duration-300 ${
+                    active
+                      ? "bg-petal-milk text-berry shadow-lg scale-105"
+                      : "border border-petal-milk/35 bg-petal-milk/10 text-petal-milk hover:bg-petal-milk/20"
+                  }`}
+                >
+                  {c.code} · {c.shortTitle}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="mt-8 grid items-center gap-8 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <PalaceCourtyardMap
                 activeCeremony={activeCeremony}
@@ -425,8 +446,18 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
 
             <div
               key={activeCeremony.code}
-              className="lg:col-span-6 animate-panel-pop rounded-3xl border border-petal-milk/20 bg-petal-milk/96 p-6 sm:p-8 text-berry-ink"
+              className="lg:col-span-6 animate-panel-pop rounded-3xl border border-petal-milk/20 bg-petal-milk/96 p-5 sm:p-7 text-berry-ink"
             >
+              <div className="relative mb-5 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-honey-gold/40">
+                <Image
+                  src={activeCeremony.image}
+                  alt={activeCeremony.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+
               <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-coral-rose">
                 <span>
                   {activeCeremony.day} · {activeCeremony.time}
@@ -434,7 +465,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 <span className="text-sage">{activeCeremony.location}</span>
               </div>
 
-              <h3 className="mt-3 font-display text-3xl sm:text-4xl font-semibold text-berry">
+              <h3 className="mt-2 font-display text-3xl font-semibold text-berry">
                 {activeCeremony.title}
               </h3>
 
@@ -442,19 +473,19 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 {activeCeremony.vibe}
               </p>
 
-              <p className="mt-3 text-sm leading-relaxed text-muted">
+              <p className="mt-2 text-sm leading-relaxed text-muted">
                 {activeCeremony.note}
               </p>
 
-              <div className="mt-5 rounded-2xl bg-blush-silk/85 p-4 border border-honey-gold/30">
+              <div className="mt-4 rounded-2xl bg-blush-silk/85 p-3.5 border border-honey-gold/30">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-berry font-semibold">
                   Dress Mood: {activeCeremony.dressLabel}
                 </p>
-                <div className="mt-2.5 flex flex-wrap gap-4">
+                <div className="mt-2 flex flex-wrap gap-4">
                   {activeCeremony.swatches.map((sw) => (
                     <div key={sw.name} className="flex items-center gap-2">
                       <span
-                        className="h-5 w-5 rounded-full border border-berry/20 shadow-sm"
+                        className="h-4 w-4 rounded-full border border-berry/20 shadow-sm"
                         style={{ backgroundColor: sw.hex }}
                       />
                       <span className="text-xs font-medium text-berry-ink">
@@ -465,20 +496,44 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 </div>
               </div>
 
-              <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={() => downloadCeremonyIcs(activeCeremony)}
-                  className="inline-flex items-center gap-2 rounded-full bg-sage px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-petal-milk transition hover:bg-berry"
+                  className="inline-flex items-center gap-2 rounded-full bg-coral-rose px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-petal-milk transition hover:bg-berry"
                 >
                   <CalendarPlus className="h-3.5 w-3.5" />
                   Save Ceremony (.ics)
                 </button>
                 <span className="text-xs text-muted">
-                  Pavilion {activeCeremony.code} of 03
+                  Ceremony {activeCeremony.code} of 04
                 </span>
               </div>
             </div>
+          </div>
+
+          {/* Complete 4-Ceremony Overview Strip (All 4 visible at a glance!) */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 border-t border-petal-milk/20 pt-7 text-left">
+            {CEREMONIES.map((c) => (
+              <button
+                key={c.code}
+                type="button"
+                onClick={() => setActiveCode(c.code)}
+                className={`rounded-2xl border p-4 transition text-left ${
+                  c.code === activeCeremony.code
+                    ? "border-marigold bg-petal-milk/16 shadow-md"
+                    : "border-petal-milk/18 bg-petal-milk/6 hover:bg-petal-milk/12"
+                }`}
+              >
+                <p className="text-[10px] uppercase tracking-[0.2em] text-marigold font-semibold">
+                  {c.day} · {c.time}
+                </p>
+                <p className="mt-1 font-display text-xl font-semibold text-petal-milk">
+                  {c.title}
+                </p>
+                <p className="mt-0.5 text-xs text-petal-milk/75">{c.location}</p>
+              </button>
+            ))}
           </div>
         </RevealBlock>
       </section>

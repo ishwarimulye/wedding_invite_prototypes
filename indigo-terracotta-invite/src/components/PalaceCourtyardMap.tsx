@@ -11,13 +11,13 @@ export default function PalaceCourtyardMap({
   onSelect: (code: string) => void;
 }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-petal-milk/25 bg-petal-milk/95 p-4 sm:p-5 text-berry-ink shadow-inner">
+    <div className="relative overflow-hidden rounded-3xl border border-petal-milk/25 bg-petal-milk/96 p-4 sm:p-5 text-berry-ink shadow-inner">
       <div className="flex items-center justify-between border-b border-honey-gold/30 pb-2.5 mb-3">
-        <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-sage">
-          Interactive Estate Map · Tap A Pavilion
+        <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-berry">
+          Estate Map · Tap Any Pavilion
         </span>
-        <span className="text-[10px] uppercase tracking-[0.2em] text-coral-rose font-semibold">
-          Umaid Heritage Haveli
+        <span className="text-[10px] uppercase tracking-[0.18em] text-coral-rose font-semibold">
+          4 Ceremonies
         </span>
       </div>
 
@@ -25,10 +25,9 @@ export default function PalaceCourtyardMap({
         viewBox="0 0 400 280"
         className="w-full h-auto select-none"
         role="img"
-        aria-label="Interactive illustrated map of Umaid Heritage Haveli wedding pavilions"
+        aria-label="Interactive illustrated map of Umaid Heritage Haveli showing all four wedding ceremony pavilions"
       >
-        {/* Warm Sandstone Grounds */}
-        <rect x="0" y="0" width="400" height="280" rx="18" fill="#FDF6EE" />
+        <rect x="0" y="0" width="400" height="280" rx="18" fill="#FCF8F1" />
         <rect
           x="12"
           y="12"
@@ -36,114 +35,116 @@ export default function PalaceCourtyardMap({
           height="256"
           rx="14"
           fill="none"
-          stroke="#C79652"
+          stroke="#C99242"
           strokeOpacity="0.4"
           strokeDasharray="4 4"
         />
 
-        {/* Heritage Colonnade Wing */}
-        <rect
-          x="235"
-          y="34"
-          width="130"
-          height="110"
-          rx="12"
-          fill="#F5E4DA"
-          stroke="#C79652"
-          strokeWidth="1.2"
-        />
-        <text
-          x="300"
-          y="55"
-          textAnchor="middle"
-          fontSize="8.5"
-          fill="#6B213B"
-          letterSpacing="1.5"
-          fontWeight="600"
-        >
-          COLONNADE WING
-        </text>
-
-        {/* Bougainvillea Garden Lawn */}
+        {/* Wing 01: Garden Lawn */}
         <ellipse
-          cx="112"
-          cy="108"
-          rx="76"
-          ry="56"
-          fill="#E5EFE9"
-          stroke="#4B7864"
-          strokeOpacity="0.45"
+          cx="105"
+          cy="94"
+          rx="74"
+          ry="48"
+          fill="#E0F1EB"
+          stroke="#134E4A"
+          strokeOpacity="0.35"
           strokeWidth="1.2"
         />
         <text
-          x="112"
-          y="74"
+          x="105"
+          y="62"
           textAnchor="middle"
-          fontSize="8.5"
-          fill="#24493A"
-          letterSpacing="1.4"
+          fontSize="8"
+          fill="#134E4A"
+          letterSpacing="1.3"
           fontWeight="600"
         >
           GARDEN LAWN
         </text>
 
-        {/* Central Lotus Reflection Pool */}
+        {/* Wing 02: Colonnade Wing */}
         <rect
-          x="148"
-          y="150"
-          width="112"
+          x="224"
+          y="32"
+          width="142"
+          height="94"
+          rx="12"
+          fill="#FBEDE4"
+          stroke="#C99242"
+          strokeWidth="1.2"
+        />
+        <text
+          x="295"
+          y="50"
+          textAnchor="middle"
+          fontSize="8"
+          fill="#134E4A"
+          letterSpacing="1.3"
+          fontWeight="600"
+        >
+          COLONNADE WING
+        </text>
+
+        {/* Wing 03: Stepwell Terrace */}
+        <rect
+          x="36"
+          y="156"
+          width="138"
           height="92"
-          rx="46"
-          fill="#FAE9E4"
-          stroke="#D66863"
-          strokeOpacity="0.5"
+          rx="12"
+          fill="#FDF2DF"
+          stroke="#EA9A3E"
+          strokeOpacity="0.6"
+          strokeWidth="1.2"
+        />
+        <text
+          x="105"
+          y="174"
+          textAnchor="middle"
+          fontSize="8"
+          fill="#8E5B17"
+          letterSpacing="1.3"
+          fontWeight="600"
+        >
+          STEPWELL TERRACE
+        </text>
+
+        {/* Wing 04: Lotus Mandap */}
+        <rect
+          x="200"
+          y="154"
+          width="144"
+          height="96"
+          rx="42"
+          fill="#FCE8E3"
+          stroke="#E16B5A"
+          strokeOpacity="0.55"
           strokeWidth="1.3"
         />
         <text
-          x="204"
-          y="233"
+          x="272"
+          y="172"
           textAnchor="middle"
-          fontSize="8.5"
-          fill="#6B213B"
-          letterSpacing="1.4"
+          fontSize="8"
+          fill="#B34436"
+          letterSpacing="1.3"
           fontWeight="600"
         >
           LOTUS MANDAP
         </text>
 
-        {/* Dotted Lantern Footpaths */}
+        {/* Lantern Footpaths connecting all 4 wings */}
         <path
-          d="M112 110 Q204 145 295 98 M112 110 Q150 185 204 205 M295 98 Q265 170 204 205"
+          d="M105 104 Q200 112 295 92 M105 104 L105 204 M105 204 Q186 218 268 204 M295 92 Q284 148 268 204"
           fill="none"
-          stroke="#C79652"
-          strokeWidth="1.6"
+          stroke="#C99242"
+          strokeWidth="1.5"
           strokeDasharray="4 4"
-          strokeOpacity="0.65"
+          strokeOpacity="0.6"
         />
 
-        {/* Welcome Gate Badge */}
-        <g transform="translate(54 228)">
-          <rect
-            x="-32"
-            y="-14"
-            width="64"
-            height="24"
-            rx="12"
-            fill="#6B213B"
-          />
-          <text
-            x="0"
-            y="1.5"
-            textAnchor="middle"
-            fontSize="7.5"
-            fill="#FDF9F5"
-            letterSpacing="1.2"
-          >
-            ENTRY ARCH
-          </text>
-        </g>
-
-        {/* Interactive Ceremony Pavilion Pins */}
+        {/* Interactive Pins for all 4 Ceremonies */}
         {CEREMONIES.map((c) => {
           const isSelected = c.code === activeCeremony.code;
           return (
@@ -155,45 +156,45 @@ export default function PalaceCourtyardMap({
             >
               {isSelected && (
                 <circle
-                  r="24"
-                  fill="#D66863"
-                  fillOpacity="0.22"
+                  r="22"
+                  fill="#E16B5A"
+                  fillOpacity="0.24"
                   className="animate-ping"
                 />
               )}
               <circle
-                r={isSelected ? 17 : 14}
-                fill={isSelected ? "#6B213B" : "#FFFFFF"}
-                stroke={isSelected ? "#E29B4D" : "#6B213B"}
+                r={isSelected ? 16 : 13}
+                fill={isSelected ? "#134E4A" : "#FFFFFF"}
+                stroke={isSelected ? "#EA9A3E" : "#134E4A"}
                 strokeWidth="2"
               />
               <text
                 x="0"
                 y="4"
                 textAnchor="middle"
-                fontSize="10.5"
+                fontSize="10"
                 fontWeight="700"
-                fill={isSelected ? "#FDF9F5" : "#6B213B"}
+                fill={isSelected ? "#FCF8F1" : "#134E4A"}
               >
                 {c.code}
               </text>
               <rect
-                x="-50"
-                y="20"
-                width="100"
+                x="-40"
+                y="18"
+                width="80"
                 height="16"
                 rx="8"
-                fill={isSelected ? "#24493A" : "#F8EAE4"}
+                fill={isSelected ? "#E16B5A" : "#FBEDE4"}
               />
               <text
                 x="0"
-                y="31"
+                y="29"
                 textAnchor="middle"
-                fontSize="7.5"
+                fontSize="7.8"
                 fontWeight="600"
-                fill={isSelected ? "#FDF9F5" : "#27151C"}
+                fill={isSelected ? "#FCF8F1" : "#1E2422"}
               >
-                {c.title.split(" ").slice(0, 2).join(" ")}
+                {c.shortTitle}
               </text>
             </g>
           );

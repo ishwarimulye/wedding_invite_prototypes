@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --petal-milk: #fdf9f5;
-  --blush-silk: #f8eae4;
-  --rose-mist: #f3d7cf;
-  --berry: #6b213b;
-  --berry-deep: #461125;
-  --berry-ink: #27151c;
-  --coral-rose: #d66863;
-  --sage: #24493a;
-  --sage-soft: #4b7864;
-  --honey-gold: #c79652;
-  --marigold: #e29b4d;
-  --muted: #674b54;
+  --petal-milk: #fcf8f1;
+  --blush-silk: #fbeee6;
+  --rose-mist: #f6d8cd;
+  --berry: #134e4a;
+  --berry-deep: #0b3330;
+  --berry-ink: #1e2422;
+  --coral-rose: #e16b5a;
+  --sage: #2d6a54;
+  --sage-soft: #4e8a73;
+  --honey-gold: #c99242;
+  --marigold: #ea9a3e;
+  --muted: #5a635e;
 }
 
 @theme inline {
@@ -45,14 +45,14 @@ body {
 }
 
 .bg-garden-gradient {
-  background: radial-gradient(circle at 15% 10%, #fae4dc 0%, transparent 44%),
-    radial-gradient(circle at 86% 18%, #e5efe9 0%, transparent 40%),
-    radial-gradient(circle at 50% 88%, #f8ebdc 0%, transparent 48%),
-    #fdf9f5;
+  background: radial-gradient(circle at 14% 10%, #fde6dc 0%, transparent 44%),
+    radial-gradient(circle at 86% 18%, #dff1eb 0%, transparent 42%),
+    radial-gradient(circle at 50% 88%, #fcedd9 0%, transparent 48%),
+    #fcf8f1;
 }
 
 .bg-berry-garden {
-  background: radial-gradient(circle at 20% 20%, #832648 0%, #5d1932 55%, #3d0d1f 100%);
+  background: radial-gradient(circle at 20% 20%, #1a635d 0%, #124743 55%, #092c29 100%);
 }
 
 /* Refined Floral & Motion Animations */
@@ -113,11 +113,11 @@ body {
 @keyframes pulseRing {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(199, 150, 82, 0.42), 0 14px 32px rgba(70, 17, 37, 0.22);
+    box-shadow: 0 0 0 0 rgba(225, 107, 90, 0.42), 0 14px 32px rgba(11, 51, 48, 0.24);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 0 12px rgba(199, 150, 82, 0), 0 18px 38px rgba(70, 17, 37, 0.28);
+    box-shadow: 0 0 0 12px rgba(225, 107, 90, 0), 0 18px 38px rgba(11, 51, 48, 0.3);
     transform: scale(1.03);
   }
 }
@@ -195,10 +195,10 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f8eae4;
+  background: #fbeee6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #c79652, #6b213b);
+  background: linear-gradient(180deg, #e16b5a, #134e4a);
   border-radius: 999px;
 }

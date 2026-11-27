@@ -50,16 +50,16 @@ export default function FolioCover({
         className="absolute -bottom-4 -right-4 h-40 w-40 sm:h-56 sm:w-56 opacity-80"
       />
 
-      <div className="relative z-10 w-full max-w-lg rounded-t-[200px] rounded-b-[2rem] border border-honey-gold/60 bg-petal-milk/94 px-7 py-12 sm:px-12 sm:py-14 text-center shadow-[0_28px_85px_rgba(70,17,37,0.14)] backdrop-blur-md">
+      <div className="relative z-10 w-full max-w-lg rounded-t-[200px] rounded-b-[2rem] border border-honey-gold/60 bg-petal-milk/94 px-7 py-12 sm:px-12 sm:py-14 text-center shadow-[0_28px_85px_rgba(11,51,48,0.16)] backdrop-blur-md">
         <div className="pointer-events-none absolute inset-3 rounded-t-[188px] rounded-b-[1.5rem] border border-coral-rose/25" />
 
         <div className="relative z-10 flex flex-col items-center">
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-sage">
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-berry">
             <Flower2 className="h-3.5 w-3.5 text-coral-rose" />
             Shubh Vivah
           </span>
 
-          <p className="mt-5 font-script text-3xl sm:text-4xl text-sage">
+          <p className="mt-5 font-script text-3xl sm:text-4xl text-coral-rose">
             Dear {guestName},
           </p>
 
@@ -78,7 +78,7 @@ export default function FolioCover({
           <FloralDivider />
 
           <p className="max-w-xs text-xs sm:text-sm leading-relaxed text-muted">
-            Invite you to share in three joyful days of blooms, music, and vows
+            Invite you to share in Mehendi, Sangeet, Haldi &amp; Sunset Pheras
             in <span className="font-medium text-berry">{INVITE_INFO.city}</span>.
           </p>
 
