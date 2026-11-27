@@ -74,13 +74,29 @@ export default function FolioCover({
             With the blessings of both families
           </p>
 
-          <h1 className="mt-3 font-display text-5xl sm:text-6xl font-medium text-berry leading-tight">
-            {INVITE_INFO.brideFirst}{" "}
-            <span className="font-script text-5xl sm:text-6xl text-gold-shimmer font-normal">
+          <div className="mt-3 space-y-1.5">
+            <div>
+              <h1 className="font-display text-5xl sm:text-6xl font-medium text-berry leading-tight">
+                {INVITE_INFO.brideFirst}
+              </h1>
+              <p className="mt-0.5 text-xs sm:text-sm font-medium text-sage">
+                {INVITE_INFO.brideParents}
+              </p>
+            </div>
+
+            <span className="block font-script text-4xl sm:text-5xl text-gold-shimmer font-normal">
               &amp;
-            </span>{" "}
-            {INVITE_INFO.groomFirst}
-          </h1>
+            </span>
+
+            <div>
+              <p className="font-display text-5xl sm:text-6xl font-medium text-berry leading-tight">
+                {INVITE_INFO.groomFirst}
+              </p>
+              <p className="mt-0.5 text-xs sm:text-sm font-medium text-sage">
+                {INVITE_INFO.groomParents}
+              </p>
+            </div>
+          </div>
 
           <p className="mt-3 text-xs uppercase tracking-[0.24em] text-sage font-medium">
             {INVITE_INFO.dates} · {INVITE_INFO.city}

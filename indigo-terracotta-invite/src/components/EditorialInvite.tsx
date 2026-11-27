@@ -222,7 +222,22 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 {INVITE_INFO.groomFirst}
               </h1>
 
-              <p className="mt-4 text-sm leading-relaxed text-muted max-w-md">
+              {/* Highlighted Parentage Card */}
+              <div className="mt-4 w-full max-w-md rounded-2xl border border-honey-gold/45 bg-blush-silk/55 px-4 py-3 text-center lg:text-left space-y-1.5">
+                <p className="text-xs sm:text-sm text-berry-ink">
+                  <span className="font-semibold text-berry">{INVITE_INFO.brideFirst}</span>
+                  {" — "}
+                  <span className="text-sage font-medium">{INVITE_INFO.brideParents}</span>
+                </p>
+                <div className="h-[1px] w-full bg-honey-gold/25" />
+                <p className="text-xs sm:text-sm text-berry-ink">
+                  <span className="font-semibold text-berry">{INVITE_INFO.groomFirst}</span>
+                  {" — "}
+                  <span className="text-sage font-medium">{INVITE_INFO.groomParents}</span>
+                </p>
+              </div>
+
+              <p className="mt-3 text-xs sm:text-sm leading-relaxed text-muted max-w-md">
                 {INVITE_INFO.families}
               </p>
 

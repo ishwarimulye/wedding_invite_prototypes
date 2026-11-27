@@ -54,18 +54,23 @@ export default function HeroSection({ guestName }: { guestName: string }) {
                 || श्री गणेशाय नमः || • With Blessings of Elders
               </p>
 
-              <p className="mt-2 text-xs sm:text-sm text-ivory/80 max-w-lg leading-relaxed">
-                {WEDDING_DETAILS.brideParents}{" "}
-                <span className="text-gold-light">•</span>{" "}
-                {WEDDING_DETAILS.groomParents}
-              </p>
+              <div className="mt-5 w-full max-w-xl">
+                <h1 className="font-display text-5xl sm:text-7xl lg:text-[5rem] font-semibold leading-[1.03] tracking-tight text-ivory">
+                  <span className="block">{WEDDING_DETAILS.bride}</span>
+                  <span className="mt-1.5 block font-sans text-xs sm:text-sm font-medium tracking-wide text-gold-light/95">
+                    {WEDDING_DETAILS.brideParents}
+                  </span>
 
-              <h1 className="mt-6 font-display text-5xl sm:text-7xl lg:text-[5.25rem] font-semibold leading-[1.03] tracking-tight text-ivory">
-                <span className="block">{WEDDING_DETAILS.bride}</span>
-                <span className="my-1 block font-script text-5xl sm:text-6xl text-gold-foil font-normal">
-                  &amp; {WEDDING_DETAILS.groom}
-                </span>
-              </h1>
+                  <span className="my-2 block font-script text-4xl sm:text-5xl text-gold-foil font-normal">
+                    &amp;
+                  </span>
+
+                  <span className="block">{WEDDING_DETAILS.groom}</span>
+                  <span className="mt-1.5 block font-sans text-xs sm:text-sm font-medium tracking-wide text-gold-light/95">
+                    {WEDDING_DETAILS.groomParents}
+                  </span>
+                </h1>
+              </div>
 
               <div className="lg:self-start">
                 <LotusSeparator light />

@@ -101,13 +101,29 @@ export default function InviteEnvelope({
               </p>
             </div>
 
-            <h1 className="mt-4 font-display text-4xl sm:text-5xl font-semibold tracking-wide text-maroon">
-              {WEDDING_DETAILS.bride}
-              <span className="mx-2.5 font-script text-4xl sm:text-5xl text-gold-dark font-normal">
+            <div className="mt-4 space-y-1.5">
+              <div>
+                <h1 className="font-display text-4xl sm:text-5xl font-semibold tracking-wide text-maroon">
+                  {WEDDING_DETAILS.bride}
+                </h1>
+                <p className="mt-0.5 text-xs sm:text-sm font-medium text-maroon/80">
+                  {WEDDING_DETAILS.brideParents}
+                </p>
+              </div>
+
+              <span className="block font-script text-3xl sm:text-4xl text-gold-dark font-normal">
                 &amp;
               </span>
-              {WEDDING_DETAILS.groom}
-            </h1>
+
+              <div>
+                <p className="font-display text-4xl sm:text-5xl font-semibold tracking-wide text-maroon">
+                  {WEDDING_DETAILS.groom}
+                </p>
+                <p className="mt-0.5 text-xs sm:text-sm font-medium text-maroon/80">
+                  {WEDDING_DETAILS.groomParents}
+                </p>
+              </div>
+            </div>
 
             <LotusSeparator />
 

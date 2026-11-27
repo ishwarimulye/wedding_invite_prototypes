@@ -39,8 +39,10 @@ export const INVITE_INFO = {
   groom: "Kabir Mehta",
   brideFirst: "Meera",
   groomFirst: "Kabir",
+  brideParents: "Daughter of Smt. Sunita & Shri Mahendra Rathore",
+  groomParents: "Son of Smt. Kavya & Shri Arjun Mehta",
   families:
-    "Sunita & Mahendra Rathore together with Kavya & Arjun Mehta invite you to celebrate the marriage of their children.",
+    "Both families warmly invite you to share in the joy and blessings of this union.",
   dates: "20 – 21 November 2027",
   targetISO: "2027-11-21T16:30:00+05:30",
   city: "Jodhpur, Rajasthan",
