@@ -158,7 +158,7 @@ export default function CountdownSection() {
   return (
     <section
       id="countdown"
-      className="relative overflow-hidden bg-cream py-20 px-4 sm:px-8 text-maroon border-y border-gold/45"
+      className="relative overflow-hidden bg-cream py-14 px-4 sm:px-8 text-maroon border-y border-gold/45"
     >
       <div className="pointer-events-none absolute inset-0 bg-jaali-pattern opacity-45" />
 

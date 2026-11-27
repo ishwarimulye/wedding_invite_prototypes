@@ -19,7 +19,7 @@ export default function FooterSection() {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-royal-velvet pt-20 pb-16 px-4 sm:px-8 text-ivory">
+    <footer className="relative overflow-hidden bg-royal-velvet py-12 px-4 sm:px-8 text-ivory">
       <div className="pointer-events-none absolute inset-0 bg-jaali-pattern opacity-30" />
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">

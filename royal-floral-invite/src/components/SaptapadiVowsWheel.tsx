@@ -72,26 +72,22 @@ export default function SaptapadiVowsWheel() {
   return (
     <section
       id="saptapadi"
-      className="relative overflow-hidden bg-ivory py-24 px-4 sm:px-8"
+      className="relative overflow-hidden bg-ivory py-14 px-4 sm:px-8"
     >
       <div className="pointer-events-none absolute inset-0 bg-jaali-pattern opacity-35" />
 
-      <div className="relative z-10 mx-auto max-w-6xl">
-        <ScrollReveal className="text-center max-w-2xl mx-auto">
+      <div className="relative z-10 mx-auto max-w-5xl">
+        <ScrollReveal className="text-center max-w-xl mx-auto">
           <p className="text-xs uppercase tracking-[0.34em] text-gold-dark font-semibold">
             The Seven Sacred Steps
           </p>
-          <h2 className="mt-2 font-display text-4xl sm:text-5xl font-semibold text-maroon">
+          <h2 className="mt-1.5 font-display text-3xl sm:text-4xl font-semibold text-maroon">
             The Saptapadi Wheel
           </h2>
           <LotusSeparator />
-          <p className="text-sm sm:text-base text-muted leading-relaxed">
-            Tap any of the seven pheras around the sacred Agni to turn the
-            mandala and read our promises for each step.
-          </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid items-center gap-10 lg:grid-cols-12">
+        <div className="mt-8 grid items-center gap-8 lg:grid-cols-12">
           {/* Interactive Rotating Mandala Wheel */}
           <div className="lg:col-span-6 flex justify-center">
             <div className="relative flex h-[320px] w-[320px] sm:h-[380px] sm:w-[380px] items-center justify-center">
@@ -211,24 +207,6 @@ export default function SaptapadiVowsWheel() {
               <p className="mt-3 font-display italic text-lg sm:text-xl leading-relaxed text-ink/90">
                 &ldquo;{current.promise}&rdquo;
               </p>
-
-              {/* Quick Stepper Pills */}
-              <div className="mt-7 flex flex-wrap gap-2 pt-5 border-t border-gold/30">
-                {SAPTAPADI_VOWS.map((v, i) => (
-                  <button
-                    key={v.num}
-                    type="button"
-                    onClick={() => setActiveVow(i)}
-                    className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition ${
-                      i === activeVow
-                        ? "bg-maroon text-gold-light"
-                        : "border border-gold/45 bg-ivory text-maroon hover:bg-parchment"
-                    }`}
-                  >
-                    0{v.num} · {v.title.split(" ")[0]}
-                  </button>
-                ))}
-              </div>
             </div>
           </div>
         </div>

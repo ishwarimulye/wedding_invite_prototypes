@@ -107,29 +107,24 @@ export default function RsvpSection({ guestName }: { guestName: string }) {
   return (
     <section
       id="rsvp"
-      className="relative overflow-hidden bg-cream py-24 px-4 sm:px-8"
+      className="relative overflow-hidden bg-ivory py-14 px-4 sm:px-8"
     >
-      <div className="pointer-events-none absolute inset-0 bg-jaali-pattern opacity-40" />
+      <div className="pointer-events-none absolute inset-0 bg-jaali-pattern opacity-35" />
 
       <div className="relative z-10 mx-auto max-w-5xl">
-        <ScrollReveal className="text-center max-w-2xl mx-auto">
+        <ScrollReveal className="text-center max-w-xl mx-auto">
           <p className="text-xs uppercase tracking-[0.34em] text-gold-dark font-semibold">
             Kindly Respond
           </p>
-          <h2 className="mt-2 font-display text-4xl sm:text-5xl font-semibold text-maroon">
+          <h2 className="mt-1.5 font-display text-3xl sm:text-4xl font-semibold text-maroon">
             Grace Us With Your Presence
           </h2>
           <LotusSeparator />
-          <p className="text-sm sm:text-base text-muted leading-relaxed">
-            Aapke aane se mehfil sajegi — please confirm your attendance by{" "}
-            <span className="font-semibold text-maroon">15th January 2027</span>{" "}
-            so we can prepare a royal welcome for you.
-          </p>
         </ScrollReveal>
 
         {/* Royal RSVP Card */}
-        <ScrollReveal delayMs={120}>
-          <div className="mt-12 relative overflow-hidden rounded-[2rem] border-2 border-gold/75 bg-ivory p-6 sm:p-11 shadow-[0_26px_75px_rgba(79,14,28,0.16)]">
+        <ScrollReveal delayMs={80}>
+          <div className="mt-8 relative overflow-hidden rounded-[2rem] border-2 border-gold/70 bg-cream/65 p-6 sm:p-9 shadow-[0_20px_60px_rgba(79,14,28,0.12)]">
             <FloralCorner
               position="top-left"
               className="absolute -top-3 -left-3 h-24 w-24 opacity-80"
@@ -292,12 +287,12 @@ export default function RsvpSection({ guestName }: { guestName: string }) {
         </ScrollReveal>
 
         {/* Blessings Wall */}
-        <div className="mt-16">
-          <h3 className="text-center font-display text-3xl font-semibold text-maroon">
+        <div className="mt-10">
+          <h3 className="text-center font-display text-2xl sm:text-3xl font-semibold text-maroon">
             Blessings From Loved Ones
           </h3>
-          <div className="mt-7 grid gap-5 md:grid-cols-3">
-            {wishes.map((wish, idx) => (
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {wishes.slice(0, 3).map((wish, idx) => (
               <ScrollReveal key={wish.id} delayMs={idx * 80}>
                 <div className="h-full rounded-3xl border border-gold/55 bg-ivory/95 p-6 shadow-sm transition hover:border-gold hover:-translate-y-0.5">
                   <div className="flex items-center justify-between gap-2">

@@ -9,7 +9,6 @@ import SaptapadiVowsWheel from "@/components/SaptapadiVowsWheel";
 import EventsSection from "@/components/EventsSection";
 import DiyaBlessingRitual from "@/components/DiyaBlessingRitual";
 import VenueSection from "@/components/VenueSection";
-import GallerySection from "@/components/GallerySection";
 import RsvpSection from "@/components/RsvpSection";
 import FooterSection from "@/components/FooterSection";
 
@@ -54,7 +53,6 @@ export default function Home() {
         <EventsSection />
         <DiyaBlessingRitual />
         <VenueSection />
-        <GallerySection />
         <RsvpSection guestName={guestName} />
         <FooterSection />
       </div>

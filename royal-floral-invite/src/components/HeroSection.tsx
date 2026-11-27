@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { CalendarHeart, ChevronDown, MapPin } from "lucide-react";
+import { CalendarHeart, MapPin } from "lucide-react";
 import { FloralCorner, LotusSeparator } from "./FloralOrnaments";
 import { WEDDING_DETAILS } from "@/data/weddingData";
 
@@ -10,7 +10,7 @@ export default function HeroSection({ guestName }: { guestName: string }) {
   return (
     <section
       id="top"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-royal-velvet pt-16 pb-14 px-4 sm:px-8 text-ivory"
+      className="relative flex items-center justify-center overflow-hidden bg-royal-velvet pt-10 pb-10 px-4 sm:px-8 text-ivory"
     >
       {/* Royal Velvet & Jaali Shimmer Backdrop */}
       <div className="pointer-events-none absolute inset-0 bg-jaali-pattern opacity-35" />
@@ -160,16 +160,6 @@ export default function HeroSection({ guestName }: { guestName: string }) {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="mt-10 flex justify-center">
-          <a
-            href="#countdown"
-            className="group flex flex-col items-center gap-1.5 text-[11px] uppercase tracking-[0.26em] text-gold-light/85 hover:text-gold-light transition"
-          >
-            <span>Scroll to Celebrate</span>
-            <ChevronDown className="h-4 w-4 text-gold-light animate-bounce" />
-          </a>
-        </div>
       </div>
     </section>
   );

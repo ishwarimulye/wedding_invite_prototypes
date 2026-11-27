@@ -92,27 +92,20 @@ export default function DiyaBlessingRitual() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-royal-velvet py-20 px-4 sm:px-8 text-ivory">
+    <section className="relative overflow-hidden bg-royal-velvet py-14 px-4 sm:px-8 text-ivory">
       <div className="pointer-events-none absolute inset-0 bg-jaali-pattern opacity-25" />
 
       <ScrollReveal className="relative z-10 mx-auto max-w-4xl text-center">
         <p className="text-xs uppercase tracking-[0.34em] text-gold-light font-semibold">
           Sacred Courtyard Ritual
         </p>
-        <h2 className="mt-2 font-display text-3xl sm:text-5xl font-semibold text-ivory">
+        <h2 className="mt-1.5 font-display text-3xl sm:text-4xl font-semibold text-ivory">
           Light a Brass Diya of Blessings
         </h2>
 
         <LotusSeparator light />
 
-        <p className="mx-auto max-w-xl text-sm text-ivory/80 leading-relaxed">
-          Before the pheras begin beside Lake Pichola, ignite a virtual brass
-          lamp in the palace reflection pool to bless Ananya &amp; Vivaan&apos;s
-          new home.
-        </p>
-
-        {/* Row of 7 Interactive Brass Diyas */}
-        <div className="mt-10 rounded-3xl border border-gold/45 bg-maroon-deep/70 px-5 py-8 backdrop-blur-md shadow-[0_22px_60px_rgba(0,0,0,0.35)]">
+        <div className="mt-6 rounded-3xl border border-gold/45 bg-maroon-deep/70 px-5 py-6 backdrop-blur-md shadow-[0_22px_60px_rgba(0,0,0,0.35)]">
           <div className="flex flex-wrap items-end justify-center gap-4 sm:gap-7">
             {Array.from({ length: 7 }).map((_, i) => (
               <BrassDiya key={i} lit={i < 3 + userLitCount} />
