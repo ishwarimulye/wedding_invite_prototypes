@@ -8,6 +8,14 @@ import FlipPostcardGallery from "./FlipPostcardGallery";
 import PalaceCourtyardMap from "./PalaceCourtyardMap";
 import GuestPassCard from "./GuestPassCard";
 import {
+  BrassDiyaSvg,
+  HaveliJaliCorner,
+  JharokhaArchFrame,
+  KalashLotusDivider,
+  MarigoldToranBorder,
+  RoyalMandapCrest,
+} from "./WeddingMotifs";
+import {
   CEREMONIES,
   Ceremony,
   INITIAL_RSVPS,
@@ -61,6 +69,9 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
   const [activeCode, setActiveCode] = useState(CEREMONIES[0].code);
   const [copiedShare, setCopiedShare] = useState(false);
 
+  const [diyaLit, setDiyaLit] = useState(false);
+  const [diyaCount, setDiyaCount] = useState(108);
+
   const [entries, setEntries] = useState<RsvpEntry[]>(INITIAL_RSVPS);
   const [name, setName] = useState(guestName === "Beloved Guest" ? "" : guestName);
   const [attending, setAttending] = useState<"yes" | "no">("yes");
@@ -103,6 +114,12 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
   const activeCeremony =
     CEREMONIES.find((c) => c.code === activeCode) ?? CEREMONIES[0];
 
+  const handleLightDiya = () => {
+    if (diyaLit) return;
+    setDiyaLit(true);
+    setDiyaCount((c) => c + 1);
+  };
+
   const handleRsvp = async (e: React.FormEvent) => {
     e.preventDefault();
     if (saving || !name.trim()) return;
@@ -139,29 +156,63 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
     }
   };
 
+  const countdownUnits = [
+    { label: "Days", value: String(countdown.days) },
+    { label: "Hours", value: String(countdown.hours).padStart(2, "0") },
+    { label: "Mins", value: String(countdown.mins).padStart(2, "0") },
+    { label: "Secs", value: String(countdown.secs).padStart(2, "0") },
+  ];
+
   return (
     <div className="bg-garden-gradient text-berry-ink">
-      {/* Printed Patrika Header */}
-      <header className="mx-auto max-w-6xl px-5 sm:px-8 pt-7">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-honey-gold/45 pb-3.5 text-[11px] uppercase tracking-[0.26em] text-berry">
+      {/* Royal Invocation Header */}
+      <header className="mx-auto max-w-6xl px-5 sm:px-8 pt-6">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-honey-gold/55 pb-3.5 text-[11px] uppercase tracking-[0.26em] text-berry">
           <span className="font-semibold">{INVITE_INFO.invocation}</span>
           <span className="font-display text-sm sm:text-base font-medium tracking-widest normal-case">
-            {INVITE_INFO.brideFirst} &amp; {INVITE_INFO.groomFirst}
+            Shubh Vivah · {INVITE_INFO.brideFirst} &amp; {INVITE_INFO.groomFirst}
           </span>
           <span className="text-sage font-medium">{INVITE_INFO.dates}</span>
         </div>
       </header>
 
-      {/* Section 1: Main Invitation Card */}
-      <section className="px-4 sm:px-8 pt-8 pb-14">
-        <div className="relative mx-auto max-w-6xl border border-honey-gold/65 bg-petal-milk p-6 sm:p-11 lg:p-14 shadow-[0_22px_65px_rgba(94,17,41,0.1)]">
-          <div className="pointer-events-none absolute inset-3 border border-honey-gold/30" />
+      {/* Section 1: Heritage Haveli Patrika & Jharokha Hero */}
+      <section className="px-4 sm:px-8 pt-7 pb-10">
+        <div className="relative mx-auto max-w-6xl border border-honey-gold/75 bg-petal-milk shadow-[0_24px_75px_rgba(94,17,41,0.14)] overflow-hidden">
+          <div className="pointer-events-none absolute inset-3 border border-honey-gold/35 z-10" />
 
-          <div className="relative z-10 grid items-center gap-12 lg:grid-cols-12">
+          {/* Corner Jali Brass Borders */}
+          <HaveliJaliCorner
+            position="top-left"
+            className="absolute top-2.5 left-2.5 w-16 h-16 sm:w-20 sm:h-20 z-10"
+          />
+          <HaveliJaliCorner
+            position="top-right"
+            className="absolute top-2.5 right-2.5 w-16 h-16 sm:w-20 sm:h-20 z-10"
+          />
+          <HaveliJaliCorner
+            position="bottom-left"
+            className="absolute bottom-2.5 left-2.5 w-16 h-16 sm:w-20 sm:h-20 z-10"
+          />
+          <HaveliJaliCorner
+            position="bottom-right"
+            className="absolute bottom-2.5 right-2.5 w-16 h-16 sm:w-20 sm:h-20 z-10"
+          />
+
+          {/* Scalloped Bandhanwar Toran at Top of Card */}
+          <div className="relative z-10 px-6 sm:px-12 pt-4">
+            <MarigoldToranBorder />
+          </div>
+
+          <div className="relative z-10 grid items-center gap-10 lg:grid-cols-12 px-7 pb-10 pt-4 sm:px-12 sm:pb-12 lg:px-14">
             <div className="lg:col-span-6 text-center lg:text-left flex flex-col items-center lg:items-start">
-              <p className="text-xs uppercase tracking-[0.24em] text-sage font-medium">
-                Dear {guestName},
-              </p>
+              <div className="flex items-center gap-3">
+                <span className="h-[1px] w-7 bg-honey-gold" />
+                <p className="text-xs uppercase tracking-[0.26em] text-sage font-semibold">
+                  Shubh Vivah Patrika · Dear {guestName}
+                </p>
+                <span className="h-[1px] w-7 bg-honey-gold" />
+              </div>
 
               <h1 className="mt-4 font-display text-5xl sm:text-7xl font-medium leading-[1.02] text-berry">
                 {INVITE_INFO.brideFirst}
@@ -171,45 +222,29 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 {INVITE_INFO.groomFirst}
               </h1>
 
-              <p className="mt-5 text-sm leading-relaxed text-muted max-w-md">
+              <p className="mt-4 text-sm leading-relaxed text-muted max-w-md">
                 {INVITE_INFO.families}
               </p>
 
-              <div className="my-6 h-[1px] w-20 bg-honey-gold/60" />
-
-              <p className="text-xs uppercase tracking-[0.22em] text-berry font-medium">
+              <p className="mt-5 inline-block border-y border-honey-gold/45 py-2 text-xs uppercase tracking-[0.22em] text-berry font-medium">
                 {INVITE_INFO.dates} · {INVITE_INFO.venue}, {INVITE_INFO.city}
               </p>
 
-              {/* Understated Countdown */}
-              <div className="mt-6 flex items-baseline gap-5 border-y border-honey-gold/40 py-3 font-display text-2xl sm:text-3xl text-berry tabular-nums">
-                <span>
-                  {countdown.days}
-                  <small className="ml-1 font-sans text-[10px] uppercase tracking-widest text-muted">
-                    d
-                  </small>
-                </span>
-                <span className="text-honey-gold">·</span>
-                <span>
-                  {String(countdown.hours).padStart(2, "0")}
-                  <small className="ml-1 font-sans text-[10px] uppercase tracking-widest text-muted">
-                    h
-                  </small>
-                </span>
-                <span className="text-honey-gold">·</span>
-                <span>
-                  {String(countdown.mins).padStart(2, "0")}
-                  <small className="ml-1 font-sans text-[10px] uppercase tracking-widest text-muted">
-                    m
-                  </small>
-                </span>
-                <span className="text-honey-gold">·</span>
-                <span>
-                  {String(countdown.secs).padStart(2, "0")}
-                  <small className="ml-1 font-sans text-[10px] uppercase tracking-widest text-muted">
-                    s
-                  </small>
-                </span>
+              {/* Arched Brass-Bordered Keepsake Countdown */}
+              <div className="mt-6 grid grid-cols-4 gap-2.5 sm:gap-3.5 w-full max-w-sm">
+                {countdownUnits.map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-t-full border border-honey-gold/60 bg-blush-silk/75 px-2 pt-4 pb-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]"
+                  >
+                    <span className="block font-display text-2xl sm:text-3xl font-semibold text-berry tabular-nums leading-none">
+                      {item.value}
+                    </span>
+                    <span className="mt-1.5 block text-[9px] uppercase tracking-[0.22em] text-sage font-medium">
+                      {item.label}
+                    </span>
+                  </div>
+                ))}
               </div>
 
               <div className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-4">
@@ -217,49 +252,61 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   href="#courtyard"
                   className="border border-berry bg-berry px-7 py-3 text-xs font-medium uppercase tracking-[0.22em] text-petal-milk transition hover:bg-berry-deep"
                 >
-                  Schedule
+                  Wedding Events
                 </a>
                 <a
                   href="#rsvp"
-                  className="border border-honey-gold/75 bg-transparent px-7 py-3 text-xs font-medium uppercase tracking-[0.22em] text-berry transition hover:bg-blush-silk"
+                  className="border border-honey-gold bg-blush-silk/65 px-7 py-3 text-xs font-medium uppercase tracking-[0.22em] text-berry transition hover:bg-blush-silk"
                 >
-                  RSVP
+                  RSVP &amp; Pass
                 </a>
               </div>
             </div>
 
             <div className="lg:col-span-6 flex justify-center">
-              <div className="w-full max-w-md border border-honey-gold/60 bg-blush-silk p-3">
-                <div className="relative aspect-[3/4] w-full overflow-hidden">
-                  <Image
-                    src="/images/jodhpur-hero.jpg"
-                    alt="Sandstone haveli archway with bougainvillea in Jodhpur"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 448px"
-                    className="object-cover"
-                  />
-                </div>
+              <div className="w-full max-w-md">
+                <JharokhaArchFrame>
+                  <div className="relative aspect-[3/4] w-full">
+                    <Image
+                      src="/images/jodhpur-hero.jpg"
+                      alt="Sandstone haveli archway with bougainvillea in Jodhpur"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 448px"
+                      className="object-cover"
+                    />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-4 z-20 text-center px-4">
+                      <p className="text-[10px] uppercase tracking-[0.28em] text-blush-silk/90">
+                        {INVITE_INFO.venue}
+                      </p>
+                      <p className="font-display text-lg italic text-petal-milk">
+                        Jodhpur, Rajasthan
+                      </p>
+                    </div>
+                  </div>
+                </JharokhaArchFrame>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 2: Flippable Postcards */}
-      <section id="postcards" className="px-4 sm:px-8 py-12">
+      <KalashLotusDivider />
+
+      {/* Section 2: Flippable Keepsake Postcards */}
+      <section id="postcards" className="px-4 sm:px-8 py-8">
         <div className="mx-auto max-w-6xl">
-          <RevealBlock className="flex flex-wrap items-end justify-between gap-4 border-b border-honey-gold/40 pb-4">
+          <RevealBlock className="flex flex-wrap items-end justify-between gap-4 border-b border-honey-gold/45 pb-4">
             <div>
               <p className="text-xs uppercase tracking-[0.26em] text-sage font-medium">
-                Keepsake Notes
+                From Our Album
               </p>
               <h2 className="mt-1 font-display text-3xl sm:text-4xl font-medium text-berry">
-                Four Moments
+                Four Keepsake Postcards
               </h2>
             </div>
             <p className="text-xs uppercase tracking-[0.2em] text-muted">
-              Click any postcard to read the reverse
+              Tap any photograph to read the note behind it
             </p>
           </RevealBlock>
 
@@ -269,16 +316,39 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
         </div>
       </section>
 
-      {/* Section 3: Estate Map & 4 Ceremonies */}
-      <section id="courtyard" className="px-4 sm:px-8 py-12">
-        <RevealBlock className="mx-auto max-w-6xl bg-berry-garden p-6 sm:p-11 text-petal-milk shadow-[0_24px_70px_rgba(94,17,41,0.22)]">
-          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-petal-milk/20 pb-5">
+      <KalashLotusDivider />
+
+      {/* Section 3: Palace Estate Plan & 4 Celebrations */}
+      <section id="courtyard" className="px-4 sm:px-8 py-8">
+        <RevealBlock className="relative mx-auto max-w-6xl border border-honey-gold/50 bg-berry-garden p-6 sm:p-11 text-petal-milk shadow-[0_26px_75px_rgba(94,17,41,0.26)] overflow-hidden">
+          <HaveliJaliCorner
+            position="top-left"
+            light
+            className="absolute top-2 left-2 w-14 h-14 opacity-60"
+          />
+          <HaveliJaliCorner
+            position="top-right"
+            light
+            className="absolute top-2 right-2 w-14 h-14 opacity-60"
+          />
+          <HaveliJaliCorner
+            position="bottom-left"
+            light
+            className="absolute bottom-2 left-2 w-14 h-14 opacity-60"
+          />
+          <HaveliJaliCorner
+            position="bottom-right"
+            light
+            className="absolute bottom-2 right-2 w-14 h-14 opacity-60"
+          />
+
+          <div className="relative z-10 flex flex-wrap items-end justify-between gap-4 border-b border-honey-gold/35 pb-5">
             <div>
-              <p className="text-xs uppercase tracking-[0.26em] text-blush-silk/80">
-                {INVITE_INFO.venue}
+              <p className="text-xs uppercase tracking-[0.26em] text-honey-gold font-medium">
+                {INVITE_INFO.venue} · Wedding Festivities
               </p>
               <h2 className="mt-1 font-display text-3xl sm:text-4xl font-medium">
-                Ceremonies &amp; Grounds
+                Four Celebrations &amp; Courtyard Map
               </h2>
             </div>
 
@@ -292,8 +362,8 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                     onClick={() => setActiveCode(c.code)}
                     className={`px-4 py-2 text-xs uppercase tracking-[0.18em] border transition ${
                       active
-                        ? "border-petal-milk bg-petal-milk text-berry font-semibold"
-                        : "border-petal-milk/30 text-petal-milk hover:border-petal-milk"
+                        ? "border-honey-gold bg-petal-milk text-berry font-semibold shadow-sm"
+                        : "border-honey-gold/40 text-petal-milk hover:border-petal-milk hover:bg-petal-milk/10"
                     }`}
                   >
                     {c.code} · {c.shortTitle}
@@ -303,7 +373,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
             </div>
           </div>
 
-          <div className="mt-8 grid items-center gap-8 lg:grid-cols-12">
+          <div className="relative z-10 mt-8 grid items-center gap-8 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <PalaceCourtyardMap
                 activeCeremony={activeCeremony}
@@ -313,9 +383,9 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
 
             <div
               key={activeCeremony.code}
-              className="lg:col-span-6 animate-panel-pop border border-petal-milk/20 bg-petal-milk p-6 sm:p-8 text-berry-ink"
+              className="lg:col-span-6 animate-panel-pop border border-honey-gold/55 bg-petal-milk p-6 sm:p-8 text-berry-ink shadow-md"
             >
-              <div className="relative mb-5 aspect-[16/9] w-full overflow-hidden border border-honey-gold/40">
+              <div className="relative mb-5 aspect-[16/9] w-full overflow-hidden border border-honey-gold/55">
                 <Image
                   src={activeCeremony.image}
                   alt={activeCeremony.title}
@@ -323,6 +393,9 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   sizes="(max-width: 1024px) 100vw, 45vw"
                   className="object-cover"
                 />
+                <span className="absolute top-3 left-3 border border-honey-gold/65 bg-petal-milk/92 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-berry">
+                  {activeCeremony.code} · {activeCeremony.shortTitle}
+                </span>
               </div>
 
               <div className="flex flex-wrap items-center justify-between gap-2 text-xs uppercase tracking-[0.2em] text-sage font-medium">
@@ -340,10 +413,10 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 {activeCeremony.note}
               </p>
 
-              <div className="mt-5 border-t border-honey-gold/30 pt-4">
+              <div className="mt-5 border-t border-honey-gold/35 pt-4">
                 <p className="text-xs text-berry-ink">
                   <span className="uppercase tracking-[0.18em] text-sage font-medium">
-                    Attire:
+                    Attire &amp; Palette:
                   </span>{" "}
                   {activeCeremony.attire}
                 </p>
@@ -351,7 +424,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   {activeCeremony.swatches.map((sw) => (
                     <div key={sw.name} className="flex items-center gap-2">
                       <span
-                        className="h-3.5 w-3.5 border border-berry/25"
+                        className="h-3.5 w-3.5 rounded-full border border-berry/25"
                         style={{ backgroundColor: sw.hex }}
                       />
                       <span className="text-xs text-muted">{sw.name}</span>
@@ -360,24 +433,24 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 </div>
               </div>
 
-              <div className="mt-6 flex items-center justify-between border-t border-honey-gold/30 pt-4">
+              <div className="mt-6 flex items-center justify-between border-t border-honey-gold/35 pt-4">
                 <button
                   type="button"
                   onClick={() => downloadCeremonyIcs(activeCeremony)}
                   className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-berry hover:text-coral-rose transition"
                 >
-                  <CalendarPlus className="h-3.5 w-3.5" />
-                  Add to Calendar
+                  <CalendarPlus className="h-3.5 w-3.5 text-honey-gold" />
+                  Save to Calendar
                 </button>
                 <span className="text-xs text-muted">
-                  {activeCeremony.code} / 04
+                  Celebration {activeCeremony.code} of 04
                 </span>
               </div>
             </div>
           </div>
 
           {/* 4-Ceremony Index Strip */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 border-t border-petal-milk/20 pt-6 text-left">
+          <div className="relative z-10 mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 border-t border-honey-gold/30 pt-6 text-left">
             {CEREMONIES.map((c) => (
               <button
                 key={c.code}
@@ -385,42 +458,46 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 onClick={() => setActiveCode(c.code)}
                 className={`border p-4 transition text-left ${
                   c.code === activeCeremony.code
-                    ? "border-petal-milk bg-petal-milk/12"
-                    : "border-petal-milk/20 hover:border-petal-milk/50"
+                    ? "border-honey-gold bg-petal-milk/14 shadow-sm"
+                    : "border-petal-milk/25 hover:border-honey-gold/65"
                 }`}
               >
-                <p className="text-[10px] uppercase tracking-[0.2em] text-blush-silk/80">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-honey-gold">
                   {c.day}
                 </p>
                 <p className="mt-1 font-display text-xl font-medium text-petal-milk">
                   {c.title}
                 </p>
-                <p className="mt-0.5 text-xs text-blush-silk/75">{c.location}</p>
+                <p className="mt-0.5 text-xs text-blush-silk/80">{c.location}</p>
               </button>
             ))}
           </div>
         </RevealBlock>
       </section>
 
-      {/* Section 4: Stay & Travel Ledger */}
-      <section id="venue" className="px-4 sm:px-8 py-12">
-        <RevealBlock className="mx-auto max-w-6xl border border-honey-gold/55 bg-petal-milk p-6 sm:p-11">
+      <KalashLotusDivider />
+
+      {/* Section 4: Stay & Travel + Shagun Diya Ritual */}
+      <section id="venue" className="px-4 sm:px-8 py-8 space-y-10">
+        <RevealBlock className="mx-auto max-w-6xl border border-honey-gold/65 bg-petal-milk p-6 sm:p-11 shadow-[0_18px_50px_rgba(94,17,41,0.08)]">
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <div className="relative aspect-[4/3] w-full overflow-hidden border border-honey-gold/45">
-                <Image
-                  src="/images/jodhpur-table.jpg"
-                  alt="Courtyard dining table at Umaid Heritage Haveli"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
-                />
+              <div className="relative border border-honey-gold/65 bg-blush-silk p-2.5">
+                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <Image
+                    src="/images/jodhpur-table.jpg"
+                    alt="Courtyard dining table at Umaid Heritage Haveli"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
+                  />
+                </div>
               </div>
             </div>
 
             <div className="lg:col-span-7">
               <p className="text-xs uppercase tracking-[0.26em] text-sage font-medium">
-                Stay &amp; Travel
+                Hospitality &amp; Travel
               </p>
               <h2 className="mt-1 font-display text-3xl sm:text-4xl font-medium text-berry">
                 {INVITE_INFO.venue}
@@ -453,11 +530,11 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 </div>
                 <div className="grid sm:grid-cols-3 gap-2 py-3.5">
                   <dt className="text-xs uppercase tracking-[0.18em] text-muted">
-                    Weather
+                    Attire Note
                   </dt>
                   <dd className="sm:col-span-2 text-berry-ink">
-                    26°C days, 13°C evenings — pack a shawl for the pheras and
-                    dinner.
+                    26°C sunny afternoons, 13°C evenings — pack a shawl for the
+                    pheras and candlelit dinner.
                   </dd>
                 </div>
               </dl>
@@ -468,28 +545,86 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 border border-berry px-6 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-berry transition hover:bg-berry hover:text-petal-milk"
               >
-                <MapPin className="h-3.5 w-3.5" />
-                View Map
+                <MapPin className="h-3.5 w-3.5 text-honey-gold" />
+                Open Palace Directions
               </a>
             </div>
           </div>
         </RevealBlock>
+
+        {/* Sacred Shagun Diya Blessing Ritual */}
+        <RevealBlock className="relative mx-auto max-w-4xl border border-honey-gold/65 bg-petal-milk p-7 sm:p-10 text-center shadow-[0_18px_50px_rgba(94,17,41,0.09)]">
+          <div className="pointer-events-none absolute inset-2.5 border border-honey-gold/30" />
+
+          <div className="relative z-10 flex flex-col items-center">
+            <p className="text-xs uppercase tracking-[0.26em] text-sage font-medium">
+              Auspicious Offering
+            </p>
+            <h3 className="mt-1 font-display text-3xl sm:text-4xl font-medium text-berry">
+              Light a Shagun Diya
+            </h3>
+            <p className="mt-2 max-w-lg text-sm text-muted">
+              Offer a traditional blessing of warmth and prosperity before Meera
+              and Kabir take their seven steps around the sacred fire.
+            </p>
+
+            <div className="my-5 flex flex-col items-center">
+              <div
+                className={`p-4 rounded-full border transition duration-500 ${
+                  diyaLit
+                    ? "border-honey-gold bg-blush-silk shadow-[0_0_40px_rgba(234,158,56,0.32)]"
+                    : "border-honey-gold/40 bg-petal-milk"
+                }`}
+              >
+                <BrassDiyaSvg lit={diyaLit} />
+              </div>
+
+              <p className="mt-3 text-xs uppercase tracking-[0.22em] text-berry font-medium">
+                {diyaCount} Diyas Lit in Blessing
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleLightDiya}
+              disabled={diyaLit}
+              className={`border px-8 py-3 text-xs font-medium uppercase tracking-[0.24em] transition ${
+                diyaLit
+                  ? "border-honey-gold bg-blush-silk text-berry cursor-default"
+                  : "border-berry bg-berry text-petal-milk hover:bg-berry-deep"
+              }`}
+            >
+              {diyaLit ? "Your Diya Is Lit · Shubham Bhavatu" : "Light a Diya"}
+            </button>
+          </div>
+        </RevealBlock>
       </section>
 
+      <KalashLotusDivider />
+
       {/* Section 5: RSVP & Keepsake Pass */}
-      <section id="rsvp" className="px-4 sm:px-8 pt-8 pb-16">
+      <section id="rsvp" className="px-4 sm:px-8 pt-6 pb-16">
         <div className="mx-auto max-w-6xl space-y-10">
-          <RevealBlock className="relative border border-honey-gold/65 bg-petal-milk p-6 sm:p-11">
+          <RevealBlock className="relative border border-honey-gold/75 bg-petal-milk p-6 sm:p-11 shadow-[0_20px_60px_rgba(94,17,41,0.1)]">
             <div className="pointer-events-none absolute inset-3 border border-honey-gold/30" />
+
+            <HaveliJaliCorner
+              position="top-left"
+              className="absolute top-2.5 left-2.5 w-14 h-14"
+            />
+            <HaveliJaliCorner
+              position="top-right"
+              className="absolute top-2.5 right-2.5 w-14 h-14"
+            />
 
             {saved ? (
               <div className="relative z-10 py-6 text-center animate-panel-pop">
                 <p className="font-script text-4xl text-berry">
-                  Thank you, {name}
+                  With gratitude, {name}
                 </p>
                 <p className="mt-1 text-sm text-muted">
-                  Your response has been recorded. You may download your
-                  invitation pass below.
+                  Your RSVP has been recorded. Download your personalized palace
+                  entry pass below.
                 </p>
 
                 <GuestPassCard
@@ -517,7 +652,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                     Kindly reply by 10 October 2027
                   </p>
                   <h2 className="mt-1 font-display text-4xl sm:text-5xl font-medium text-berry">
-                    RSVP
+                    RSVP &amp; Blessings
                   </h2>
                 </div>
 
@@ -553,7 +688,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   </div>
                   <div>
                     <label className="block text-[11px] uppercase tracking-[0.2em] text-muted">
-                      Dining
+                      Dining Preference
                     </label>
                     <select
                       value={dietary}
@@ -578,7 +713,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                         : "border-honey-gold/55 text-berry hover:bg-blush-silk"
                     }`}
                   >
-                    Attending
+                    Joyfully Attending
                   </button>
                   <button
                     type="button"
@@ -589,19 +724,19 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                         : "border-honey-gold/55 text-berry hover:bg-blush-silk"
                     }`}
                   >
-                    Unable to Attend
+                    Sending Warm Wishes
                   </button>
                 </div>
 
                 <div>
                   <label className="block text-[11px] uppercase tracking-[0.2em] text-muted">
-                    Arrival Time or Note
+                    Arrival Time or Message
                   </label>
                   <input
                     type="text"
                     value={note}
                     onChange={(e) => setNote(e.target.value)}
-                    placeholder="Optional flight details or message for the families"
+                    placeholder="Optional flight details or blessings for Meera & Kabir"
                     className="mt-1.5 w-full border-b border-honey-gold/60 bg-transparent py-2.5 text-sm outline-none focus:border-berry"
                   />
                 </div>
@@ -612,21 +747,21 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                     disabled={saving}
                     className="border border-berry bg-berry px-10 py-3.5 text-xs font-medium uppercase tracking-[0.24em] text-petal-milk transition hover:bg-berry-deep disabled:opacity-60"
                   >
-                    {saving ? "Saving..." : "Confirm & Generate Pass"}
+                    {saving ? "Saving..." : "Confirm & Receive Palace Pass"}
                   </button>
                 </div>
               </form>
             )}
           </RevealBlock>
 
-          {/* Guest Notes */}
+          {/* Guest Blessings Ledger */}
           <div className="grid gap-5 md:grid-cols-2">
             {entries.slice(0, 4).map((entry) => (
               <div
                 key={entry.id}
-                className="border border-honey-gold/45 bg-petal-milk p-6"
+                className="border border-honey-gold/50 bg-petal-milk p-6 shadow-sm"
               >
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center justify-between gap-2 border-b border-honey-gold/25 pb-2.5">
                   <span className="font-display text-xl font-medium text-berry">
                     {entry.name}
                   </span>
@@ -636,7 +771,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                       : "Sending Wishes"}
                   </span>
                 </div>
-                <p className="mt-2 text-sm italic leading-relaxed text-muted">
+                <p className="mt-3 text-sm italic leading-relaxed text-muted">
                   &ldquo;{entry.note}&rdquo;
                 </p>
               </div>
@@ -646,33 +781,47 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
       </section>
 
       {/* Footer */}
-      <footer className="bg-berry-garden py-12 px-4 text-center text-petal-milk">
-        <p className="font-script text-4xl text-blush-silk">
-          With warm regards
-        </p>
-        <p className="mt-2 font-display text-2xl font-medium">
-          The Rathore &amp; Mehta Families
-        </p>
+      <footer className="relative bg-berry-garden py-14 px-4 text-center text-petal-milk overflow-hidden">
+        <HaveliJaliCorner
+          position="top-left"
+          light
+          className="absolute top-3 left-3 w-14 h-14 opacity-50"
+        />
+        <HaveliJaliCorner
+          position="top-right"
+          light
+          className="absolute top-3 right-3 w-14 h-14 opacity-50"
+        />
 
-        <div className="mt-6 flex justify-center">
-          <button
-            type="button"
-            onClick={handleCopyInvite}
-            className="inline-flex items-center gap-2 border border-petal-milk/40 px-6 py-2.5 text-xs uppercase tracking-[0.2em] text-petal-milk transition hover:bg-petal-milk/10"
-          >
-            {copiedShare ? (
-              <Check className="h-3.5 w-3.5" />
-            ) : (
-              <Share2 className="h-3.5 w-3.5" />
-            )}
-            {copiedShare ? "Link Copied" : "Share Invitation"}
-          </button>
+        <div className="relative z-10 flex flex-col items-center">
+          <RoyalMandapCrest monogram="M & K" light />
+          <p className="mt-4 font-script text-4xl text-blush-silk">
+            With love &amp; warm regards
+          </p>
+          <p className="mt-1 font-display text-2xl font-medium">
+            The Rathore &amp; Mehta Families
+          </p>
+
+          <div className="mt-6 flex justify-center">
+            <button
+              type="button"
+              onClick={handleCopyInvite}
+              className="inline-flex items-center gap-2 border border-honey-gold/70 px-6 py-2.5 text-xs uppercase tracking-[0.2em] text-petal-milk transition hover:bg-petal-milk/10"
+            >
+              {copiedShare ? (
+                <Check className="h-3.5 w-3.5 text-honey-gold" />
+              ) : (
+                <Share2 className="h-3.5 w-3.5 text-honey-gold" />
+              )}
+              {copiedShare ? "Invitation Link Copied" : "Share Invitation"}
+            </button>
+          </div>
+
+          <p className="mt-6 text-[11px] uppercase tracking-[0.24em] text-blush-silk/75">
+            {INVITE_INFO.brideFirst} &amp; {INVITE_INFO.groomFirst} ·{" "}
+            {INVITE_INFO.dates} · {INVITE_INFO.city}
+          </p>
         </div>
-
-        <p className="mt-6 text-[11px] uppercase tracking-[0.24em] text-blush-silk/70">
-          {INVITE_INFO.brideFirst} &amp; {INVITE_INFO.groomFirst} ·{" "}
-          {INVITE_INFO.dates} · {INVITE_INFO.city}
-        </p>
       </footer>
     </div>
   );

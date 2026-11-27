@@ -34,8 +34,8 @@ export default function FlipPostcardGallery({
               }`}
             >
               {/* Front */}
-              <div className="backface-hidden absolute inset-0 border border-honey-gold/55 bg-petal-milk p-2.5 shadow-sm">
-                <div className="relative h-full w-full overflow-hidden">
+              <div className="backface-hidden absolute inset-0 border border-honey-gold/65 bg-petal-milk p-2.5 shadow-[0_12px_32px_rgba(94,17,41,0.1)]">
+                <div className="relative h-full w-full overflow-hidden border border-honey-gold/35">
                   <Image
                     src={card.src}
                     alt={card.title}
@@ -43,14 +43,14 @@ export default function FlipPostcardGallery({
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-cover transition duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-berry-deep/75 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-berry-deep/80 via-berry-deep/15 to-transparent" />
 
-                  <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-petal-milk/92 px-2.5 py-1 text-[10px] uppercase tracking-widest text-berry">
-                    <RotateCw className="h-2.5 w-2.5" />
-                    Flip
+                  <span className="absolute top-3 right-3 inline-flex items-center gap-1 border border-honey-gold/55 bg-petal-milk/92 px-2.5 py-1 text-[10px] uppercase tracking-widest text-berry">
+                    <RotateCw className="h-2.5 w-2.5 text-honey-gold" />
+                    Turn
                   </span>
 
-                  <div className="absolute bottom-4 inset-x-4 text-petal-milk">
+                  <div className="absolute bottom-4 inset-x-4 text-petal-milk border-t border-honey-gold/45 pt-2.5">
                     <p className="text-[10px] uppercase tracking-[0.22em] text-blush-silk/90">
                       {card.place}
                     </p>
@@ -62,8 +62,9 @@ export default function FlipPostcardGallery({
               </div>
 
               {/* Back */}
-              <div className="backface-hidden rotate-y-180 absolute inset-0 flex flex-col justify-between border border-honey-gold/70 bg-blush-silk p-5 shadow-md">
-                <div className="flex items-start justify-between border-b border-honey-gold/35 pb-3">
+              <div className="backface-hidden rotate-y-180 absolute inset-0 flex flex-col justify-between border border-honey-gold/75 bg-blush-silk p-5 shadow-md">
+                <div className="pointer-events-none absolute inset-2 border border-honey-gold/30" />
+                <div className="relative z-10 flex items-start justify-between border-b border-honey-gold/35 pb-3">
                   <div>
                     <p className="text-[10px] uppercase tracking-[0.22em] text-sage font-medium">
                       {card.stampDate}
@@ -72,19 +73,21 @@ export default function FlipPostcardGallery({
                       {card.title}
                     </p>
                   </div>
-                  <div className="flex h-11 w-9 flex-col items-center justify-center border border-dashed border-honey-gold/75 bg-petal-milk text-center">
-                    <span className="text-[9px] uppercase tracking-widest text-berry font-semibold">
-                      JDH
+                  <div className="flex h-11 w-11 flex-col items-center justify-center rounded-full border border-dashed border-berry/55 bg-petal-milk text-center">
+                    <span className="text-[8px] uppercase tracking-widest text-berry font-semibold">
+                      M &amp; K
                     </span>
-                    <span className="text-[8px] text-sage">2027</span>
+                    <span className="text-[7px] text-honey-gold font-medium">
+                      JDH · 27
+                    </span>
                   </div>
                 </div>
 
-                <p className="my-auto font-display italic text-base leading-relaxed text-berry-ink">
+                <p className="relative z-10 my-auto font-display italic text-base leading-relaxed text-berry-ink">
                   &ldquo;{card.note}&rdquo;
                 </p>
 
-                <div className="flex items-center justify-between border-t border-honey-gold/35 pt-3">
+                <div className="relative z-10 flex items-center justify-between border-t border-honey-gold/35 pt-3">
                   <span className="font-script text-2xl text-berry">
                     — {card.author}
                   </span>
