@@ -38,38 +38,32 @@ export default function FolioCover({
       aria-modal="true"
       aria-label="Wedding Invitation Cover"
     >
-      <div className="relative w-full max-w-lg border border-honey-gold/75 bg-petal-milk shadow-[0_28px_80px_rgba(94,17,41,0.18)] overflow-hidden">
-        {/* Double Gold Hairline Inner Rule */}
-        <div className="pointer-events-none absolute inset-3 border border-honey-gold/40 z-10" />
+      <div className="relative w-full max-w-lg rounded-t-[170px] rounded-b-[34px] border border-honey-gold/75 bg-petal-milk shadow-[0_28px_80px_rgba(94,17,41,0.18)] overflow-hidden">
+        {/* Flowing Arched Inner Rule */}
+        <div className="pointer-events-none absolute inset-3 rounded-t-[158px] rounded-b-[24px] border border-honey-gold/40 z-10" />
 
-        {/* Corner Jali Brackets */}
-        <HaveliJaliCorner
-          position="top-left"
-          className="absolute top-2.5 left-2.5 w-16 h-16 z-10"
-        />
-        <HaveliJaliCorner
-          position="top-right"
-          className="absolute top-2.5 right-2.5 w-16 h-16 z-10"
-        />
+        {/* Soft Bottom Jali Corners */}
         <HaveliJaliCorner
           position="bottom-left"
-          className="absolute bottom-2.5 left-2.5 w-16 h-16 z-10"
+          className="absolute bottom-3 left-3 w-14 h-14 z-10"
         />
         <HaveliJaliCorner
           position="bottom-right"
-          className="absolute bottom-2.5 right-2.5 w-16 h-16 z-10"
+          className="absolute bottom-3 right-3 w-14 h-14 z-10"
         />
 
-        {/* Deep Crimson Royal Velvet Arch Band at Top */}
-        <div className="bg-berry-garden px-6 pt-5 pb-4 text-center border-b border-honey-gold/60">
-          <MarigoldToranBorder light />
-          <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-blush-silk">
+        {/* Curved Crimson Arch Canopy at Top */}
+        <div className="bg-berry-garden px-10 pt-10 pb-5 text-center border-b border-honey-gold/60">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-blush-silk">
             {INVITE_INFO.invocation}
           </p>
+          <div className="mt-2">
+            <MarigoldToranBorder light />
+          </div>
         </div>
 
         {/* Invitation Cover Body */}
-        <div className="relative z-10 flex flex-col items-center px-7 pt-7 pb-10 sm:px-12 sm:pb-12 text-center">
+        <div className="relative z-10 flex flex-col items-center px-7 pt-6 pb-10 sm:px-12 sm:pb-12 text-center">
           <RoyalMandapCrest monogram="M & K" />
 
           <p className="mt-4 font-script text-3xl text-coral-rose">
@@ -107,8 +101,8 @@ export default function FolioCover({
                 </span>
               </span>
             </span>
-            <span className="border-b border-honey-gold/60 pb-0.5 text-[11px] font-semibold uppercase tracking-[0.26em] text-berry transition group-hover:text-coral-rose">
-              Tap Seal to Open Invitation
+            <span className="rounded-full border border-honey-gold/60 bg-blush-silk/70 px-5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-berry transition group-hover:bg-blush-silk">
+              Tap Seal to Open
             </span>
           </button>
         </div>

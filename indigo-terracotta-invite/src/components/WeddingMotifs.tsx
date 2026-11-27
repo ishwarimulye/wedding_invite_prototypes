@@ -3,7 +3,7 @@
 import React from "react";
 
 /**
- * Fine-line antique gold Rajasthani jali corner ornament for stationery frames.
+ * Fine-line antique gold Rajasthani jali corner ornament curved to hug soft stationery corners.
  */
 export function HaveliJaliCorner({
   position = "top-left",
@@ -30,38 +30,31 @@ export function HaveliJaliCorner({
       aria-hidden="true"
       className={`pointer-events-none select-none ${flips[position]} ${className}`}
     >
-      {/* Architectural Corner Rules */}
+      {/* Flowing Curved Corner Rules */}
       <path
-        d="M6 88 V16 C6 10.5 10.5 6 16 6 H88"
+        d="M8 86 V30 C8 16 16 8 30 8 H86"
         stroke={stroke}
         strokeWidth="1.2"
         strokeOpacity="0.8"
       />
       <path
-        d="M14 78 V22 C14 17.5 17.5 14 22 14 H78"
+        d="M16 74 V34 C16 22 22 16 34 16 H74"
         stroke={stroke}
         strokeWidth="0.75"
         strokeOpacity="0.55"
       />
-      {/* Paisley / Peacock Tear Drop Finial */}
+      {/* Soft Paisley Leaf Finial */}
       <path
-        d="M22 22 C36 22 42 30 34 38 C28 44 20 38 22 22 Z"
+        d="M25 25 C38 25 43 32 36 39 C30 45 23 39 25 25 Z"
         stroke={stroke}
         strokeWidth="1"
         fill={accent}
         fillOpacity="0.1"
       />
-      {/* Corner Lotus Bud */}
-      <path
-        d="M14 14 C18 14 21 17 21 21 C17 21 14 18 14 14 Z"
-        fill={stroke}
-        fillOpacity="0.7"
-      />
-      {/* Delicate Hanging Paisley Drops */}
-      <circle cx="52" cy="14" r="1.6" fill={stroke} fillOpacity="0.75" />
-      <circle cx="64" cy="14" r="1.2" fill={stroke} fillOpacity="0.55" />
-      <circle cx="14" cy="52" r="1.6" fill={stroke} fillOpacity="0.75" />
-      <circle cx="14" cy="64" r="1.2" fill={stroke} fillOpacity="0.55" />
+      <circle cx="54" cy="16" r="1.6" fill={stroke} fillOpacity="0.75" />
+      <circle cx="66" cy="16" r="1.2" fill={stroke} fillOpacity="0.55" />
+      <circle cx="16" cy="54" r="1.6" fill={stroke} fillOpacity="0.75" />
+      <circle cx="16" cy="66" r="1.2" fill={stroke} fillOpacity="0.55" />
     </svg>
   );
 }
@@ -98,7 +91,6 @@ export function MarigoldToranBorder({ light = false }: { light?: boolean }) {
           const x1 = x0 + 120;
           return (
             <g key={i}>
-              {/* Garland Swag */}
               <path
                 d={`M ${x0} 4 Q ${mid} 38 ${x1} 4`}
                 stroke={gold}
@@ -114,7 +106,6 @@ export function MarigoldToranBorder({ light = false }: { light?: boolean }) {
                 strokeOpacity="0.45"
                 fill="none"
               />
-              {/* Mango Leaf Drops along Swag */}
               <path
                 d={`M ${mid - 26} 18 C ${mid - 29} 26 ${mid - 23} 28 ${mid - 22} 20 Z`}
                 fill={gold}
@@ -125,7 +116,6 @@ export function MarigoldToranBorder({ light = false }: { light?: boolean }) {
                 fill={gold}
                 fillOpacity="0.4"
               />
-              {/* Center Lotus & Marigold Bell Pendant */}
               <circle cx={mid} cy="24" r="3.4" fill={marigold} fillOpacity="0.85" />
               <path
                 d={`M ${mid} 28 L ${mid - 3.5} 38 L ${mid} 43 L ${mid + 3.5} 38 Z`}
@@ -133,7 +123,6 @@ export function MarigoldToranBorder({ light = false }: { light?: boolean }) {
                 fillOpacity="0.75"
               />
               <circle cx={mid} cy="47" r="1.6" fill={gold} />
-              {/* Knot Rosette */}
               {i > 0 && (
                 <circle
                   cx={x0}
@@ -171,7 +160,6 @@ export function KalashLotusDivider({ light = false }: { light?: boolean }) {
         }}
       />
       <svg width="56" height="32" viewBox="0 0 56 32" fill="none">
-        {/* Side Filigree Scrolls */}
         <path
           d="M4 16 C10 16 14 12 18 16 C14 20 10 16 4 16 Z"
           stroke={stroke}
@@ -186,7 +174,6 @@ export function KalashLotusDivider({ light = false }: { light?: boolean }) {
           fill={stroke}
           fillOpacity="0.16"
         />
-        {/* Central Lotus Petals */}
         <path
           d="M28 4 C31 11 31 17 28 23 C25 17 25 11 28 4 Z"
           stroke={stroke}
@@ -232,7 +219,9 @@ export function RoyalMandapCrest({
 }) {
   const stroke = light ? "#F0C267" : "#C88A2E";
   const textFill = light ? "#FBF5EB" : "#8B1E3F";
-  const ringFill = light ? "rgba(251, 245, 235, 0.08)" : "rgba(139, 30, 63, 0.05)";
+  const ringFill = light
+    ? "rgba(251, 245, 235, 0.08)"
+    : "rgba(139, 30, 63, 0.05)";
 
   return (
     <div className="relative inline-flex items-center justify-center w-24 h-24 select-none">
@@ -258,7 +247,6 @@ export function RoyalMandapCrest({
           stroke={stroke}
           strokeWidth="1.3"
         />
-        {/* 8 Cardinal Architectural Petals */}
         {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
           <path
             key={deg}
@@ -280,7 +268,7 @@ export function RoyalMandapCrest({
 }
 
 /**
- * Rajasthani Cusped Jharokha Arch Overlay for framing photography.
+ * Flowing Arched Rajasthani Jharokha Frame with soft dome silhouette.
  */
 export function JharokhaArchFrame({
   children,
@@ -291,44 +279,30 @@ export function JharokhaArchFrame({
 }) {
   return (
     <div
-      className={`relative border border-honey-gold/70 bg-blush-silk p-3 sm:p-3.5 shadow-[0_20px_55px_rgba(94,17,41,0.16)] ${className}`}
+      className={`relative rounded-t-[180px] rounded-b-[28px] border border-honey-gold/75 bg-blush-silk p-3 sm:p-4 shadow-[0_22px_60px_rgba(94,17,41,0.16)] ${className}`}
     >
-      <div className="relative overflow-hidden border border-honey-gold/45">
+      <div className="relative overflow-hidden rounded-t-[168px] rounded-b-[20px] border border-honey-gold/55">
         {children}
 
-        {/* Cusped Jharokha Arch Silhouette Overlay in Velvet Cream & Gold */}
+        {/* Subtle Scalloped Gold Rim at the Arch */}
         <svg
-          viewBox="0 0 400 108"
+          viewBox="0 0 400 112"
           fill="none"
           preserveAspectRatio="none"
           aria-hidden="true"
           className="pointer-events-none absolute top-0 left-0 w-full h-auto z-10"
         >
-          {/* Outer spandrel fill matching inner card frame */}
           <path
-            d="M0 0 H400 V108 C392 66 364 48 334 48 C312 48 294 34 274 28 C252 22 222 10 200 2 C178 10 148 22 126 28 C106 34 88 48 66 48 C36 48 8 66 0 108 Z"
-            fill="#F5E6D4"
-          />
-          {/* Scalloped Gold Rim */}
-          <path
-            d="M0 108 C8 66 36 48 66 48 C88 48 106 34 126 28 C148 22 178 10 200 2 C222 10 252 22 274 28 C294 34 312 48 334 48 C364 48 392 66 400 108"
-            stroke="#C88A2E"
-            strokeWidth="2"
+            d="M4 112 C22 70 46 56 76 54 C102 52 120 34 146 28 C168 23 184 12 200 6 C216 12 232 23 254 28 C280 34 298 52 324 54 C354 56 378 70 396 112"
+            stroke="#F0C267"
+            strokeWidth="1.6"
+            strokeOpacity="0.85"
             fill="none"
           />
-          <path
-            d="M12 106 C20 72 44 56 70 56 C92 56 108 42 128 36 C150 30 178 18 200 10 C222 18 250 30 272 36 C292 42 308 56 330 56 C356 56 380 72 388 106"
-            stroke="#8B1E3F"
-            strokeWidth="0.9"
-            strokeOpacity="0.45"
-            fill="none"
-          />
-          {/* Kalash Finial at Arch Apex */}
-          <circle cx="200" cy="14" r="3" fill="#C88A2E" />
+          <circle cx="200" cy="14" r="3" fill="#F0C267" />
         </svg>
 
-        {/* Bottom Caption Rule inside Frame */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-berry-deep/65 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-berry-deep/75 to-transparent" />
       </div>
     </div>
   );
@@ -347,7 +321,6 @@ export function BrassDiyaSvg({ lit }: { lit: boolean }) {
       aria-hidden="true"
       className="select-none"
     >
-      {/* Flame Glow */}
       {lit && (
         <g>
           <circle cx="42" cy="24" r="18" fill="#EA9E38" fillOpacity="0.22" />
@@ -371,7 +344,6 @@ export function BrassDiyaSvg({ lit }: { lit: boolean }) {
         />
       )}
 
-      {/* Brass Oil Bowl */}
       <path
         d="M14 38 C20 53 31 58 42 58 C53 58 64 53 70 38 L52 38 L42 32 L32 38 Z"
         fill="#C88A2E"
@@ -387,21 +359,13 @@ export function BrassDiyaSvg({ lit }: { lit: boolean }) {
         stroke="#8B1E3F"
         strokeWidth="1"
       />
-      {/* Stand Base */}
       <path
         d="M34 58 L30 66 H54 L50 58 Z"
         fill="#A66F3D"
         stroke="#8B1E3F"
         strokeWidth="1"
       />
-      <rect
-        x="24"
-        y="66"
-        width="36"
-        height="4"
-        rx="2"
-        fill="#8B1E3F"
-      />
+      <rect x="24" y="66" width="36" height="4" rx="2" fill="#8B1E3F" />
     </svg>
   );
 }

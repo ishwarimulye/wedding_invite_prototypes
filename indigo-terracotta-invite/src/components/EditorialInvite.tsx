@@ -178,29 +178,29 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
 
       {/* Section 1: Heritage Haveli Patrika & Jharokha Hero */}
       <section className="px-4 sm:px-8 pt-7 pb-10">
-        <div className="relative mx-auto max-w-6xl border border-honey-gold/75 bg-petal-milk shadow-[0_24px_75px_rgba(94,17,41,0.14)] overflow-hidden">
-          <div className="pointer-events-none absolute inset-3 border border-honey-gold/35 z-10" />
+        <div className="relative mx-auto max-w-6xl rounded-[34px] border border-honey-gold/75 bg-petal-milk shadow-[0_24px_75px_rgba(94,17,41,0.14)] overflow-hidden">
+          <div className="pointer-events-none absolute inset-3.5 rounded-[26px] border border-honey-gold/35 z-10" />
 
           {/* Corner Jali Brass Borders */}
           <HaveliJaliCorner
             position="top-left"
-            className="absolute top-2.5 left-2.5 w-16 h-16 sm:w-20 sm:h-20 z-10"
+            className="absolute top-3 left-3 w-16 h-16 sm:w-20 sm:h-20 z-10"
           />
           <HaveliJaliCorner
             position="top-right"
-            className="absolute top-2.5 right-2.5 w-16 h-16 sm:w-20 sm:h-20 z-10"
+            className="absolute top-3 right-3 w-16 h-16 sm:w-20 sm:h-20 z-10"
           />
           <HaveliJaliCorner
             position="bottom-left"
-            className="absolute bottom-2.5 left-2.5 w-16 h-16 sm:w-20 sm:h-20 z-10"
+            className="absolute bottom-3 left-3 w-16 h-16 sm:w-20 sm:h-20 z-10"
           />
           <HaveliJaliCorner
             position="bottom-right"
-            className="absolute bottom-2.5 right-2.5 w-16 h-16 sm:w-20 sm:h-20 z-10"
+            className="absolute bottom-3 right-3 w-16 h-16 sm:w-20 sm:h-20 z-10"
           />
 
           {/* Scalloped Bandhanwar Toran at Top of Card */}
-          <div className="relative z-10 px-6 sm:px-12 pt-4">
+          <div className="relative z-10 px-8 sm:px-14 pt-4">
             <MarigoldToranBorder />
           </div>
 
@@ -226,7 +226,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 {INVITE_INFO.families}
               </p>
 
-              <p className="mt-5 inline-block border-y border-honey-gold/45 py-2 text-xs uppercase tracking-[0.22em] text-berry font-medium">
+              <p className="mt-5 inline-block rounded-full border border-honey-gold/45 bg-blush-silk/55 px-5 py-1.5 text-xs uppercase tracking-[0.2em] text-berry font-medium">
                 {INVITE_INFO.dates} · {INVITE_INFO.venue}, {INVITE_INFO.city}
               </p>
 
@@ -235,7 +235,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 {countdownUnits.map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-t-full border border-honey-gold/60 bg-blush-silk/75 px-2 pt-4 pb-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]"
+                    className="rounded-t-full rounded-b-2xl border border-honey-gold/60 bg-blush-silk/75 px-2 pt-4 pb-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]"
                   >
                     <span className="block font-display text-2xl sm:text-3xl font-semibold text-berry tabular-nums leading-none">
                       {item.value}
@@ -250,13 +250,13 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
               <div className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-4">
                 <a
                   href="#courtyard"
-                  className="border border-berry bg-berry px-7 py-3 text-xs font-medium uppercase tracking-[0.22em] text-petal-milk transition hover:bg-berry-deep"
+                  className="rounded-full border border-berry bg-berry px-7 py-3 text-xs font-medium uppercase tracking-[0.22em] text-petal-milk transition hover:bg-berry-deep"
                 >
                   Wedding Events
                 </a>
                 <a
                   href="#rsvp"
-                  className="border border-honey-gold bg-blush-silk/65 px-7 py-3 text-xs font-medium uppercase tracking-[0.22em] text-berry transition hover:bg-blush-silk"
+                  className="rounded-full border border-honey-gold bg-blush-silk/65 px-7 py-3 text-xs font-medium uppercase tracking-[0.22em] text-berry transition hover:bg-blush-silk"
                 >
                   RSVP &amp; Pass
                 </a>
@@ -275,7 +275,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                       sizes="(max-width: 1024px) 100vw, 448px"
                       className="object-cover"
                     />
-                    <div className="pointer-events-none absolute inset-x-0 bottom-4 z-20 text-center px-4">
+                    <div className="pointer-events-none absolute inset-x-0 bottom-5 z-20 text-center px-4">
                       <p className="text-[10px] uppercase tracking-[0.28em] text-blush-silk/90">
                         {INVITE_INFO.venue}
                       </p>
@@ -320,26 +320,26 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
 
       {/* Section 3: Palace Estate Plan & 4 Celebrations */}
       <section id="courtyard" className="px-4 sm:px-8 py-8">
-        <RevealBlock className="relative mx-auto max-w-6xl border border-honey-gold/50 bg-berry-garden p-6 sm:p-11 text-petal-milk shadow-[0_26px_75px_rgba(94,17,41,0.26)] overflow-hidden">
+        <RevealBlock className="relative mx-auto max-w-6xl rounded-[34px] border border-honey-gold/50 bg-berry-garden p-6 sm:p-11 text-petal-milk shadow-[0_26px_75px_rgba(94,17,41,0.26)] overflow-hidden">
           <HaveliJaliCorner
             position="top-left"
             light
-            className="absolute top-2 left-2 w-14 h-14 opacity-60"
+            className="absolute top-3 left-3 w-14 h-14 opacity-60"
           />
           <HaveliJaliCorner
             position="top-right"
             light
-            className="absolute top-2 right-2 w-14 h-14 opacity-60"
+            className="absolute top-3 right-3 w-14 h-14 opacity-60"
           />
           <HaveliJaliCorner
             position="bottom-left"
             light
-            className="absolute bottom-2 left-2 w-14 h-14 opacity-60"
+            className="absolute bottom-3 left-3 w-14 h-14 opacity-60"
           />
           <HaveliJaliCorner
             position="bottom-right"
             light
-            className="absolute bottom-2 right-2 w-14 h-14 opacity-60"
+            className="absolute bottom-3 right-3 w-14 h-14 opacity-60"
           />
 
           <div className="relative z-10 flex flex-wrap items-end justify-between gap-4 border-b border-honey-gold/35 pb-5">
@@ -360,7 +360,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                     key={c.code}
                     type="button"
                     onClick={() => setActiveCode(c.code)}
-                    className={`px-4 py-2 text-xs uppercase tracking-[0.18em] border transition ${
+                    className={`rounded-full px-4 py-2 text-xs uppercase tracking-[0.18em] border transition ${
                       active
                         ? "border-honey-gold bg-petal-milk text-berry font-semibold shadow-sm"
                         : "border-honey-gold/40 text-petal-milk hover:border-petal-milk hover:bg-petal-milk/10"
@@ -383,9 +383,9 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
 
             <div
               key={activeCeremony.code}
-              className="lg:col-span-6 animate-panel-pop border border-honey-gold/55 bg-petal-milk p-6 sm:p-8 text-berry-ink shadow-md"
+              className="lg:col-span-6 animate-panel-pop rounded-3xl border border-honey-gold/55 bg-petal-milk p-6 sm:p-8 text-berry-ink shadow-md"
             >
-              <div className="relative mb-5 aspect-[16/9] w-full overflow-hidden border border-honey-gold/55">
+              <div className="relative mb-5 aspect-[16/9] w-full overflow-hidden rounded-t-[36px] rounded-b-2xl border border-honey-gold/55">
                 <Image
                   src={activeCeremony.image}
                   alt={activeCeremony.title}
@@ -393,7 +393,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   sizes="(max-width: 1024px) 100vw, 45vw"
                   className="object-cover"
                 />
-                <span className="absolute top-3 left-3 border border-honey-gold/65 bg-petal-milk/92 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-berry">
+                <span className="absolute top-3.5 left-4 rounded-full border border-honey-gold/65 bg-petal-milk/92 px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-berry">
                   {activeCeremony.code} · {activeCeremony.shortTitle}
                 </span>
               </div>
@@ -437,7 +437,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 <button
                   type="button"
                   onClick={() => downloadCeremonyIcs(activeCeremony)}
-                  className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-berry hover:text-coral-rose transition"
+                  className="inline-flex items-center gap-2 rounded-full border border-honey-gold/45 bg-blush-silk/65 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-berry hover:bg-blush-silk transition"
                 >
                   <CalendarPlus className="h-3.5 w-3.5 text-honey-gold" />
                   Save to Calendar
@@ -456,7 +456,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 key={c.code}
                 type="button"
                 onClick={() => setActiveCode(c.code)}
-                className={`border p-4 transition text-left ${
+                className={`rounded-2xl border p-4 transition text-left ${
                   c.code === activeCeremony.code
                     ? "border-honey-gold bg-petal-milk/14 shadow-sm"
                     : "border-petal-milk/25 hover:border-honey-gold/65"
@@ -479,11 +479,11 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
 
       {/* Section 4: Stay & Travel + Shagun Diya Ritual */}
       <section id="venue" className="px-4 sm:px-8 py-8 space-y-10">
-        <RevealBlock className="mx-auto max-w-6xl border border-honey-gold/65 bg-petal-milk p-6 sm:p-11 shadow-[0_18px_50px_rgba(94,17,41,0.08)]">
+        <RevealBlock className="mx-auto max-w-6xl rounded-[32px] border border-honey-gold/65 bg-petal-milk p-6 sm:p-11 shadow-[0_18px_50px_rgba(94,17,41,0.08)]">
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <div className="relative border border-honey-gold/65 bg-blush-silk p-2.5">
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <div className="relative rounded-t-[110px] rounded-b-3xl border border-honey-gold/65 bg-blush-silk p-3">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-[98px] rounded-b-2xl">
                   <Image
                     src="/images/jodhpur-table.jpg"
                     alt="Courtyard dining table at Umaid Heritage Haveli"
@@ -543,7 +543,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 href={INVITE_INFO.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 border border-berry px-6 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-berry transition hover:bg-berry hover:text-petal-milk"
+                className="mt-6 inline-flex items-center gap-2 rounded-full border border-berry px-6 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-berry transition hover:bg-berry hover:text-petal-milk"
               >
                 <MapPin className="h-3.5 w-3.5 text-honey-gold" />
                 Open Palace Directions
@@ -553,8 +553,8 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
         </RevealBlock>
 
         {/* Sacred Shagun Diya Blessing Ritual */}
-        <RevealBlock className="relative mx-auto max-w-4xl border border-honey-gold/65 bg-petal-milk p-7 sm:p-10 text-center shadow-[0_18px_50px_rgba(94,17,41,0.09)]">
-          <div className="pointer-events-none absolute inset-2.5 border border-honey-gold/30" />
+        <RevealBlock className="relative mx-auto max-w-4xl rounded-[32px] border border-honey-gold/65 bg-petal-milk p-7 sm:p-10 text-center shadow-[0_18px_50px_rgba(94,17,41,0.09)]">
+          <div className="pointer-events-none absolute inset-3 rounded-[24px] border border-honey-gold/30" />
 
           <div className="relative z-10 flex flex-col items-center">
             <p className="text-xs uppercase tracking-[0.26em] text-sage font-medium">
@@ -588,7 +588,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
               type="button"
               onClick={handleLightDiya}
               disabled={diyaLit}
-              className={`border px-8 py-3 text-xs font-medium uppercase tracking-[0.24em] transition ${
+              className={`rounded-full border px-8 py-3 text-xs font-medium uppercase tracking-[0.24em] transition ${
                 diyaLit
                   ? "border-honey-gold bg-blush-silk text-berry cursor-default"
                   : "border-berry bg-berry text-petal-milk hover:bg-berry-deep"
@@ -605,16 +605,16 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
       {/* Section 5: RSVP & Keepsake Pass */}
       <section id="rsvp" className="px-4 sm:px-8 pt-6 pb-16">
         <div className="mx-auto max-w-6xl space-y-10">
-          <RevealBlock className="relative border border-honey-gold/75 bg-petal-milk p-6 sm:p-11 shadow-[0_20px_60px_rgba(94,17,41,0.1)]">
-            <div className="pointer-events-none absolute inset-3 border border-honey-gold/30" />
+          <RevealBlock className="relative rounded-[34px] border border-honey-gold/75 bg-petal-milk p-6 sm:p-11 shadow-[0_20px_60px_rgba(94,17,41,0.1)]">
+            <div className="pointer-events-none absolute inset-3.5 rounded-[26px] border border-honey-gold/30" />
 
             <HaveliJaliCorner
               position="top-left"
-              className="absolute top-2.5 left-2.5 w-14 h-14"
+              className="absolute top-3 left-3 w-14 h-14"
             />
             <HaveliJaliCorner
               position="top-right"
-              className="absolute top-2.5 right-2.5 w-14 h-14"
+              className="absolute top-3 right-3 w-14 h-14"
             />
 
             {saved ? (
@@ -637,7 +637,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 <button
                   type="button"
                   onClick={() => setSaved(false)}
-                  className="mt-6 border border-berry/40 px-5 py-2 text-xs uppercase tracking-[0.2em] text-berry hover:bg-blush-silk"
+                  className="mt-6 rounded-full border border-berry/40 px-6 py-2 text-xs uppercase tracking-[0.2em] text-berry hover:bg-blush-silk"
                 >
                   Edit Response
                 </button>
@@ -707,7 +707,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   <button
                     type="button"
                     onClick={() => setAttending("yes")}
-                    className={`border px-4 py-3 text-xs font-medium uppercase tracking-[0.2em] transition ${
+                    className={`rounded-full border px-4 py-3 text-xs font-medium uppercase tracking-[0.2em] transition ${
                       attending === "yes"
                         ? "border-berry bg-berry text-petal-milk"
                         : "border-honey-gold/55 text-berry hover:bg-blush-silk"
@@ -718,7 +718,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   <button
                     type="button"
                     onClick={() => setAttending("no")}
-                    className={`border px-4 py-3 text-xs font-medium uppercase tracking-[0.2em] transition ${
+                    className={`rounded-full border px-4 py-3 text-xs font-medium uppercase tracking-[0.2em] transition ${
                       attending === "no"
                         ? "border-sage bg-sage text-petal-milk"
                         : "border-honey-gold/55 text-berry hover:bg-blush-silk"
@@ -745,7 +745,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   <button
                     type="submit"
                     disabled={saving}
-                    className="border border-berry bg-berry px-10 py-3.5 text-xs font-medium uppercase tracking-[0.24em] text-petal-milk transition hover:bg-berry-deep disabled:opacity-60"
+                    className="rounded-full border border-berry bg-berry px-10 py-3.5 text-xs font-medium uppercase tracking-[0.24em] text-petal-milk transition hover:bg-berry-deep disabled:opacity-60"
                   >
                     {saving ? "Saving..." : "Confirm & Receive Palace Pass"}
                   </button>
@@ -759,7 +759,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
             {entries.slice(0, 4).map((entry) => (
               <div
                 key={entry.id}
-                className="border border-honey-gold/50 bg-petal-milk p-6 shadow-sm"
+                className="rounded-3xl border border-honey-gold/50 bg-petal-milk p-6 shadow-sm"
               >
                 <div className="flex items-center justify-between gap-2 border-b border-honey-gold/25 pb-2.5">
                   <span className="font-display text-xl font-medium text-berry">
@@ -806,7 +806,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
             <button
               type="button"
               onClick={handleCopyInvite}
-              className="inline-flex items-center gap-2 border border-honey-gold/70 px-6 py-2.5 text-xs uppercase tracking-[0.2em] text-petal-milk transition hover:bg-petal-milk/10"
+              className="inline-flex items-center gap-2 rounded-full border border-honey-gold/70 px-6 py-2.5 text-xs uppercase tracking-[0.2em] text-petal-milk transition hover:bg-petal-milk/10"
             >
               {copiedShare ? (
                 <Check className="h-3.5 w-3.5 text-honey-gold" />

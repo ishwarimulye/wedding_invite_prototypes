@@ -33,9 +33,9 @@ export default function FlipPostcardGallery({
                 isFlipped ? "rotate-y-180" : "group-hover:-translate-y-1"
               }`}
             >
-              {/* Front */}
-              <div className="backface-hidden absolute inset-0 border border-honey-gold/65 bg-petal-milk p-2.5 shadow-[0_12px_32px_rgba(94,17,41,0.1)]">
-                <div className="relative h-full w-full overflow-hidden border border-honey-gold/35">
+              {/* Front — Graceful Arched Keepsake Frame */}
+              <div className="backface-hidden absolute inset-0 rounded-t-[72px] rounded-b-3xl border border-honey-gold/65 bg-petal-milk p-2.5 shadow-[0_14px_36px_rgba(94,17,41,0.1)]">
+                <div className="relative h-full w-full overflow-hidden rounded-t-[64px] rounded-b-2xl border border-honey-gold/35">
                   <Image
                     src={card.src}
                     alt={card.title}
@@ -45,7 +45,7 @@ export default function FlipPostcardGallery({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-berry-deep/80 via-berry-deep/15 to-transparent" />
 
-                  <span className="absolute top-3 right-3 inline-flex items-center gap-1 border border-honey-gold/55 bg-petal-milk/92 px-2.5 py-1 text-[10px] uppercase tracking-widest text-berry">
+                  <span className="absolute top-4 right-4 inline-flex items-center gap-1 rounded-full border border-honey-gold/55 bg-petal-milk/92 px-3 py-1 text-[10px] uppercase tracking-widest text-berry shadow-sm">
                     <RotateCw className="h-2.5 w-2.5 text-honey-gold" />
                     Turn
                   </span>
@@ -62,9 +62,9 @@ export default function FlipPostcardGallery({
               </div>
 
               {/* Back */}
-              <div className="backface-hidden rotate-y-180 absolute inset-0 flex flex-col justify-between border border-honey-gold/75 bg-blush-silk p-5 shadow-md">
-                <div className="pointer-events-none absolute inset-2 border border-honey-gold/30" />
-                <div className="relative z-10 flex items-start justify-between border-b border-honey-gold/35 pb-3">
+              <div className="backface-hidden rotate-y-180 absolute inset-0 flex flex-col justify-between rounded-t-[72px] rounded-b-3xl border border-honey-gold/75 bg-blush-silk p-6 shadow-md">
+                <div className="pointer-events-none absolute inset-2.5 rounded-t-[62px] rounded-b-2xl border border-honey-gold/30" />
+                <div className="relative z-10 flex items-start justify-between border-b border-honey-gold/35 pt-3 pb-3">
                   <div>
                     <p className="text-[10px] uppercase tracking-[0.22em] text-sage font-medium">
                       {card.stampDate}

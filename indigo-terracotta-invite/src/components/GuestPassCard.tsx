@@ -102,7 +102,7 @@ export default function GuestPassCard({
   };
 
   return (
-    <div className="mx-auto mt-6 max-w-xl border border-honey-gold/65 bg-petal-milk text-left shadow-sm">
+    <div className="mx-auto mt-6 max-w-xl overflow-hidden rounded-3xl border border-honey-gold/65 bg-petal-milk text-left shadow-md">
       <div className="grid sm:grid-cols-12">
         <div className="sm:col-span-4 bg-berry-garden p-6 text-petal-milk flex flex-col justify-between">
           <span className="text-[10px] uppercase tracking-[0.24em] text-blush-silk/85">
@@ -132,7 +132,7 @@ export default function GuestPassCard({
           <button
             type="button"
             onClick={handleDownloadPass}
-            className="mt-5 inline-flex items-center justify-center gap-2 border border-berry bg-berry px-5 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-petal-milk transition hover:bg-berry-deep"
+            className="mt-5 inline-flex items-center justify-center gap-2 rounded-full border border-berry bg-berry px-6 py-2.5 text-xs font-medium uppercase tracking-[0.2em] text-petal-milk transition hover:bg-berry-deep"
           >
             <Download className="h-3.5 w-3.5" />
             Download Invitation Pass
