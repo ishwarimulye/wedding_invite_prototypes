@@ -2,7 +2,6 @@
 
 import React, { useState, useSyncExternalStore } from "react";
 import InviteEnvelope from "@/components/InviteEnvelope";
-import { FloatingPetals } from "@/components/FloralOrnaments";
 import HeroSection from "@/components/HeroSection";
 import CountdownSection from "@/components/CountdownSection";
 import StorySection from "@/components/StorySection";
@@ -42,9 +41,6 @@ export default function Home() {
         isOpen={envelopeOpen}
         onOpen={() => setEnvelopeOpen(true)}
       />
-
-      {/* Drifting Rose & Marigold Petals */}
-      {envelopeOpen && <FloatingPetals />}
 
       {/* Main Wedding Invitation Flow */}
       <div

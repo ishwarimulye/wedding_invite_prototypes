@@ -6,16 +6,6 @@ import { FloralCorner, LotusSeparator } from "./FloralOrnaments";
 import ScrollReveal from "./ScrollReveal";
 import { GuestWish, INITIAL_WISHES, WEDDING_EVENTS } from "@/data/weddingData";
 
-const BURST_PETALS = [
-  { left: "12%", tx: "-40px", delay: "0s", color: "#E8AEB7" },
-  { left: "24%", tx: "35px", delay: "0.1s", color: "#F1D48E" },
-  { left: "36%", tx: "-25px", delay: "0.05s", color: "#C8943E" },
-  { left: "50%", tx: "15px", delay: "0.15s", color: "#E39BA6" },
-  { left: "64%", tx: "-35px", delay: "0.08s", color: "#F6D9DF" },
-  { left: "76%", tx: "42px", delay: "0.12s", color: "#F1D48E" },
-  { left: "88%", tx: "-20px", delay: "0.04s", color: "#E8AEB7" },
-];
-
 export default function RsvpSection({ guestName }: { guestName: string }) {
   const [name, setName] = useState(
     guestName === "Beloved Guest" ? "" : guestName
@@ -151,27 +141,6 @@ export default function RsvpSection({ guestName }: { guestName: string }) {
 
             {submitted ? (
               <div className="relative z-10 py-8 text-center animate-fade-up">
-                {/* Joyful Floral & Gold Burst */}
-                <div
-                  className="pointer-events-none absolute inset-x-0 top-0 overflow-hidden h-64"
-                  aria-hidden="true"
-                >
-                  {BURST_PETALS.map((p, idx) => (
-                    <span
-                      key={idx}
-                      style={
-                        {
-                          left: p.left,
-                          animationDelay: p.delay,
-                          backgroundColor: p.color,
-                          "--tx": p.tx,
-                        } as React.CSSProperties
-                      }
-                      className="animate-burst-drop absolute top-0 h-3.5 w-2.5 rounded-full"
-                    />
-                  ))}
-                </div>
-
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-royal-velvet text-gold-light shadow-lg">
                   <CheckCircle2 className="h-8 w-8" />
                 </div>
