@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles } from "lucide-react";
-import { BloomingGarlandCorner, FloralDivider, WeddingToranGarland } from "./GardenFlorals";
 import { INVITE_INFO } from "@/data/inviteData";
 
 export default function FolioCover({
@@ -21,84 +19,56 @@ export default function FolioCover({
   const handleOpen = () => {
     if (opening) return;
     setOpening(true);
-    window.setTimeout(onOpen, 800);
+    window.setTimeout(onOpen, 650);
   };
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-garden-gradient px-4 transition-all duration-700 ${
-        opening ? "opacity-0 scale-105 pointer-events-none" : "opacity-100 scale-100"
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-garden-gradient px-4 transition-all duration-700 ${
+        opening ? "opacity-0 -translate-y-4 pointer-events-none" : "opacity-100 translate-y-0"
       }`}
       role="dialog"
       aria-modal="true"
-      aria-label="Floral Wedding Invitation Cover"
+      aria-label="Wedding Invitation Cover"
     >
-      <BloomingGarlandCorner
-        position="top-left"
-        className="absolute -top-4 -left-4 h-44 w-44 sm:h-64 sm:w-64 opacity-90"
-      />
-      <BloomingGarlandCorner
-        position="top-right"
-        className="absolute -top-4 -right-4 h-44 w-44 sm:h-64 sm:w-64 opacity-90"
-      />
-      <BloomingGarlandCorner
-        position="bottom-left"
-        className="absolute -bottom-4 -left-4 h-40 w-40 sm:h-56 sm:w-56 opacity-80"
-      />
-      <BloomingGarlandCorner
-        position="bottom-right"
-        className="absolute -bottom-4 -right-4 h-40 w-40 sm:h-56 sm:w-56 opacity-80"
-      />
-
-      <div className="relative z-10 w-full max-w-lg overflow-hidden rounded-t-[200px] rounded-b-[2rem] border-2 border-honey-gold/65 bg-petal-milk/95 text-center shadow-[0_28px_85px_rgba(94,17,41,0.2)] backdrop-blur-md">
-        <div className="pt-2">
-          <WeddingToranGarland />
-        </div>
-        <div className="px-7 pb-11 pt-4 sm:px-12 sm:pb-13">
-        <div className="pointer-events-none absolute inset-3 rounded-t-[188px] rounded-b-[1.5rem] border border-coral-rose/30" />
+      <div className="relative w-full max-w-lg border border-honey-gold/65 bg-petal-milk px-7 py-12 sm:px-12 sm:py-14 text-center shadow-[0_24px_70px_rgba(94,17,41,0.14)]">
+        {/* Classic Double Stationery Inner Rule */}
+        <div className="pointer-events-none absolute inset-3 border border-honey-gold/35" />
 
         <div className="relative z-10 flex flex-col items-center">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-berry">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-berry">
             {INVITE_INFO.invocation}
-          </span>
-
-          <p className="mt-2 text-[11px] text-muted max-w-xs leading-relaxed">
-            {INVITE_INFO.eldersBlessing}
           </p>
 
-          <p className="mt-4 font-script text-3xl sm:text-4xl text-coral-rose">
+          <div className="my-5 h-[1px] w-16 bg-honey-gold/55" />
+
+          <p className="font-script text-3xl text-coral-rose">
             Dear {guestName},
           </p>
 
-          <h1 className="mt-2 font-display text-5xl sm:text-6xl font-semibold text-berry leading-tight">
-            {INVITE_INFO.bride}{" "}
+          <p className="mt-3 text-xs uppercase tracking-[0.24em] text-muted">
+            You are invited to the wedding of
+          </p>
+
+          <h1 className="mt-4 font-display text-5xl sm:text-6xl font-medium text-berry leading-tight">
+            {INVITE_INFO.brideFirst}{" "}
             <span className="font-script text-5xl sm:text-6xl text-gold-shimmer font-normal">
               &amp;
             </span>{" "}
-            {INVITE_INFO.groom}
+            {INVITE_INFO.groomFirst}
           </h1>
 
-          <FloralDivider />
-
-          <p className="max-w-xs text-xs sm:text-sm leading-relaxed text-muted">
-            Cordially invite you to Mehendi, Sangeet, Haldi &amp; Sunset Pheras
-            in <span className="font-semibold text-berry">{INVITE_INFO.city}</span>.
+          <p className="mt-4 text-xs uppercase tracking-[0.24em] text-sage font-medium">
+            {INVITE_INFO.dates} · {INVITE_INFO.city}
           </p>
 
-          {/* Wax-Seal Style Open CTA */}
           <button
             type="button"
             onClick={handleOpen}
-            className="animate-pulse-ring mt-7 inline-flex items-center gap-2.5 rounded-full border border-marigold/60 bg-berry-garden px-8 py-4 text-xs font-semibold uppercase tracking-[0.24em] text-petal-milk transition hover:scale-105"
+            className="mt-9 border border-berry bg-berry px-9 py-3.5 text-xs font-medium uppercase tracking-[0.24em] text-petal-milk transition hover:bg-berry-deep"
           >
-            <Sparkles className="h-4 w-4 text-marigold" />
-            Unseal Invitation
+            Open Invitation
           </button>
-
-          <p className="mt-5 text-[11px] uppercase tracking-[0.24em] text-honey-gold font-semibold">
-            {INVITE_INFO.dates} · {INVITE_INFO.venue}
-          </p>
-        </div>
         </div>
       </div>
     </div>

@@ -3,16 +3,13 @@ export interface Ceremony {
   day: string;
   title: string;
   shortTitle: string;
-  vibe: string;
   time: string;
   location: string;
   image: string;
   isoStart: string;
   isoEnd: string;
   note: string;
-  highlights: string[];
-  dressLabel: string;
-  footwearTip: string;
+  attire: string;
   swatches: { name: string; hex: string }[];
   mapCoords: { x: number; y: number };
 }
@@ -23,16 +20,8 @@ export interface PostcardStory {
   title: string;
   stampDate: string;
   place: string;
-  caption: string;
   author: "Meera" | "Kabir";
-  handwrittenNote: string;
-}
-
-export interface SongOption {
-  id: string;
-  title: string;
-  artist: string;
-  votes: number;
+  note: string;
 }
 
 export interface RsvpEntry {
@@ -42,24 +31,24 @@ export interface RsvpEntry {
   guests: number;
   dietary?: string;
   note: string;
-  song?: string;
 }
 
 export const INVITE_INFO = {
   invocation: "|| श्री गणेशाय नमः ||",
-  eldersBlessing: "With the loving blessings of Late Smt. Sushila & Shri Harishankar Rathore",
-  bride: "Meera",
-  groom: "Kabir",
-  hashtag: "#MeeraFoundKabir",
-  families: "Smt. Sunita & Shri Mahendra Rathore · Smt. Kavya & Shri Arjun Mehta",
-  dates: "20 – 22 November 2027",
+  bride: "Meera Rathore",
+  groom: "Kabir Mehta",
+  brideFirst: "Meera",
+  groomFirst: "Kabir",
+  families:
+    "Sunita & Mahendra Rathore together with Kavya & Arjun Mehta invite you to celebrate the marriage of their children.",
+  dates: "20 – 21 November 2027",
   targetISO: "2027-11-21T16:30:00+05:30",
   city: "Jodhpur, Rajasthan",
   venue: "Umaid Heritage Haveli",
   address: "Ratanada Palace Road, Jodhpur 342011",
-  checkInWindow: "Check-in: Fri, 19 Nov (2:00 PM) · Check-out: Mon, 22 Nov (11:00 AM)",
-  conciergeName: "Aarav & Hospitality Desk",
-  conciergeNote: "Complimentary airport chauffeurs await all Jodhpur (JDH) arrivals.",
+  checkInWindow: "Friday, 19 Nov (2:00 PM) – Monday, 22 Nov (11:00 AM)",
+  conciergeNote:
+    "Airport transfers from Jodhpur Airport (JDH, 15 mins) are arranged for all arriving guests.",
   mapsUrl: "https://maps.google.com/?q=Jodhpur+Rajasthan",
 };
 
@@ -67,145 +56,118 @@ export const POSTCARD_STORIES: PostcardStory[] = [
   {
     id: "pc1",
     src: "/images/couple-garden.jpg",
-    title: "A Quiet Rainy Coffee",
-    stampDate: "14 MAR 2023",
-    place: "Bandra, Mumbai",
-    caption: "Tap to flip for Kabir's note",
+    title: "Mumbai",
+    stampDate: "MAR 2023",
+    place: "Bandra",
     author: "Kabir",
-    handwrittenNote:
-      "I walked in expecting a polite 20-minute hello. Three hours and two spilled cappuccinos later, I knew I never wanted another umbrella-share with anyone else.",
+    note: "A quick coffee before work that somehow lasted until the café closed.",
   },
   {
     id: "pc2",
     src: "/images/jodhpur-hero.jpg",
-    title: "The Sandstone Arch",
-    stampDate: "19 NOV 2025",
-    place: "Balsamand, Jodhpur",
-    caption: "Tap to flip for Meera's note",
+    title: "The Proposal",
+    stampDate: "NOV 2025",
+    place: "Jodhpur",
     author: "Meera",
-    handwrittenNote:
-      "He pretended we were just stopping for sunset tea — then pulled out his grandmother's ring beneath a cascade of coral bougainvillea. Easiest yes of my life.",
+    note: "Quiet tea under the sandstone arches at sunset — and an heirloom ring.",
   },
   {
     id: "pc3",
     src: "/images/garden-florals.jpg",
-    title: "Where We Say Forever",
-    stampDate: "21 NOV 2027",
-    place: "The Lotus Mandap",
-    caption: "Tap to flip for our promise",
+    title: "The Mandap",
+    stampDate: "NOV 2027",
+    place: "Haveli Courtyard",
     author: "Meera",
-    handwrittenNote:
-      "We picked a mandap open to the autumn breeze, overflowing with mogra and peach peonies — all that's missing is your warm laughter in the front row.",
+    note: "Where we will take our pheras in the late afternoon light, surrounded by family.",
   },
   {
     id: "pc4",
     src: "/images/jodhpur-table.jpg",
-    title: "One Long Courtyard Table",
-    stampDate: "20 NOV 2027",
+    title: "The Supper",
+    stampDate: "NOV 2027",
     place: "Darbar Colonnade",
-    caption: "Tap to flip for Kabir's note",
     author: "Kabir",
-    handwrittenNote:
-      "No stiff assigned tables or hurried speeches — just brass taper candles, Rajasthani thalis, and our favorite people lingering past midnight.",
+    note: "Long tables, brass candles, and unhurried conversation late into the night.",
   },
 ];
 
 export const CEREMONIES: Ceremony[] = [
   {
     code: "01",
-    day: "Sat · 20 Nov",
-    title: "Phoolon Ki Mehendi",
+    day: "Saturday, 20 Nov",
+    title: "Mehendi",
     shortTitle: "Mehendi",
-    vibe: "Henna, Folk Songs & Rose Sherbet",
-    time: "1:00 PM — 5:00 PM",
-    location: "Bougainvillea Garden Lawn",
+    time: "1:00 PM – 5:00 PM",
+    location: "Bougainvillea Lawn",
     image: "/images/jodhpur-hero.jpg",
     isoStart: "20271120T130000",
     isoEnd: "20271120T170000",
-    note: "Sunlit afternoon henna, chilled rose-cardamom thandai, live acoustic dholak folk songs, and fresh floral bangles under blooming bougainvillea.",
-    highlights: ["Organic Rajasthani Henna", "Live Manganiyar Folk", "Lac Bangle Bar"],
-    dressLabel: "Mint Sage, Peach Rose & Breezy Florals",
-    footwearTip: "Wedges, juttis, or block heels recommended for the garden lawn.",
+    note: "Henna artists, rose sherbet, and acoustic Rajasthani folk music on the lawn.",
+    attire: "Light cottons, sage, blush & florals · Block heels or juttis",
     swatches: [
-      { name: "Rose Blush", hex: "#D96566" },
-      { name: "Garden Sage", hex: "#5E8366" },
-      { name: "Champagne", hex: "#FFF8F3" },
+      { name: "Rose", hex: "#C95858" },
+      { name: "Sage", hex: "#587A5F" },
+      { name: "Ivory", hex: "#FBF5EB" },
     ],
     mapCoords: { x: 105, y: 104 },
   },
   {
     code: "02",
-    day: "Sat · 20 Nov",
-    title: "Sangeet & Starlight Supper",
+    day: "Saturday, 20 Nov",
+    title: "Sangeet & Dinner",
     shortTitle: "Sangeet",
-    vibe: "Candlelight, Dances & Courtyard Feast",
     time: "7:30 PM Onwards",
-    location: "The Candlelit Colonnade",
+    location: "Darbar Colonnade",
     image: "/images/jodhpur-table.jpg",
     isoStart: "20271120T193000",
     isoEnd: "20271120T234500",
-    note: "An evening of family performances, warm brass taper candles, and a curated Rajasthani supper beneath the November stars.",
-    highlights: ["Family Dance Showcase", "Sufi & Cocktail Lounge", "Marwari Harvest Supper"],
-    dressLabel: "Rani Rose, Burnished Gold & Silk",
-    footwearTip: "Sandstone courtyard — comfortable heels or embroidered mojaris.",
+    note: "Family performances followed by a candlelit Marwari dinner in the colonnade.",
+    attire: "Crimson, antique gold & evening Indian wear",
     swatches: [
-      { name: "Rani Rose", hex: "#9E2A4B" },
-      { name: "Antique Gold", hex: "#D4943A" },
-      { name: "Warm Blush", hex: "#FDEBE3" },
+      { name: "Crimson", hex: "#8B1E3F" },
+      { name: "Gold", hex: "#C88A2E" },
+      { name: "Sand", hex: "#F5E6D4" },
     ],
     mapCoords: { x: 295, y: 92 },
   },
   {
     code: "03",
-    day: "Sun · 21 Nov",
-    title: "Haldi & Phoolon Ki Holi",
+    day: "Sunday, 21 Nov",
+    title: "Haldi",
     shortTitle: "Haldi",
-    vibe: "Turmeric Blessings & Showering Marigolds",
-    time: "10:30 AM — 1:30 PM",
-    location: "Sunlit Stepwell Terrace",
+    time: "10:30 AM – 1:30 PM",
+    location: "Stepwell Terrace",
     image: "/images/couple-garden.jpg",
     isoStart: "20271121T103000",
     isoEnd: "20271121T133000",
-    note: "Joyful morning turmeric rituals accompanied by baskets of fresh marigold and mogra petals, dhol beats, and saffron lassi in clay kulhads.",
-    highlights: ["Fresh Marigold Petal Shower", "Live Dhol & Geet", "Kulhad Saffron Brunch"],
-    dressLabel: "Marigold Yellow, Sunshine Ochre & Ivory",
-    footwearTip: "Easy sandals or flats ideal for terrace steps & flower petals.",
+    note: "Morning turmeric blessings with marigold garlands and a late brunch.",
+    attire: "Marigold yellow, ochre & white cotton",
     swatches: [
-      { name: "Marigold", hex: "#F0B254" },
-      { name: "Saffron Gold", hex: "#D4943A" },
-      { name: "Ivory Cotton", hex: "#FFF8F3" },
+      { name: "Marigold", hex: "#EA9E38" },
+      { name: "Ochre", hex: "#C88A2E" },
+      { name: "Cotton", hex: "#FBF5EB" },
     ],
     mapCoords: { x: 105, y: 204 },
   },
   {
     code: "04",
-    day: "Sun · 21 Nov",
+    day: "Sunday, 21 Nov",
     title: "Baraat, Pheras & Reception",
     shortTitle: "Pheras",
-    vibe: "Sacred Muhurat Vows & Grand Toast",
-    time: "4:30 PM Baraat · 6:15 PM Pheras · 8:30 PM Feast",
-    location: "The Lotus Rose Mandap",
+    time: "4:30 PM Baraat · 6:15 PM Pheras · 8:30 PM Dinner",
+    location: "Lotus Mandap",
     image: "/images/garden-florals.jpg",
     isoStart: "20271121T163000",
     isoEnd: "20271121T233000",
-    note: "A lively baraat procession followed by Varmala at dusk, Vedic pheras inside our rose-draped mandap, and an intimate reception dinner.",
-    highlights: ["Vintage Baraat Procession", "Dusk Varmala & Pheras", "Royal Dastarkhwan Dinner"],
-    dressLabel: "Sindoori Rose, Ivory Organza & Heritage Weaves",
-    footwearTip: "Bring a light pashmina shawl for the 8:30 PM open-air reception.",
+    note: "Baraat arrival at 4:30 PM, Varmala at dusk, Vedic pheras, and reception dinner.",
+    attire: "Traditional Indian formalwear · Bring a light shawl for evening",
     swatches: [
-      { name: "Sindoori Rose", hex: "#D96566" },
-      { name: "Petal Ivory", hex: "#FFF8F3" },
-      { name: "Rani Wine", hex: "#9E2A4B" },
+      { name: "Sindoor", hex: "#C95858" },
+      { name: "Ivory", hex: "#FBF5EB" },
+      { name: "Wine", hex: "#8B1E3F" },
     ],
     mapCoords: { x: 268, y: 204 },
   },
-];
-
-export const INITIAL_SONGS: SongOption[] = [
-  { id: "s1", title: "Din Shagna Da", artist: "Jasleen Royal", votes: 19 },
-  { id: "s2", title: "Gal Mitthi Mitthi", artist: "Aisha", votes: 24 },
-  { id: "s3", title: "Kesariya", artist: "Arijit Singh", votes: 15 },
-  { id: "s4", title: "London Thumakda", artist: "Queen", votes: 22 },
 ];
 
 export const INITIAL_RSVPS: RsvpEntry[] = [
@@ -215,25 +177,14 @@ export const INITIAL_RSVPS: RsvpEntry[] = [
     attending: "yes",
     guests: 2,
     dietary: "Pure Vegetarian",
-    note: "So excited to dance at the Sangeet and celebrate with you in Jodhpur!",
-    song: "Gal Mitthi Mitthi",
+    note: "Looking forward to celebrating with both families in Jodhpur.",
   },
   {
     id: "r2",
-    name: "Chacha Ji & Family",
-    attending: "yes",
-    guests: 4,
-    dietary: "Jain Meal",
-    note: "Arriving Friday evening — counting down the days with big hugs!",
-    song: "London Thumakda",
-  },
-  {
-    id: "r3",
     name: "Neha & Siddharth Kapoor",
     attending: "yes",
     guests: 2,
-    dietary: "Pure Vegetarian",
-    note: "Cannot wait for the Phoolon Ki Mehendi, Haldi, and sunset pheras!",
-    song: "Din Shagna Da",
+    dietary: "Jain Meal",
+    note: "Arriving Friday afternoon — warm congratulations to you both.",
   },
 ];
