@@ -11,14 +11,25 @@ export interface Ceremony {
   note: string;
   dressLabel: string;
   swatches: { name: string; hex: string }[];
+  mapCoords: { x: number; y: number };
 }
 
-export interface StoryMoment {
-  step: string;
-  date: string;
+export interface PostcardStory {
+  id: string;
+  src: string;
   title: string;
+  stampDate: string;
   place: string;
-  text: string;
+  caption: string;
+  author: "Meera" | "Kabir";
+  handwrittenNote: string;
+}
+
+export interface SongOption {
+  id: string;
+  title: string;
+  artist: string;
+  votes: number;
 }
 
 export interface RsvpEntry {
@@ -27,6 +38,7 @@ export interface RsvpEntry {
   attending: "yes" | "no";
   guests: number;
   note: string;
+  song?: string;
 }
 
 export const INVITE_INFO = {
@@ -41,27 +53,50 @@ export const INVITE_INFO = {
   mapsUrl: "https://maps.google.com/?q=Jodhpur+Rajasthan",
 };
 
-export const STORY_MOMENTS: StoryMoment[] = [
+export const POSTCARD_STORIES: PostcardStory[] = [
   {
-    step: "01",
-    date: "Spring 2023",
+    id: "pc1",
+    src: "/images/couple-garden.jpg",
     title: "A Quiet Rainy Coffee",
+    stampDate: "14 MAR 2023",
     place: "Bandra, Mumbai",
-    text: "What was supposed to be a twenty-minute introduction over filter coffee stretched past sunset, three refill pots, and a shared umbrella.",
+    caption: "Tap to flip for Kabir's note",
+    author: "Kabir",
+    handwrittenNote:
+      "I walked in expecting a polite 20-minute hello. Three hours and two spilled cappuccinos later, I knew I never wanted another umbrella-share with anyone else.",
   },
   {
-    step: "02",
-    date: "Winter 2025",
-    title: "The Proposal Under Jasmine",
-    place: "Balsamand Lake, Jodhpur",
-    text: "Between weathered sandstone arches and strings of mogra, Kabir asked the easiest question Meera had ever answered.",
+    id: "pc2",
+    src: "/images/jodhpur-hero.jpg",
+    title: "The Sandstone Arch",
+    stampDate: "19 NOV 2025",
+    place: "Balsamand, Jodhpur",
+    caption: "Tap to flip for Meera's note",
+    author: "Meera",
+    handwrittenNote:
+      "He pretended we were just stopping for sunset tea — then pulled out his grandmother's ring beneath a cascade of coral bougainvillea. Easiest yes of my life.",
   },
   {
-    step: "03",
-    date: "November 2027",
-    title: "Homecoming With Everyone We Love",
-    place: "Umaid Heritage Haveli",
-    text: "Now we gather our closest family and friends for three unhurried days of florals, music, and sacred vows.",
+    id: "pc3",
+    src: "/images/garden-florals.jpg",
+    title: "Where We Say Forever",
+    stampDate: "21 NOV 2027",
+    place: "The Lotus Mandap",
+    caption: "Tap to flip for our promise",
+    author: "Meera",
+    handwrittenNote:
+      "We picked a mandap open to the autumn breeze, overflowing with mogra and peach peonies — all that's missing is your warm laughter in the front row.",
+  },
+  {
+    id: "pc4",
+    src: "/images/jodhpur-table.jpg",
+    title: "One Long Courtyard Table",
+    stampDate: "20 NOV 2027",
+    place: "Darbar Colonnade",
+    caption: "Tap to flip for Kabir's note",
+    author: "Kabir",
+    handwrittenNote:
+      "No stiff assigned tables or hurried speeches — just brass taper candles, Rajasthani thalis, and our favorite people lingering past midnight.",
   },
 ];
 
@@ -83,6 +118,7 @@ export const CEREMONIES: Ceremony[] = [
       { name: "Botanical Sage", hex: "#2B5945" },
       { name: "Honey Marigold", hex: "#E29B4D" },
     ],
+    mapCoords: { x: 112, y: 110 },
   },
   {
     code: "02",
@@ -101,6 +137,7 @@ export const CEREMONIES: Ceremony[] = [
       { name: "Champagne", hex: "#C79652" },
       { name: "Petal Ivory", hex: "#FDF9F5" },
     ],
+    mapCoords: { x: 295, y: 98 },
   },
   {
     code: "03",
@@ -119,30 +156,15 @@ export const CEREMONIES: Ceremony[] = [
       { name: "Warm Ivory", hex: "#FDF9F5" },
       { name: "Deep Sage", hex: "#24493A" },
     ],
+    mapCoords: { x: 204, y: 205 },
   },
 ];
 
-export const GALLERY_MOMENTS = [
-  {
-    src: "/images/couple-garden.jpg",
-    title: "Meera & Kabir",
-    caption: "Sunlit garden walk ahead of the celebrations",
-  },
-  {
-    src: "/images/jodhpur-hero.jpg",
-    title: "The Archway Welcome",
-    caption: "Cascading bougainvillea over carved sandstone",
-  },
-  {
-    src: "/images/garden-florals.jpg",
-    title: "The Floral Mandap",
-    caption: "Peonies, mogra & marigolds ready for the vows",
-  },
-  {
-    src: "/images/jodhpur-table.jpg",
-    title: "Evening Supper",
-    caption: "Taper candles & garden roses beneath the colonnade",
-  },
+export const INITIAL_SONGS: SongOption[] = [
+  { id: "s1", title: "Din Shagna Da", artist: "Jasleen Royal", votes: 19 },
+  { id: "s2", title: "Gal Mitthi Mitthi", artist: "Aisha", votes: 24 },
+  { id: "s3", title: "Kesariya", artist: "Arijit Singh", votes: 15 },
+  { id: "s4", title: "London Thumakda", artist: "Queen", votes: 22 },
 ];
 
 export const INITIAL_RSVPS: RsvpEntry[] = [
@@ -152,6 +174,7 @@ export const INITIAL_RSVPS: RsvpEntry[] = [
     attending: "yes",
     guests: 2,
     note: "So excited to dance at the Sangeet and celebrate with you in Jodhpur!",
+    song: "Gal Mitthi Mitthi",
   },
   {
     id: "r2",
@@ -159,6 +182,7 @@ export const INITIAL_RSVPS: RsvpEntry[] = [
     attending: "yes",
     guests: 4,
     note: "Arriving Friday evening — counting down the days with big hugs!",
+    song: "London Thumakda",
   },
   {
     id: "r3",
@@ -166,5 +190,6 @@ export const INITIAL_RSVPS: RsvpEntry[] = [
     attending: "yes",
     guests: 2,
     note: "Cannot wait for the Phoolon Ki Mehendi and sunset pheras!",
+    song: "Din Shagna Da",
   },
 ];
