@@ -10,7 +10,9 @@ export interface Ceremony {
   isoStart: string;
   isoEnd: string;
   note: string;
+  highlights: string[];
   dressLabel: string;
+  footwearTip: string;
   swatches: { name: string; hex: string }[];
   mapCoords: { x: number; y: number };
 }
@@ -38,19 +40,26 @@ export interface RsvpEntry {
   name: string;
   attending: "yes" | "no";
   guests: number;
+  dietary?: string;
   note: string;
   song?: string;
 }
 
 export const INVITE_INFO = {
+  invocation: "|| श्री गणेशाय नमः ||",
+  eldersBlessing: "With the loving blessings of Late Smt. Sushila & Shri Harishankar Rathore",
   bride: "Meera",
   groom: "Kabir",
+  hashtag: "#MeeraFoundKabir",
   families: "Smt. Sunita & Shri Mahendra Rathore · Smt. Kavya & Shri Arjun Mehta",
   dates: "20 – 22 November 2027",
   targetISO: "2027-11-21T16:30:00+05:30",
   city: "Jodhpur, Rajasthan",
   venue: "Umaid Heritage Haveli",
   address: "Ratanada Palace Road, Jodhpur 342011",
+  checkInWindow: "Check-in: Fri, 19 Nov (2:00 PM) · Check-out: Mon, 22 Nov (11:00 AM)",
+  conciergeName: "Aarav & Hospitality Desk",
+  conciergeNote: "Complimentary airport chauffeurs await all Jodhpur (JDH) arrivals.",
   mapsUrl: "https://maps.google.com/?q=Jodhpur+Rajasthan",
 };
 
@@ -114,7 +123,9 @@ export const CEREMONIES: Ceremony[] = [
     isoStart: "20271120T130000",
     isoEnd: "20271120T170000",
     note: "Sunlit afternoon henna, chilled rose-cardamom thandai, live acoustic dholak folk songs, and fresh floral bangles under blooming bougainvillea.",
+    highlights: ["Organic Rajasthani Henna", "Live Manganiyar Folk", "Lac Bangle Bar"],
     dressLabel: "Mint Sage, Peach Rose & Breezy Florals",
+    footwearTip: "Wedges, juttis, or block heels recommended for the garden lawn.",
     swatches: [
       { name: "Rose Blush", hex: "#D96566" },
       { name: "Garden Sage", hex: "#5E8366" },
@@ -133,8 +144,10 @@ export const CEREMONIES: Ceremony[] = [
     image: "/images/jodhpur-table.jpg",
     isoStart: "20271120T193000",
     isoEnd: "20271120T234500",
-    note: "An evening of family performances, clinking glasses, warm brass taper candles, and a curated Rajasthani supper beneath the November stars.",
+    note: "An evening of family performances, warm brass taper candles, and a curated Rajasthani supper beneath the November stars.",
+    highlights: ["Family Dance Showcase", "Sufi & Cocktail Lounge", "Marwari Harvest Supper"],
     dressLabel: "Rani Rose, Burnished Gold & Silk",
+    footwearTip: "Sandstone courtyard — comfortable heels or embroidered mojaris.",
     swatches: [
       { name: "Rani Rose", hex: "#9E2A4B" },
       { name: "Antique Gold", hex: "#D4943A" },
@@ -154,7 +167,9 @@ export const CEREMONIES: Ceremony[] = [
     isoStart: "20271121T103000",
     isoEnd: "20271121T133000",
     note: "Joyful morning turmeric rituals accompanied by baskets of fresh marigold and mogra petals, dhol beats, and saffron lassi in clay kulhads.",
+    highlights: ["Fresh Marigold Petal Shower", "Live Dhol & Geet", "Kulhad Saffron Brunch"],
     dressLabel: "Marigold Yellow, Sunshine Ochre & Ivory",
+    footwearTip: "Easy sandals or flats ideal for terrace steps & flower petals.",
     swatches: [
       { name: "Marigold", hex: "#F0B254" },
       { name: "Saffron Gold", hex: "#D4943A" },
@@ -167,14 +182,16 @@ export const CEREMONIES: Ceremony[] = [
     day: "Sun · 21 Nov",
     title: "Baraat, Pheras & Reception",
     shortTitle: "Pheras",
-    vibe: "Sacred Vows & Grand Celebration",
-    time: "4:30 PM Baraat · 6:00 PM Vows",
+    vibe: "Sacred Muhurat Vows & Grand Toast",
+    time: "4:30 PM Baraat · 6:15 PM Pheras · 8:30 PM Feast",
     location: "The Lotus Rose Mandap",
     image: "/images/garden-florals.jpg",
     isoStart: "20271121T163000",
-    isoEnd: "20271121T230000",
-    note: "A lively baraat procession followed by Vedic pheras inside a floral mandap and an intimate champagne reception toast under the stars.",
+    isoEnd: "20271121T233000",
+    note: "A lively baraat procession followed by Varmala at dusk, Vedic pheras inside our rose-draped mandap, and an intimate reception dinner.",
+    highlights: ["Vintage Baraat Procession", "Dusk Varmala & Pheras", "Royal Dastarkhwan Dinner"],
     dressLabel: "Sindoori Rose, Ivory Organza & Heritage Weaves",
+    footwearTip: "Bring a light pashmina shawl for the 8:30 PM open-air reception.",
     swatches: [
       { name: "Sindoori Rose", hex: "#D96566" },
       { name: "Petal Ivory", hex: "#FFF8F3" },
@@ -197,6 +214,7 @@ export const INITIAL_RSVPS: RsvpEntry[] = [
     name: "Rohan & Anjali Deshmukh",
     attending: "yes",
     guests: 2,
+    dietary: "Pure Vegetarian",
     note: "So excited to dance at the Sangeet and celebrate with you in Jodhpur!",
     song: "Gal Mitthi Mitthi",
   },
@@ -205,6 +223,7 @@ export const INITIAL_RSVPS: RsvpEntry[] = [
     name: "Chacha Ji & Family",
     attending: "yes",
     guests: 4,
+    dietary: "Jain Meal",
     note: "Arriving Friday evening — counting down the days with big hugs!",
     song: "London Thumakda",
   },
@@ -213,6 +232,7 @@ export const INITIAL_RSVPS: RsvpEntry[] = [
     name: "Neha & Siddharth Kapoor",
     attending: "yes",
     guests: 2,
+    dietary: "Pure Vegetarian",
     note: "Cannot wait for the Phoolon Ki Mehendi, Haldi, and sunset pheras!",
     song: "Din Shagna Da",
   },

@@ -91,6 +91,7 @@ export async function POST(request: Request) {
     const name = String(body?.name ?? "").trim();
     const attending = body?.attending === "no" ? "no" : "yes";
     const guests = Math.max(1, Math.min(10, Number(body?.guests ?? 2) || 2));
+    const dietary = String(body?.dietary ?? "Pure Vegetarian").trim();
     const note = String(body?.note ?? "").trim();
     const song = String(body?.song ?? "").trim();
 
@@ -103,6 +104,7 @@ export async function POST(request: Request) {
       name,
       attending,
       guests: attending === "yes" ? guests : 0,
+      dietary: attending === "yes" ? dietary : undefined,
       note:
         note ||
         (attending === "yes"

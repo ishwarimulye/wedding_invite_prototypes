@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Flower2, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { BloomingGarlandCorner, FloralDivider } from "./GardenFlorals";
 import { INVITE_INFO } from "@/data/inviteData";
 
@@ -50,26 +50,25 @@ export default function FolioCover({
         className="absolute -bottom-4 -right-4 h-40 w-40 sm:h-56 sm:w-56 opacity-80"
       />
 
-      <div className="relative z-10 w-full max-w-lg rounded-t-[200px] rounded-b-[2rem] border border-honey-gold/60 bg-petal-milk/94 px-7 py-12 sm:px-12 sm:py-14 text-center shadow-[0_28px_85px_rgba(11,51,48,0.16)] backdrop-blur-md">
-        <div className="pointer-events-none absolute inset-3 rounded-t-[188px] rounded-b-[1.5rem] border border-coral-rose/25" />
+      <div className="relative z-10 w-full max-w-lg rounded-t-[200px] rounded-b-[2rem] border-2 border-honey-gold/65 bg-petal-milk/95 px-7 py-11 sm:px-12 sm:py-13 text-center shadow-[0_28px_85px_rgba(110,22,48,0.18)] backdrop-blur-md">
+        <div className="pointer-events-none absolute inset-3 rounded-t-[188px] rounded-b-[1.5rem] border border-coral-rose/30" />
 
         <div className="relative z-10 flex flex-col items-center">
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-berry">
-            <Flower2 className="h-3.5 w-3.5 text-coral-rose" />
-            Shubh Vivah
+          <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-berry">
+            {INVITE_INFO.invocation}
           </span>
 
-          <p className="mt-5 font-script text-3xl sm:text-4xl text-coral-rose">
+          <p className="mt-2 text-[11px] text-muted max-w-xs leading-relaxed">
+            {INVITE_INFO.eldersBlessing}
+          </p>
+
+          <p className="mt-4 font-script text-3xl sm:text-4xl text-coral-rose">
             Dear {guestName},
           </p>
 
-          <p className="mt-1 text-xs uppercase tracking-[0.26em] text-muted">
-            Together with our families
-          </p>
-
-          <h1 className="mt-4 font-display text-5xl sm:text-6xl font-semibold text-berry leading-tight">
+          <h1 className="mt-2 font-display text-5xl sm:text-6xl font-semibold text-berry leading-tight">
             {INVITE_INFO.bride}{" "}
-            <span className="font-script text-5xl sm:text-6xl text-coral-rose font-normal">
+            <span className="font-script text-5xl sm:text-6xl text-gold-shimmer font-normal">
               &amp;
             </span>{" "}
             {INVITE_INFO.groom}
@@ -78,21 +77,22 @@ export default function FolioCover({
           <FloralDivider />
 
           <p className="max-w-xs text-xs sm:text-sm leading-relaxed text-muted">
-            Invite you to share in Mehendi, Sangeet, Haldi &amp; Sunset Pheras
-            in <span className="font-medium text-berry">{INVITE_INFO.city}</span>.
+            Cordially invite you to Mehendi, Sangeet, Haldi &amp; Sunset Pheras
+            in <span className="font-semibold text-berry">{INVITE_INFO.city}</span>.
           </p>
 
+          {/* Wax-Seal Style Open CTA */}
           <button
             type="button"
             onClick={handleOpen}
-            className="animate-pulse-ring mt-8 inline-flex items-center gap-2.5 rounded-full bg-berry-garden px-8 py-4 text-xs font-semibold uppercase tracking-[0.24em] text-petal-milk transition hover:scale-105"
+            className="animate-pulse-ring mt-7 inline-flex items-center gap-2.5 rounded-full border border-marigold/60 bg-berry-garden px-8 py-4 text-xs font-semibold uppercase tracking-[0.24em] text-petal-milk transition hover:scale-105"
           >
             <Sparkles className="h-4 w-4 text-marigold" />
-            Open Invitation
+            Unseal Invitation
           </button>
 
-          <p className="mt-5 text-[11px] uppercase tracking-[0.24em] text-honey-gold font-medium">
-            {INVITE_INFO.dates}
+          <p className="mt-5 text-[11px] uppercase tracking-[0.24em] text-honey-gold font-semibold">
+            {INVITE_INFO.dates} · {INVITE_INFO.venue}
           </p>
         </div>
       </div>

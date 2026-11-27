@@ -8,10 +8,12 @@ export default function GuestPassCard({
   guestName,
   guests,
   attending,
+  dietary,
 }: {
   guestName: string;
   guests: number;
   attending: "yes" | "no";
+  dietary?: string;
 }) {
   const handleDownloadPass = () => {
     const canvas = document.createElement("canvas");
@@ -36,13 +38,17 @@ export default function GuestPassCard({
     ctx.fillRect(42, 42, 310, 596);
 
     ctx.fillStyle = "#FDEBE3";
-    ctx.font = "600 20px Georgia, serif";
+    ctx.font = "600 18px Georgia, serif";
     ctx.textAlign = "center";
     ctx.fillText("SHUBH VIVAH PASS", 197, 130);
 
     ctx.fillStyle = "#F0B254";
     ctx.font = "italic 58px Georgia, serif";
-    ctx.fillText("M & K", 197, 340);
+    ctx.fillText("M & K", 197, 330);
+
+    ctx.fillStyle = "#FDEBE3";
+    ctx.font = "500 15px sans-serif";
+    ctx.fillText(INVITE_INFO.hashtag, 197, 380);
 
     ctx.fillStyle = "#FFF8F3";
     ctx.font = "500 18px sans-serif";
@@ -52,41 +58,42 @@ export default function GuestPassCard({
     ctx.textAlign = "left";
     ctx.fillStyle = "#D96566";
     ctx.font = "600 18px sans-serif";
-    ctx.fillText("PERSONALIZED ROYAL KEEPSAKE", 410, 125);
+    ctx.fillText("PERSONALIZED ROYAL KEEPSAKE", 410, 120);
 
     ctx.fillStyle = "#9E2A4B";
     ctx.font = "600 56px Georgia, serif";
-    ctx.fillText(`${INVITE_INFO.bride} & ${INVITE_INFO.groom}`, 410, 200);
+    ctx.fillText(`${INVITE_INFO.bride} & ${INVITE_INFO.groom}`, 410, 192);
 
     ctx.strokeStyle = "#D4943A";
     ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.moveTo(410, 232);
-    ctx.lineTo(1080, 232);
+    ctx.moveTo(410, 224);
+    ctx.lineTo(1080, 224);
     ctx.stroke();
 
     ctx.fillStyle = "#725059";
     ctx.font = "600 16px sans-serif";
-    ctx.fillText("HONORED GUEST", 410, 290);
+    ctx.fillText("HONORED GUEST", 410, 278);
 
     ctx.fillStyle = "#351A22";
     ctx.font = "600 42px Georgia, serif";
-    ctx.fillText(guestName, 410, 345);
+    ctx.fillText(guestName, 410, 332);
 
     ctx.fillStyle = "#8C5327";
-    ctx.font = "600 20px sans-serif";
+    ctx.font = "600 19px sans-serif";
     ctx.fillText(
       attending === "yes"
-        ? `CONFIRMED · ${guests} ${guests === 1 ? "GUEST" : "GUESTS"}`
+        ? `CONFIRMED · ${guests} ${guests === 1 ? "GUEST" : "GUESTS"}${dietary ? ` · ${dietary.toUpperCase()}` : ""}`
         : "SENDING WARM BLESSINGS",
       410,
-      400
+      384
     );
 
     ctx.fillStyle = "#725059";
-    ctx.font = "500 19px Georgia, serif";
-    ctx.fillText(INVITE_INFO.venue, 410, 500);
-    ctx.fillText(INVITE_INFO.address, 410, 532);
+    ctx.font = "500 18px Georgia, serif";
+    ctx.fillText(INVITE_INFO.venue, 410, 488);
+    ctx.fillText(INVITE_INFO.address, 410, 518);
+    ctx.fillText(INVITE_INFO.checkInWindow, 410, 550);
 
     const url = canvas.toDataURL("image/png");
     const link = document.createElement("a");
@@ -119,7 +126,7 @@ export default function GuestPassCard({
             </h4>
             <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-sage">
               {attending === "yes"
-                ? `Confirmed · ${guests} ${guests === 1 ? "Guest" : "Guests"}`
+                ? `Confirmed · ${guests} ${guests === 1 ? "Guest" : "Guests"}${dietary ? ` · ${dietary}` : ""}`
                 : "Warm Blessings Recorded"}
             </p>
             <p className="mt-2 text-xs text-muted">{INVITE_INFO.venue}</p>
@@ -137,7 +144,7 @@ export default function GuestPassCard({
       </div>
       <div className="border-t border-honey-gold/30 bg-blush-silk/70 px-5 py-2 text-[11px] text-muted flex items-center justify-center gap-1.5">
         <Sparkles className="h-3 w-3 text-coral-rose" />
-        Save your personalized pass to share or keep for arrival in Jodhpur
+        Save your personalized pass to share or show on arrival in Jodhpur
       </div>
     </div>
   );

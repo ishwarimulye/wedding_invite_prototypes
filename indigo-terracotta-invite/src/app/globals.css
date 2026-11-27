@@ -55,6 +55,13 @@ body {
   background: radial-gradient(circle at 22% 18%, #b33458 0%, #8e2141 54%, #65122b 100%);
 }
 
+.text-gold-shimmer {
+  background: linear-gradient(135deg, #9c6821 0%, #d4943a 35%, #f5cb78 55%, #b57724 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* Refined Floral & Motion Animations */
 @keyframes floatDown {
   0% {

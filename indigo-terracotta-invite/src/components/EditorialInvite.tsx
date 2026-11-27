@@ -3,12 +3,15 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import {
+  CalendarCheck,
   CalendarPlus,
+  Check,
   Flower2,
   Heart,
   MapPin,
   Music,
   Plane,
+  Share2,
   Sparkles,
   Sun,
 } from "lucide-react";
@@ -68,13 +71,13 @@ function downloadCeremonyIcs(c: Ceremony) {
 }
 
 const BURST_PETALS = [
-  { left: "10%", dx: "-45px", delay: "0s", color: "#D66863" },
-  { left: "22%", dx: "35px", delay: "0.06s", color: "#E29B4D" },
-  { left: "34%", dx: "-20px", delay: "0.02s", color: "#F3D7CF" },
-  { left: "48%", dx: "25px", delay: "0.1s", color: "#4B7864" },
-  { left: "62%", dx: "-35px", delay: "0.04s", color: "#D66863" },
-  { left: "75%", dx: "40px", delay: "0.08s", color: "#E29B4D" },
-  { left: "88%", dx: "-25px", delay: "0.03s", color: "#6B213B" },
+  { left: "10%", dx: "-45px", delay: "0s", color: "#D96566" },
+  { left: "22%", dx: "35px", delay: "0.06s", color: "#F0B254" },
+  { left: "34%", dx: "-20px", delay: "0.02s", color: "#F7CFC8" },
+  { left: "48%", dx: "25px", delay: "0.1s", color: "#D4943A" },
+  { left: "62%", dx: "-35px", delay: "0.04s", color: "#D96566" },
+  { left: "75%", dx: "40px", delay: "0.08s", color: "#F0B254" },
+  { left: "88%", dx: "-25px", delay: "0.03s", color: "#9E2A4B" },
 ];
 
 export default function EditorialInvite({ guestName }: { guestName: string }) {
@@ -86,17 +89,19 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
   });
   const [activeCode, setActiveCode] = useState(CEREMONIES[0].code);
 
-  // Live backend state (RSVPs, Petal Blessings, Sangeet Jukebox Votes)
+  // Live backend state
   const [entries, setEntries] = useState<RsvpEntry[]>(INITIAL_RSVPS);
   const [petalsCount, setPetalsCount] = useState(148);
   const [songs, setSongs] = useState<SongOption[]>(INITIAL_SONGS);
   const [votedSongId, setVotedSongId] = useState<string | null>(null);
   const [burstKey, setBurstKey] = useState(0);
+  const [copiedShare, setCopiedShare] = useState(false);
 
   // RSVP form
   const [name, setName] = useState(guestName === "Beloved Guest" ? "" : guestName);
   const [attending, setAttending] = useState<"yes" | "no">("yes");
   const [guests, setGuests] = useState(2);
+  const [dietary, setDietary] = useState("Pure Vegetarian");
   const [note, setNote] = useState("");
   const [selectedSong, setSelectedSong] = useState(INITIAL_SONGS[0].title);
   const [saving, setSaving] = useState(false);
@@ -192,6 +197,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
           name: name.trim(),
           attending,
           guests,
+          dietary,
           note: note.trim(),
           song: selectedSong,
         }),
@@ -208,11 +214,20 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
     }
   };
 
+  const handleCopyInvite = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopiedShare(true);
+      window.setTimeout(() => setCopiedShare(false), 2400);
+    } catch {
+      // Clipboard unavailable
+    }
+  };
+
   return (
     <div className="relative bg-garden-gradient text-berry-ink">
       <DriftingGardenPetals />
 
-      {/* On-demand Petal Burst Overlay when user clicks "Shower Petals" or submits RSVP */}
       {burstKey > 0 && (
         <div
           key={burstKey}
@@ -238,22 +253,22 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
 
       {/* Subtle Modern Stationery Masthead */}
       <header className="mx-auto max-w-6xl px-5 sm:px-8 pt-6">
-        <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-honey-gold/35 pb-4 text-[11px] uppercase tracking-[0.24em] text-berry/80">
+        <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-honey-gold/35 pb-4 text-[11px] uppercase tracking-[0.24em] text-berry/85">
           <span className="font-display text-base font-semibold tracking-wider text-berry normal-case">
             {INVITE_INFO.bride} &amp; {INVITE_INFO.groom}
           </span>
           <div className="flex flex-wrap items-center gap-5 sm:gap-7 font-medium">
             <a href="#postcards" className="hover:text-coral-rose transition">
-              Postcards
+              Story
             </a>
             <a href="#courtyard" className="hover:text-coral-rose transition">
-              Courtyard Map
+              Ceremonies
             </a>
             <a href="#sangeet" className="hover:text-coral-rose transition">
-              Sangeet Vote
+              Sangeet
             </a>
             <a href="#venue" className="hover:text-coral-rose transition">
-              Venue
+              Stay &amp; Travel
             </a>
             <a
               href="#rsvp"
@@ -265,9 +280,9 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
         </nav>
       </header>
 
-      {/* Section 1: Airy Modern Floral Hero + Live Petal Blessing */}
+      {/* Section 1: Airy Wedding Hero */}
       <section className="relative overflow-hidden px-4 sm:px-8 pt-10 pb-16">
-        <div className="relative mx-auto max-w-6xl rounded-[2.5rem] border border-honey-gold/45 bg-petal-milk/90 p-6 sm:p-12 lg:p-14 shadow-[0_24px_80px_rgba(70,17,37,0.08)] backdrop-blur-md">
+        <div className="relative mx-auto max-w-6xl rounded-[2.5rem] border border-honey-gold/55 bg-petal-milk/92 p-6 sm:p-12 lg:p-14 shadow-[0_24px_80px_rgba(110,22,48,0.1)] backdrop-blur-md">
           <BloomingGarlandCorner
             position="top-left"
             className="absolute -top-3 -left-3 h-32 w-32 sm:h-44 sm:w-44 opacity-90"
@@ -279,18 +294,22 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
 
           <div className="relative z-10 grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-6 text-center lg:text-left flex flex-col items-center lg:items-start">
-              <span className="inline-flex items-center gap-2 rounded-full bg-blush-silk border border-honey-gold/40 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-sage">
-                <Flower2 className="h-3.5 w-3.5 text-coral-rose" />
-                Warmly Welcoming {guestName}
+              <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-berry/80">
+                {INVITE_INFO.invocation}
               </span>
 
-              <p className="mt-6 font-script text-3xl sm:text-4xl text-sage">
+              <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-blush-silk border border-honey-gold/45 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-berry">
+                <Flower2 className="h-3.5 w-3.5 text-coral-rose" />
+                Cordially Inviting {guestName}
+              </span>
+
+              <p className="mt-5 font-script text-3xl sm:text-4xl text-sage">
                 With the blessings of our families
               </p>
 
-              <h1 className="mt-2 font-display text-5xl sm:text-7xl font-semibold leading-[1.02] text-berry">
+              <h1 className="mt-1 font-display text-5xl sm:text-7xl font-semibold leading-[1.02] text-berry">
                 {INVITE_INFO.bride}
-                <span className="mx-3 font-script text-5xl sm:text-6xl text-coral-rose font-normal">
+                <span className="mx-3 font-script text-5xl sm:text-6xl text-gold-shimmer font-normal">
                   &amp;
                 </span>
                 {INVITE_INFO.groom}
@@ -305,8 +324,9 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
               </div>
 
               <p className="text-base sm:text-lg font-display italic text-berry-ink/90 max-w-md leading-relaxed">
-                &ldquo;Tap to shower petals for us, flip our handwritten
-                postcards, and explore the Jodhpur palace courtyard below.&rdquo;
+                &ldquo;Join us beneath Jodhpur&apos;s sunlit sandstone arches for
+                three unforgettable days of Mehendi, Sangeet, Haldi, and Sunset
+                Pheras.&rdquo;
               </p>
 
               {/* Countdown Strip */}
@@ -319,7 +339,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-2xl border border-honey-gold/40 bg-white/80 py-3 px-2 text-center shadow-sm"
+                    className="rounded-2xl border border-honey-gold/45 bg-white/85 py-3 px-2 text-center shadow-sm"
                   >
                     <span className="block font-display text-2xl sm:text-3xl font-semibold text-berry tabular-nums">
                       {String(item.value).padStart(2, "0")}
@@ -331,29 +351,43 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 ))}
               </div>
 
-              {/* Interactive Petal Blessing & RSVP CTAs */}
+              {/* Gracious Primary Wedding CTAs */}
               <div className="mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                <button
-                  type="button"
-                  onClick={handleTossPetal}
-                  className="inline-flex items-center gap-2 rounded-full bg-berry-garden px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-petal-milk shadow-md transition hover:scale-105 active:scale-95"
+                <a
+                  href="#courtyard"
+                  className="inline-flex items-center gap-2 rounded-full bg-berry-garden px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-petal-milk shadow-md transition hover:scale-[1.03]"
                 >
                   <Sparkles className="h-3.5 w-3.5 text-marigold" />
-                  Shower Petals · {petalsCount}
-                </button>
+                  View Ceremonies
+                </a>
                 <a
                   href="#rsvp"
-                  className="inline-flex items-center gap-2 rounded-full border border-sage/45 bg-white/85 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-sage transition hover:bg-sage hover:text-petal-milk"
+                  className="inline-flex items-center gap-2 rounded-full border border-honey-gold/70 bg-white/90 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-berry transition hover:bg-blush-silk"
                 >
-                  <Heart className="h-3.5 w-3.5" />
-                  Get Your Guest Pass
+                  <Heart className="h-3.5 w-3.5 text-coral-rose" />
+                  Kindly RSVP
                 </a>
               </div>
+
+              {/* Subtle Poetic Floral Blessing Gesture */}
+              <button
+                type="button"
+                onClick={handleTossPetal}
+                className="mt-4 inline-flex items-center gap-2 text-xs font-medium text-sage hover:text-berry transition"
+              >
+                <Flower2 className="h-3.5 w-3.5 text-coral-rose" />
+                <span>
+                  Offer Floral Blessings ·{" "}
+                  <strong className="font-semibold text-berry">
+                    {petalsCount} petals showered
+                  </strong>
+                </span>
+              </button>
             </div>
 
             <div className="lg:col-span-6 flex justify-center">
               <div className="relative w-full max-w-md">
-                <div className="overflow-hidden rounded-t-[220px] rounded-b-[2rem] border border-honey-gold/60 bg-blush-silk p-3 shadow-[0_26px_70px_rgba(70,17,37,0.14)]">
+                <div className="overflow-hidden rounded-t-[220px] rounded-b-[2rem] border-2 border-honey-gold/65 bg-blush-silk p-3 shadow-[0_26px_70px_rgba(110,22,48,0.16)]">
                   <div className="relative aspect-[3/4] w-full overflow-hidden rounded-t-[208px] rounded-b-[1.4rem]">
                     <Image
                       src="/images/jodhpur-hero.jpg"
@@ -366,7 +400,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   </div>
                 </div>
 
-                <div className="animate-float-badge -mt-7 mx-auto w-fit rounded-full border border-honey-gold/60 bg-petal-milk px-7 py-2.5 text-center shadow-lg">
+                <div className="animate-float-badge -mt-7 mx-auto w-fit rounded-full border border-honey-gold/65 bg-petal-milk px-7 py-2.5 text-center shadow-lg">
                   <p className="text-[10px] uppercase tracking-[0.26em] text-coral-rose font-semibold">
                     {INVITE_INFO.venue}
                   </p>
@@ -380,7 +414,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
         </div>
       </section>
 
-      {/* Section 2: Unique Feature #1 — 3D Flipping Handwritten Love Postcards */}
+      {/* Section 2: 3D Flipping Handwritten Love Postcards */}
       <section id="postcards" className="px-4 sm:px-8 py-14">
         <div className="mx-auto max-w-6xl">
           <RevealBlock className="text-center max-w-2xl mx-auto">
@@ -403,9 +437,9 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
         </div>
       </section>
 
-      {/* Section 3: Unique Feature #2 — Interactive Palace Courtyard Map & All 4 Ceremonies */}
+      {/* Section 3: Interactive Palace Courtyard Map & All 4 Ceremonies */}
       <section id="courtyard" className="px-4 sm:px-8 py-14">
-        <RevealBlock className="mx-auto max-w-6xl rounded-[2.5rem] bg-berry-garden p-6 sm:p-11 text-petal-milk shadow-[0_28px_85px_rgba(11,51,48,0.28)]">
+        <RevealBlock className="mx-auto max-w-6xl rounded-[2.5rem] bg-berry-garden p-6 sm:p-11 text-petal-milk shadow-[0_28px_85px_rgba(110,22,48,0.28)]">
           <div className="text-center max-w-2xl mx-auto">
             <p className="font-script text-3xl sm:text-4xl text-marigold">
               Four Celebrations · One Heritage Estate
@@ -415,7 +449,6 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
             </h2>
           </div>
 
-          {/* Clear 4-Ceremony Pill Switcher */}
           <div className="mt-7 flex flex-wrap items-center justify-center gap-2.5">
             {CEREMONIES.map((c) => {
               const active = c.code === activeCeremony.code;
@@ -448,7 +481,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
               key={activeCeremony.code}
               className="lg:col-span-6 animate-panel-pop rounded-3xl border border-petal-milk/20 bg-petal-milk/96 p-5 sm:p-7 text-berry-ink"
             >
-              <div className="relative mb-5 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-honey-gold/40">
+              <div className="relative mb-5 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-honey-gold/45">
                 <Image
                   src={activeCeremony.image}
                   alt={activeCeremony.title}
@@ -477,6 +510,19 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 {activeCeremony.note}
               </p>
 
+              {/* Highlights */}
+              <div className="mt-3.5 flex flex-wrap gap-2">
+                {activeCeremony.highlights.map((hl) => (
+                  <span
+                    key={hl}
+                    className="rounded-full bg-blush-silk px-3 py-1 text-[11px] font-medium text-berry border border-honey-gold/25"
+                  >
+                    {hl}
+                  </span>
+                ))}
+              </div>
+
+              {/* Dress Mood & Footwear Tip */}
               <div className="mt-4 rounded-2xl bg-blush-silk/85 p-3.5 border border-honey-gold/30">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-berry font-semibold">
                   Dress Mood: {activeCeremony.dressLabel}
@@ -494,15 +540,19 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                     </div>
                   ))}
                 </div>
+                <p className="mt-2 text-[11px] text-muted">
+                  <strong className="text-berry">Planner Tip:</strong>{" "}
+                  {activeCeremony.footwearTip}
+                </p>
               </div>
 
               <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={() => downloadCeremonyIcs(activeCeremony)}
-                  className="inline-flex items-center gap-2 rounded-full bg-coral-rose px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-petal-milk transition hover:bg-berry"
+                  className="inline-flex items-center gap-2 rounded-full bg-berry-garden px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-petal-milk transition hover:opacity-95"
                 >
-                  <CalendarPlus className="h-3.5 w-3.5" />
+                  <CalendarPlus className="h-3.5 w-3.5 text-marigold" />
                   Save Ceremony (.ics)
                 </button>
                 <span className="text-xs text-muted">
@@ -512,7 +562,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
             </div>
           </div>
 
-          {/* Complete 4-Ceremony Overview Strip (All 4 visible at a glance!) */}
+          {/* Complete 4-Ceremony Overview Strip */}
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 border-t border-petal-milk/20 pt-7 text-left">
             {CEREMONIES.map((c) => (
               <button
@@ -526,7 +576,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 }`}
               >
                 <p className="text-[10px] uppercase tracking-[0.2em] text-marigold font-semibold">
-                  {c.day} · {c.time}
+                  {c.day} · {c.time.split("·")[0]}
                 </p>
                 <p className="mt-1 font-display text-xl font-semibold text-petal-milk">
                   {c.title}
@@ -538,9 +588,9 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
         </RevealBlock>
       </section>
 
-      {/* Section 4: Unique Feature #3 — Live Sangeet Jukebox Voting */}
+      {/* Section 4: Live Sangeet Jukebox Voting */}
       <section id="sangeet" className="px-4 sm:px-8 py-12">
-        <RevealBlock className="mx-auto max-w-5xl rounded-[2.25rem] border border-honey-gold/45 bg-white/85 p-6 sm:p-10 shadow-sm backdrop-blur-sm">
+        <RevealBlock className="mx-auto max-w-5xl rounded-[2.25rem] border border-honey-gold/45 bg-white/88 p-6 sm:p-10 shadow-sm backdrop-blur-sm">
           <div className="grid items-center gap-8 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-coral-rose">
@@ -551,7 +601,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 Vote For The First Sangeet Anthem
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-muted">
-                Help our DJ pick the opening track when the families hit the
+                Help our DJ pick the opening track when both families hit the
                 courtyard floor — tap your favorite to cast a live vote.
               </p>
             </div>
@@ -572,7 +622,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                     }`}
                   >
                     <div
-                      className="absolute inset-y-0 left-0 bg-rose-mist/45 transition-all duration-500"
+                      className="absolute inset-y-0 left-0 bg-rose-mist/55 transition-all duration-500"
                       style={{ width: `${pct}%` }}
                     />
                     <div className="relative z-10 flex items-center justify-between gap-3">
@@ -582,7 +632,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                         </p>
                         <p className="text-xs text-muted">{song.artist}</p>
                       </div>
-                      <span className="rounded-full bg-white/90 border border-honey-gold/40 px-3.5 py-1 text-xs font-semibold text-sage">
+                      <span className="rounded-full bg-white/95 border border-honey-gold/40 px-3.5 py-1 text-xs font-semibold text-sage">
                         {song.votes} votes · {pct}%
                       </span>
                     </div>
@@ -594,11 +644,11 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
         </RevealBlock>
       </section>
 
-      {/* Section 5: Destination & Hospitality Guide */}
+      {/* Section 5: Destination, Check-in & Wedding Planner Concierge */}
       <section id="venue" className="px-4 sm:px-8 py-12">
-        <RevealBlock className="mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-honey-gold/50 bg-white/80 shadow-[0_22px_70px_rgba(70,17,37,0.09)] backdrop-blur-sm">
+        <RevealBlock className="mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-honey-gold/50 bg-white/85 shadow-[0_22px_70px_rgba(110,22,48,0.09)] backdrop-blur-sm">
           <div className="grid lg:grid-cols-12">
-            <div className="lg:col-span-6 relative min-h-[300px] sm:min-h-[400px]">
+            <div className="lg:col-span-6 relative min-h-[320px] sm:min-h-[420px]">
               <Image
                 src="/images/jodhpur-table.jpg"
                 alt="Candlelit courtyard celebration table at Umaid Heritage Haveli"
@@ -611,36 +661,48 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
             <div className="lg:col-span-6 p-7 sm:p-11 flex flex-col justify-between">
               <div>
                 <p className="text-xs uppercase tracking-[0.26em] text-coral-rose font-semibold">
-                  Destination &amp; Hospitality
+                  Stay, Travel &amp; Concierge
                 </p>
                 <h2 className="mt-2 font-display text-3xl sm:text-4xl font-semibold text-berry">
                   {INVITE_INFO.venue}
                 </h2>
                 <p className="mt-1.5 text-sm text-muted">{INVITE_INFO.address}</p>
 
-                <div className="mt-6 space-y-4">
-                  <div className="flex items-start gap-3.5 rounded-2xl bg-blush-silk/70 p-4 border border-honey-gold/25">
-                    <Plane className="h-4 w-4 text-sage mt-1 shrink-0" />
+                <div className="mt-6 space-y-3.5">
+                  <div className="flex items-start gap-3.5 rounded-2xl bg-blush-silk/75 p-4 border border-honey-gold/25">
+                    <CalendarCheck className="h-4 w-4 text-berry mt-1 shrink-0" />
                     <div>
                       <p className="font-display text-lg font-semibold text-berry">
-                        Airport Transfers
+                        Haveli Suite Check-In
                       </p>
                       <p className="text-xs leading-relaxed text-muted">
-                        Jodhpur Airport (JDH) is 15 minutes from the haveli;
-                        courtesy cars await all Friday &amp; Saturday arrivals.
+                        {INVITE_INFO.checkInWindow}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3.5 rounded-2xl bg-blush-silk/70 p-4 border border-honey-gold/25">
+                  <div className="flex items-start gap-3.5 rounded-2xl bg-blush-silk/75 p-4 border border-honey-gold/25">
+                    <Plane className="h-4 w-4 text-sage mt-1 shrink-0" />
+                    <div>
+                      <p className="font-display text-lg font-semibold text-berry">
+                        Airport Pickups · {INVITE_INFO.conciergeName}
+                      </p>
+                      <p className="text-xs leading-relaxed text-muted">
+                        {INVITE_INFO.conciergeNote} Share your arrival time in
+                        the RSVP below.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5 rounded-2xl bg-blush-silk/75 p-4 border border-honey-gold/25">
                     <Sun className="h-4 w-4 text-coral-rose mt-1 shrink-0" />
                     <div>
                       <p className="font-display text-lg font-semibold text-berry">
-                        November Climate &amp; Attire Tip
+                        November Climate &amp; Shawl Note
                       </p>
                       <p className="text-xs leading-relaxed text-muted">
                         Warm 26°C sunlit afternoons and crisp 13°C evenings — a
-                        light cashmere shawl pairs nicely for courtyard dining.
+                        light pashmina shawl pairs nicely for evening pheras.
                       </p>
                     </div>
                   </div>
@@ -652,9 +714,9 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   href={INVITE_INFO.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-petal-milk transition hover:bg-berry"
+                  className="inline-flex items-center gap-2 rounded-full bg-berry-garden px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-petal-milk transition hover:opacity-95"
                 >
-                  <MapPin className="h-3.5 w-3.5" />
+                  <MapPin className="h-3.5 w-3.5 text-marigold" />
                   Open Directions in Maps
                 </a>
               </div>
@@ -663,10 +725,10 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
         </RevealBlock>
       </section>
 
-      {/* Section 6: Unique Feature #4 — RSVP + Instant Downloadable Keepsake Pass */}
+      {/* Section 6: RSVP + Dietary & Arrival + Downloadable Keepsake Pass */}
       <section id="rsvp" className="px-4 sm:px-8 pt-10 pb-20">
         <div className="mx-auto max-w-6xl space-y-12">
-          <RevealBlock className="relative overflow-hidden rounded-[2.5rem] border border-honey-gold/55 bg-petal-milk/95 p-6 sm:p-11 shadow-[0_24px_75px_rgba(70,17,37,0.1)]">
+          <RevealBlock className="relative overflow-hidden rounded-[2.5rem] border border-honey-gold/55 bg-petal-milk/95 p-6 sm:p-11 shadow-[0_24px_75px_rgba(110,22,48,0.1)]">
             <BloomingGarlandCorner
               position="top-right"
               className="absolute -top-3 -right-3 h-32 w-32 opacity-75"
@@ -689,6 +751,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   guestName={name.trim() || guestName}
                   guests={guests}
                   attending={attending}
+                  dietary={attending === "yes" ? dietary : undefined}
                 />
 
                 <button
@@ -706,15 +769,15 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
               >
                 <div className="text-center">
                   <p className="font-script text-3xl sm:text-4xl text-sage">
-                    Unlock your personalized keepsake pass
+                    Kindly respond by 10 October · Unlock your pass
                   </p>
                   <h2 className="mt-1 font-display text-4xl sm:text-5xl font-semibold text-berry">
                     RSVP &amp; Guest Pass
                   </h2>
                 </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div>
+                <div className="grid gap-5 sm:grid-cols-3">
+                  <div className="sm:col-span-1">
                     <label className="block text-xs font-semibold uppercase tracking-[0.18em] text-berry">
                       Your Name / Family
                     </label>
@@ -741,6 +804,21 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                       <option value={3}>3 Guests</option>
                       <option value={4}>4 Guests</option>
                       <option value={5}>5+ Family</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-[0.18em] text-berry">
+                      Dining Preference
+                    </label>
+                    <select
+                      value={dietary}
+                      onChange={(e) => setDietary(e.target.value)}
+                      className="mt-1.5 w-full rounded-xl border border-honey-gold/45 bg-white/90 px-4 py-3 text-sm outline-none focus:border-berry"
+                    >
+                      <option>Pure Vegetarian</option>
+                      <option>Jain Meal</option>
+                      <option>Standard Festive Menu</option>
+                      <option>Vegan / Gluten-Free</option>
                     </select>
                   </div>
                 </div>
@@ -789,13 +867,13 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                   </div>
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-[0.18em] text-berry">
-                      Warm Wish or Dietary Note
+                      Arrival Flight / Warm Wish
                     </label>
                     <input
                       type="text"
                       value={note}
                       onChange={(e) => setNote(e.target.value)}
-                      placeholder="Write a note for Meera & Kabir..."
+                      placeholder="e.g. Arriving Fri 4 PM · Warmest wishes!"
                       className="mt-1.5 w-full rounded-xl border border-honey-gold/45 bg-white/90 px-4 py-3 text-sm outline-none focus:border-berry"
                     />
                   </div>
@@ -826,7 +904,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
               {entries.slice(0, 6).map((entry) => (
                 <div
                   key={entry.id}
-                  className="rounded-3xl border border-honey-gold/35 bg-white/80 p-6 shadow-sm backdrop-blur-sm"
+                  className="rounded-3xl border border-honey-gold/35 bg-white/85 p-6 shadow-sm backdrop-blur-sm"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className="font-display text-xl font-semibold text-berry">
@@ -862,9 +940,25 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
         <p className="mt-2 font-display text-2xl sm:text-3xl font-semibold">
           The Rathore &amp; Mehta Families
         </p>
-        <p className="mt-4 text-xs uppercase tracking-[0.26em] text-petal-milk/70">
+
+        <div className="mt-6 flex justify-center">
+          <button
+            type="button"
+            onClick={handleCopyInvite}
+            className="inline-flex items-center gap-2 rounded-full border border-petal-milk/35 bg-petal-milk/10 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-petal-milk transition hover:bg-petal-milk/20"
+          >
+            {copiedShare ? (
+              <Check className="h-3.5 w-3.5 text-marigold" />
+            ) : (
+              <Share2 className="h-3.5 w-3.5 text-marigold" />
+            )}
+            {copiedShare ? "Invite Link Copied" : "Share Wedding Invite"}
+          </button>
+        </div>
+
+        <p className="mt-6 text-xs uppercase tracking-[0.26em] text-petal-milk/75">
           {INVITE_INFO.bride} &amp; {INVITE_INFO.groom} · {INVITE_INFO.dates} ·{" "}
-          {INVITE_INFO.city}
+          {INVITE_INFO.city} · {INVITE_INFO.hashtag}
         </p>
       </footer>
     </div>
