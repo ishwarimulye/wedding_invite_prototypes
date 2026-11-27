@@ -11,7 +11,7 @@ export default function PalaceCourtyardMap({
   onSelect: (code: string) => void;
 }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-petal-milk/25 bg-petal-milk/96 p-4 sm:p-5 text-berry-ink shadow-inner">
+    <div className="relative overflow-hidden rounded-3xl border border-petal-milk/30 bg-petal-milk/96 p-4 sm:p-5 text-berry-ink shadow-inner">
       <div className="flex items-center justify-between border-b border-honey-gold/30 pb-2.5 mb-3">
         <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-berry">
           Estate Map · Tap Any Pavilion
@@ -27,7 +27,7 @@ export default function PalaceCourtyardMap({
         role="img"
         aria-label="Interactive illustrated map of Umaid Heritage Haveli showing all four wedding ceremony pavilions"
       >
-        <rect x="0" y="0" width="400" height="280" rx="18" fill="#FCF8F1" />
+        <rect x="0" y="0" width="400" height="280" rx="18" fill="#FFF8F3" />
         <rect
           x="12"
           y="12"
@@ -35,8 +35,8 @@ export default function PalaceCourtyardMap({
           height="256"
           rx="14"
           fill="none"
-          stroke="#C99242"
-          strokeOpacity="0.4"
+          stroke="#D4943A"
+          strokeOpacity="0.45"
           strokeDasharray="4 4"
         />
 
@@ -46,9 +46,9 @@ export default function PalaceCourtyardMap({
           cy="94"
           rx="74"
           ry="48"
-          fill="#E0F1EB"
-          stroke="#134E4A"
-          strokeOpacity="0.35"
+          fill="#FCEAE5"
+          stroke="#D96566"
+          strokeOpacity="0.45"
           strokeWidth="1.2"
         />
         <text
@@ -56,7 +56,7 @@ export default function PalaceCourtyardMap({
           y="62"
           textAnchor="middle"
           fontSize="8"
-          fill="#134E4A"
+          fill="#9E2A4B"
           letterSpacing="1.3"
           fontWeight="600"
         >
@@ -70,8 +70,8 @@ export default function PalaceCourtyardMap({
           width="142"
           height="94"
           rx="12"
-          fill="#FBEDE4"
-          stroke="#C99242"
+          fill="#FDEEE0"
+          stroke="#D4943A"
           strokeWidth="1.2"
         />
         <text
@@ -79,7 +79,7 @@ export default function PalaceCourtyardMap({
           y="50"
           textAnchor="middle"
           fontSize="8"
-          fill="#134E4A"
+          fill="#8C5327"
           letterSpacing="1.3"
           fontWeight="600"
         >
@@ -93,9 +93,9 @@ export default function PalaceCourtyardMap({
           width="138"
           height="92"
           rx="12"
-          fill="#FDF2DF"
-          stroke="#EA9A3E"
-          strokeOpacity="0.6"
+          fill="#FEF3DE"
+          stroke="#F0B254"
+          strokeOpacity="0.7"
           strokeWidth="1.2"
         />
         <text
@@ -103,7 +103,7 @@ export default function PalaceCourtyardMap({
           y="174"
           textAnchor="middle"
           fontSize="8"
-          fill="#8E5B17"
+          fill="#8C5327"
           letterSpacing="1.3"
           fontWeight="600"
         >
@@ -117,9 +117,9 @@ export default function PalaceCourtyardMap({
           width="144"
           height="96"
           rx="42"
-          fill="#FCE8E3"
-          stroke="#E16B5A"
-          strokeOpacity="0.55"
+          fill="#FBE2E6"
+          stroke="#9E2A4B"
+          strokeOpacity="0.45"
           strokeWidth="1.3"
         />
         <text
@@ -127,24 +127,24 @@ export default function PalaceCourtyardMap({
           y="172"
           textAnchor="middle"
           fontSize="8"
-          fill="#B34436"
+          fill="#9E2A4B"
           letterSpacing="1.3"
           fontWeight="600"
         >
           LOTUS MANDAP
         </text>
 
-        {/* Lantern Footpaths connecting all 4 wings */}
+        {/* Lantern Footpaths */}
         <path
           d="M105 104 Q200 112 295 92 M105 104 L105 204 M105 204 Q186 218 268 204 M295 92 Q284 148 268 204"
           fill="none"
-          stroke="#C99242"
+          stroke="#D4943A"
           strokeWidth="1.5"
           strokeDasharray="4 4"
-          strokeOpacity="0.6"
+          strokeOpacity="0.65"
         />
 
-        {/* Interactive Pins for all 4 Ceremonies */}
+        {/* Interactive Pins */}
         {CEREMONIES.map((c) => {
           const isSelected = c.code === activeCeremony.code;
           return (
@@ -157,15 +157,15 @@ export default function PalaceCourtyardMap({
               {isSelected && (
                 <circle
                   r="22"
-                  fill="#E16B5A"
-                  fillOpacity="0.24"
+                  fill="#D96566"
+                  fillOpacity="0.25"
                   className="animate-ping"
                 />
               )}
               <circle
                 r={isSelected ? 16 : 13}
-                fill={isSelected ? "#134E4A" : "#FFFFFF"}
-                stroke={isSelected ? "#EA9A3E" : "#134E4A"}
+                fill={isSelected ? "#9E2A4B" : "#FFFFFF"}
+                stroke={isSelected ? "#F0B254" : "#9E2A4B"}
                 strokeWidth="2"
               />
               <text
@@ -174,7 +174,7 @@ export default function PalaceCourtyardMap({
                 textAnchor="middle"
                 fontSize="10"
                 fontWeight="700"
-                fill={isSelected ? "#FCF8F1" : "#134E4A"}
+                fill={isSelected ? "#FFF8F3" : "#9E2A4B"}
               >
                 {c.code}
               </text>
@@ -184,7 +184,7 @@ export default function PalaceCourtyardMap({
                 width="80"
                 height="16"
                 rx="8"
-                fill={isSelected ? "#E16B5A" : "#FBEDE4"}
+                fill={isSelected ? "#D4943A" : "#FDEBE3"}
               />
               <text
                 x="0"
@@ -192,7 +192,7 @@ export default function PalaceCourtyardMap({
                 textAnchor="middle"
                 fontSize="7.8"
                 fontWeight="600"
-                fill={isSelected ? "#FCF8F1" : "#1E2422"}
+                fill={isSelected ? "#FFF8F3" : "#351A22"}
               >
                 {c.shortTitle}
               </text>

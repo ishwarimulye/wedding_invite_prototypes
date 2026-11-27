@@ -20,60 +20,60 @@ export default function GuestPassCard({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    ctx.fillStyle = "#FCF8F1";
+    ctx.fillStyle = "#FFF8F3";
     ctx.fillRect(0, 0, 1200, 680);
 
-    ctx.strokeStyle = "#134E4A";
+    ctx.strokeStyle = "#9E2A4B";
     ctx.lineWidth = 10;
     ctx.strokeRect(24, 24, 1152, 632);
 
-    ctx.strokeStyle = "#C99242";
+    ctx.strokeStyle = "#D4943A";
     ctx.lineWidth = 2;
     ctx.strokeRect(42, 42, 1116, 596);
 
-    // Left Peacock Teal ribbon
-    ctx.fillStyle = "#134E4A";
+    // Left Rani Rose ribbon
+    ctx.fillStyle = "#9E2A4B";
     ctx.fillRect(42, 42, 310, 596);
 
-    ctx.fillStyle = "#FBECE4";
+    ctx.fillStyle = "#FDEBE3";
     ctx.font = "600 20px Georgia, serif";
     ctx.textAlign = "center";
     ctx.fillText("SHUBH VIVAH PASS", 197, 130);
 
-    ctx.fillStyle = "#EA9A3E";
+    ctx.fillStyle = "#F0B254";
     ctx.font = "italic 58px Georgia, serif";
     ctx.fillText("M & K", 197, 340);
 
-    ctx.fillStyle = "#FCF8F1";
+    ctx.fillStyle = "#FFF8F3";
     ctx.font = "500 18px sans-serif";
     ctx.fillText("20 – 22 NOV 2027", 197, 520);
     ctx.fillText("JODHPUR", 197, 552);
 
     ctx.textAlign = "left";
-    ctx.fillStyle = "#E16B5A";
+    ctx.fillStyle = "#D96566";
     ctx.font = "600 18px sans-serif";
     ctx.fillText("PERSONALIZED ROYAL KEEPSAKE", 410, 125);
 
-    ctx.fillStyle = "#134E4A";
+    ctx.fillStyle = "#9E2A4B";
     ctx.font = "600 56px Georgia, serif";
     ctx.fillText(`${INVITE_INFO.bride} & ${INVITE_INFO.groom}`, 410, 200);
 
-    ctx.strokeStyle = "#E16B5A";
+    ctx.strokeStyle = "#D4943A";
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(410, 232);
     ctx.lineTo(1080, 232);
     ctx.stroke();
 
-    ctx.fillStyle = "#5A635E";
+    ctx.fillStyle = "#725059";
     ctx.font = "600 16px sans-serif";
     ctx.fillText("HONORED GUEST", 410, 290);
 
-    ctx.fillStyle = "#1E2422";
+    ctx.fillStyle = "#351A22";
     ctx.font = "600 42px Georgia, serif";
     ctx.fillText(guestName, 410, 345);
 
-    ctx.fillStyle = "#2D6A54";
+    ctx.fillStyle = "#8C5327";
     ctx.font = "600 20px sans-serif";
     ctx.fillText(
       attending === "yes"
@@ -83,7 +83,7 @@ export default function GuestPassCard({
       400
     );
 
-    ctx.fillStyle = "#5A635E";
+    ctx.fillStyle = "#725059";
     ctx.font = "500 19px Georgia, serif";
     ctx.fillText(INVITE_INFO.venue, 410, 500);
     ctx.fillText(INVITE_INFO.address, 410, 532);
@@ -96,7 +96,7 @@ export default function GuestPassCard({
   };
 
   return (
-    <div className="mx-auto mt-6 max-w-xl overflow-hidden rounded-3xl border-2 border-honey-gold/65 bg-white shadow-[0_18px_50px_rgba(11,51,48,0.14)] text-left">
+    <div className="mx-auto mt-6 max-w-xl overflow-hidden rounded-3xl border-2 border-honey-gold/65 bg-white shadow-[0_18px_50px_rgba(110,22,48,0.14)] text-left">
       <div className="grid sm:grid-cols-12">
         <div className="sm:col-span-4 bg-berry-garden p-5 text-petal-milk flex flex-col justify-between">
           <span className="text-[10px] uppercase tracking-[0.22em] text-marigold font-semibold">
