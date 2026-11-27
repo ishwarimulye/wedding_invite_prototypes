@@ -17,8 +17,8 @@ import {
 } from "lucide-react";
 import {
   BloomingGarlandCorner,
-  DriftingGardenPetals,
   FloralDivider,
+  WeddingToranGarland,
 } from "./GardenFlorals";
 import RevealBlock from "./RevealBlock";
 import FlipPostcardGallery from "./FlipPostcardGallery";
@@ -70,16 +70,6 @@ function downloadCeremonyIcs(c: Ceremony) {
   URL.revokeObjectURL(url);
 }
 
-const BURST_PETALS = [
-  { left: "10%", dx: "-45px", delay: "0s", color: "#D96566" },
-  { left: "22%", dx: "35px", delay: "0.06s", color: "#F0B254" },
-  { left: "34%", dx: "-20px", delay: "0.02s", color: "#F7CFC8" },
-  { left: "48%", dx: "25px", delay: "0.1s", color: "#D4943A" },
-  { left: "62%", dx: "-35px", delay: "0.04s", color: "#D96566" },
-  { left: "75%", dx: "40px", delay: "0.08s", color: "#F0B254" },
-  { left: "88%", dx: "-25px", delay: "0.03s", color: "#9E2A4B" },
-];
-
 export default function EditorialInvite({ guestName }: { guestName: string }) {
   const [countdown, setCountdown] = useState({
     days: 359,
@@ -91,10 +81,8 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
 
   // Live backend state
   const [entries, setEntries] = useState<RsvpEntry[]>(INITIAL_RSVPS);
-  const [petalsCount, setPetalsCount] = useState(148);
   const [songs, setSongs] = useState<SongOption[]>(INITIAL_SONGS);
   const [votedSongId, setVotedSongId] = useState<string | null>(null);
-  const [burstKey, setBurstKey] = useState(0);
   const [copiedShare, setCopiedShare] = useState(false);
 
   // RSVP form
@@ -129,7 +117,6 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
       .then((data) => {
         if (!mounted || !data) return;
         if (Array.isArray(data.entries)) setEntries(data.entries);
-        if (typeof data.petals === "number") setPetalsCount(data.petals);
         if (Array.isArray(data.songs)) setSongs(data.songs);
       })
       .catch(() => {});
@@ -145,24 +132,6 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
     1,
     songs.reduce((acc, s) => acc + s.votes, 0)
   );
-
-  const handleTossPetal = async () => {
-    setBurstKey((k) => k + 1);
-    setPetalsCount((c) => c + 1);
-    try {
-      const res = await fetch("/api/rsvp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "petal" }),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (typeof data.petals === "number") setPetalsCount(data.petals);
-      }
-    } catch {
-      // Optimistic count already shown
-    }
-  };
 
   const handleVoteSong = async (songId: string) => {
     if (votedSongId === songId) return;
@@ -205,10 +174,8 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data?.entries)) setEntries(data.entries);
-        if (typeof data?.petals === "number") setPetalsCount(data.petals);
       }
       setSaved(true);
-      setBurstKey((k) => k + 1);
     } finally {
       setSaving(false);
     }
@@ -226,79 +193,36 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
 
   return (
     <div className="relative bg-garden-gradient text-berry-ink">
-      <DriftingGardenPetals />
-
-      {burstKey > 0 && (
-        <div
-          key={burstKey}
-          className="pointer-events-none fixed inset-x-0 top-16 z-40 h-72 overflow-hidden"
-          aria-hidden="true"
-        >
-          {BURST_PETALS.map((p, i) => (
-            <span
-              key={i}
-              style={
-                {
-                  left: p.left,
-                  animationDelay: p.delay,
-                  backgroundColor: p.color,
-                  "--dx": p.dx,
-                } as React.CSSProperties
-              }
-              className="animate-confetti absolute top-0 h-3.5 w-3 rounded-full"
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Subtle Modern Stationery Masthead */}
+      {/* Traditional Embossed Wedding Patrika Header */}
       <header className="mx-auto max-w-6xl px-5 sm:px-8 pt-6">
-        <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-honey-gold/35 pb-4 text-[11px] uppercase tracking-[0.24em] text-berry/85">
-          <span className="font-display text-base font-semibold tracking-wider text-berry normal-case">
-            {INVITE_INFO.bride} &amp; {INVITE_INFO.groom}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-honey-gold/45 pb-3.5 text-[11px] uppercase tracking-[0.26em] text-berry">
+          <span className="font-semibold">{INVITE_INFO.invocation}</span>
+          <span className="font-display text-sm sm:text-base font-semibold tracking-widest normal-case">
+            Shubh Vivah · {INVITE_INFO.bride} &amp; {INVITE_INFO.groom}
           </span>
-          <div className="flex flex-wrap items-center gap-5 sm:gap-7 font-medium">
-            <a href="#postcards" className="hover:text-coral-rose transition">
-              Story
-            </a>
-            <a href="#courtyard" className="hover:text-coral-rose transition">
-              Ceremonies
-            </a>
-            <a href="#sangeet" className="hover:text-coral-rose transition">
-              Sangeet
-            </a>
-            <a href="#venue" className="hover:text-coral-rose transition">
-              Stay &amp; Travel
-            </a>
-            <a
-              href="#rsvp"
-              className="rounded-full bg-berry px-4 py-1.5 text-petal-milk hover:bg-coral-rose transition"
-            >
-              RSVP
-            </a>
-          </div>
-        </nav>
+          <span className="font-semibold text-sage">{INVITE_INFO.dates}</span>
+        </div>
       </header>
 
-      {/* Section 1: Airy Wedding Hero */}
-      <section className="relative overflow-hidden px-4 sm:px-8 pt-10 pb-16">
-        <div className="relative mx-auto max-w-6xl rounded-[2.5rem] border border-honey-gold/55 bg-petal-milk/92 p-6 sm:p-12 lg:p-14 shadow-[0_24px_80px_rgba(110,22,48,0.1)] backdrop-blur-md">
-          <BloomingGarlandCorner
-            position="top-left"
-            className="absolute -top-3 -left-3 h-32 w-32 sm:h-44 sm:w-44 opacity-90"
-          />
-          <BloomingGarlandCorner
-            position="bottom-right"
-            className="absolute -bottom-3 -right-3 h-28 w-28 sm:h-40 sm:w-40 opacity-80"
-          />
+      {/* Section 1: Airy Wedding Invitation Card with Hanging Floral Toran */}
+      <section className="relative overflow-hidden px-4 sm:px-8 pt-8 pb-14">
+        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border-2 border-honey-gold/65 bg-petal-milk/95 shadow-[0_28px_85px_rgba(94,17,41,0.14)] backdrop-blur-md">
+          {/* Traditional Hanging Marigold & Mango-Leaf Toran */}
+          <WeddingToranGarland />
+
+          <div className="relative p-6 sm:p-11 lg:p-12 pt-4 sm:pt-6">
+            <BloomingGarlandCorner
+              position="bottom-left"
+              className="absolute -bottom-3 -left-3 h-28 w-28 sm:h-36 sm:w-36 opacity-75"
+            />
+            <BloomingGarlandCorner
+              position="bottom-right"
+              className="absolute -bottom-3 -right-3 h-28 w-28 sm:h-36 sm:w-36 opacity-75"
+            />
 
           <div className="relative z-10 grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-6 text-center lg:text-left flex flex-col items-center lg:items-start">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-berry/80">
-                {INVITE_INFO.invocation}
-              </span>
-
-              <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-blush-silk border border-honey-gold/45 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-berry">
+              <span className="inline-flex items-center gap-2 rounded-full bg-blush-silk border border-honey-gold/55 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-berry">
                 <Flower2 className="h-3.5 w-3.5 text-coral-rose" />
                 Cordially Inviting {guestName}
               </span>
@@ -339,7 +263,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-2xl border border-honey-gold/45 bg-white/85 py-3 px-2 text-center shadow-sm"
+                    className="rounded-2xl border border-honey-gold/50 bg-blush-silk/65 py-3 px-2 text-center shadow-sm"
                   >
                     <span className="block font-display text-2xl sm:text-3xl font-semibold text-berry tabular-nums">
                       {String(item.value).padStart(2, "0")}
@@ -362,27 +286,12 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 </a>
                 <a
                   href="#rsvp"
-                  className="inline-flex items-center gap-2 rounded-full border border-honey-gold/70 bg-white/90 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-berry transition hover:bg-blush-silk"
+                  className="inline-flex items-center gap-2 rounded-full border border-honey-gold/75 bg-white/90 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-berry transition hover:bg-blush-silk"
                 >
                   <Heart className="h-3.5 w-3.5 text-coral-rose" />
                   Kindly RSVP
                 </a>
               </div>
-
-              {/* Subtle Poetic Floral Blessing Gesture */}
-              <button
-                type="button"
-                onClick={handleTossPetal}
-                className="mt-4 inline-flex items-center gap-2 text-xs font-medium text-sage hover:text-berry transition"
-              >
-                <Flower2 className="h-3.5 w-3.5 text-coral-rose" />
-                <span>
-                  Offer Floral Blessings ·{" "}
-                  <strong className="font-semibold text-berry">
-                    {petalsCount} petals showered
-                  </strong>
-                </span>
-              </button>
             </div>
 
             <div className="lg:col-span-6 flex justify-center">
@@ -410,6 +319,7 @@ export default function EditorialInvite({ guestName }: { guestName: string }) {
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>

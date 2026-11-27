@@ -23,79 +23,142 @@ export function BloomingGarlandCorner({
       className={`pointer-events-none select-none ${flips[position]} ${className}`}
       aria-hidden="true"
     >
-      {/* Golden & Leaf Botanical Stems */}
       <path
         d="M10 198C18 122 52 62 128 28C158 14 185 12 208 14"
-        stroke="#D4943A"
+        stroke="#C88A2E"
         strokeWidth="1.8"
-        strokeOpacity="0.7"
+        strokeOpacity="0.72"
         strokeLinecap="round"
       />
       <path
         d="M28 168C38 112 70 68 140 44"
-        stroke="#5E8366"
+        stroke="#587A5F"
         strokeWidth="1.4"
         strokeDasharray="4 4"
         strokeOpacity="0.55"
       />
 
-      {/* Soft Garden Foliage */}
       <g className="animate-sway-bloom origin-top-left">
         <path
           d="M54 96C34 86 28 66 38 52C56 60 64 78 54 96Z"
-          fill="#5E8366"
+          fill="#587A5F"
           fillOpacity="0.82"
         />
         <path
           d="M96 52C86 34 94 18 112 14C118 30 112 46 96 52Z"
-          fill="#769A7D"
+          fill="#6E9275"
           fillOpacity="0.8"
         />
         <path
           d="M34 138C16 132 10 114 18 98C34 104 44 120 34 138Z"
-          fill="#769A7D"
+          fill="#6E9275"
           fillOpacity="0.78"
         />
         <path
           d="M142 32C140 16 152 6 168 10C166 24 156 32 142 32Z"
-          fill="#5E8366"
+          fill="#587A5F"
           fillOpacity="0.78"
         />
 
-        {/* Rani Pink & Blush Peony Hero Bloom */}
+        {/* Rose Peony Bloom */}
         <g transform="translate(62 62)">
-          <circle cx="0" cy="0" r="28" fill="#F6C3C0" fillOpacity="0.96" />
-          <circle cx="-8" cy="-6" r="18" fill="#D96566" fillOpacity="0.88" />
-          <circle cx="8" cy="-4" r="16" fill="#FDE0DC" fillOpacity="0.92" />
-          <circle cx="0" cy="8" r="15" fill="#9E2A4B" fillOpacity="0.76" />
-          <circle cx="-1" cy="-1" r="6" fill="#F0B254" />
-          <circle cx="3" cy="2" r="3" fill="#FFF8F3" />
+          <circle cx="0" cy="0" r="28" fill="#F4C0BA" fillOpacity="0.96" />
+          <circle cx="-8" cy="-6" r="18" fill="#C95858" fillOpacity="0.88" />
+          <circle cx="8" cy="-4" r="16" fill="#FBE0DC" fillOpacity="0.92" />
+          <circle cx="0" cy="8" r="15" fill="#8B1E3F" fillOpacity="0.76" />
+          <circle cx="-1" cy="-1" r="6" fill="#EA9E38" />
+          <circle cx="3" cy="2" r="3" fill="#FBF5EB" />
         </g>
 
-        {/* Auspicious Marigold Blossom */}
+        {/* Marigold Blossom */}
         <g transform="translate(116 32)">
-          <circle cx="0" cy="0" r="17" fill="#F0B254" />
-          <circle cx="0" cy="0" r="12" fill="#F9CA7A" />
-          <circle cx="0" cy="0" r="6" fill="#D47E22" />
+          <circle cx="0" cy="0" r="17" fill="#EA9E38" />
+          <circle cx="0" cy="0" r="12" fill="#F6C46D" />
+          <circle cx="0" cy="0" r="6" fill="#C67419" />
         </g>
 
         {/* Blush Rose */}
         <g transform="translate(30 112)">
-          <circle cx="0" cy="0" r="16" fill="#FAD2CE" />
-          <circle cx="-4" cy="-3" r="10" fill="#D96566" fillOpacity="0.82" />
-          <circle cx="3" cy="3" r="6" fill="#9E2A4B" fillOpacity="0.65" />
+          <circle cx="0" cy="0" r="16" fill="#F8CFCB" />
+          <circle cx="-4" cy="-3" r="10" fill="#C95858" fillOpacity="0.82" />
+          <circle cx="3" cy="3" r="6" fill="#8B1E3F" fillOpacity="0.65" />
         </g>
 
-        {/* Cream Mogra Jasmine Buds */}
+        {/* Mogra Jasmine Buds */}
         <g transform="translate(162 24)">
-          <circle cx="0" cy="0" r="9" fill="#FFF8F3" stroke="#D4943A" strokeWidth="1" />
-          <circle cx="14" cy="4" r="7" fill="#FFF8F3" stroke="#D4943A" strokeWidth="0.9" />
-          <circle cx="-11" cy="10" r="6.5" fill="#FFF8F3" stroke="#D4943A" strokeWidth="0.9" />
-          <circle cx="0" cy="0" r="2.5" fill="#F0B254" />
-          <circle cx="14" cy="4" r="2" fill="#F0B254" />
+          <circle cx="0" cy="0" r="9" fill="#FBF5EB" stroke="#C88A2E" strokeWidth="1" />
+          <circle cx="14" cy="4" r="7" fill="#FBF5EB" stroke="#C88A2E" strokeWidth="0.9" />
+          <circle cx="-11" cy="10" r="6.5" fill="#FBF5EB" stroke="#C88A2E" strokeWidth="0.9" />
+          <circle cx="0" cy="0" r="2.5" fill="#EA9E38" />
+          <circle cx="14" cy="4" r="2" fill="#EA9E38" />
         </g>
       </g>
     </svg>
+  );
+}
+
+/**
+ * Traditional Indian Marigold, Mango-Leaf & Jasmine Bell Toran (Bandarwal)
+ * hung across the top of the wedding invitation to welcome guests.
+ */
+export function WeddingToranGarland() {
+  const swags = [0, 1, 2, 3, 4, 5];
+  return (
+    <div className="w-full overflow-hidden select-none pointer-events-none" aria-hidden="true">
+      <svg
+        viewBox="0 0 900 72"
+        fill="none"
+        className="w-full h-11 sm:h-14 object-cover"
+        preserveAspectRatio="none"
+      >
+        {swags.map((i) => {
+          const x0 = i * 150;
+          const xm = x0 + 75;
+          const x1 = x0 + 150;
+          return (
+            <g key={i}>
+              {/* Draped Jasmine Strand */}
+              <path
+                d={`M${x0} 4 Q${xm} 42 ${x1} 4`}
+                stroke="#C88A2E"
+                strokeWidth="1.5"
+                strokeDasharray="3 3"
+              />
+              {/* Mango Leaves */}
+              <path
+                d={`M${x0 + 28} 12 C${x0 + 22} 26 ${x0 + 26} 34 ${x0 + 34} 38 C${x0 + 38} 28 ${x0 + 36} 18 ${x0 + 28} 12Z`}
+                fill="#4E7255"
+                fillOpacity="0.88"
+              />
+              <path
+                d={`M${x1 - 28} 12 C${x1 - 22} 26 ${x1 - 26} 34 ${x1 - 34} 38 C${x1 - 38} 28 ${x1 - 36} 18 ${x1 - 28} 12Z`}
+                fill="#5E8366"
+                fillOpacity="0.88"
+              />
+              {/* Center Hanging Marigold & Rose Tassel */}
+              <line
+                x1={xm}
+                y1="23"
+                x2={xm}
+                y2="52"
+                stroke="#C88A2E"
+                strokeWidth="1.2"
+              />
+              <circle cx={xm} cy="26" r="7.5" fill="#EA9E38" />
+              <circle cx={xm} cy="26" r="4" fill="#F8CA76" />
+              <circle cx={xm} cy="40" r="6" fill="#C95858" />
+              <circle cx={xm} cy="52" r="4.5" fill="#FBF5EB" stroke="#C88A2E" strokeWidth="1" />
+              {/* Small Brass Bell */}
+              <path
+                d={`M${xm - 4} 57 L${xm + 4} 57 L${xm + 6} 64 L${xm - 6} 64 Z`}
+                fill="#C88A2E"
+              />
+              <circle cx={xm} cy="66" r="2" fill="#8B1E3F" />
+            </g>
+          );
+        })}
+      </svg>
+    </div>
   );
 }
 
@@ -104,60 +167,13 @@ export function FloralDivider() {
     <div className="flex items-center justify-center gap-3 my-4" aria-hidden="true">
       <div className="h-[1px] w-14 sm:w-24 bg-gradient-to-r from-transparent to-honey-gold/80" />
       <svg width="34" height="34" viewBox="0 0 36 36" fill="none">
-        <circle cx="18" cy="18" r="5" fill="#F0B254" />
-        <ellipse cx="18" cy="8" rx="4.5" ry="6.5" fill="#D96566" fillOpacity="0.88" />
-        <ellipse cx="18" cy="28" rx="4.5" ry="6.5" fill="#D96566" fillOpacity="0.88" />
-        <ellipse cx="8" cy="18" rx="6.5" ry="4.5" fill="#F6C3C0" fillOpacity="0.94" />
-        <ellipse cx="28" cy="18" rx="6.5" ry="4.5" fill="#F6C3C0" fillOpacity="0.94" />
+        <circle cx="18" cy="18" r="5" fill="#EA9E38" />
+        <ellipse cx="18" cy="8" rx="4.5" ry="6.5" fill="#C95858" fillOpacity="0.88" />
+        <ellipse cx="18" cy="28" rx="4.5" ry="6.5" fill="#C95858" fillOpacity="0.88" />
+        <ellipse cx="8" cy="18" rx="6.5" ry="4.5" fill="#F4C0BA" fillOpacity="0.94" />
+        <ellipse cx="28" cy="18" rx="6.5" ry="4.5" fill="#F4C0BA" fillOpacity="0.94" />
       </svg>
       <div className="h-[1px] w-14 sm:w-24 bg-gradient-to-l from-transparent to-honey-gold/80" />
-    </div>
-  );
-}
-
-const GARDEN_PETALS = [
-  { left: "7%", delay: "0s", duration: "11s", color: "#F6C3C0", size: 15, leftDrift: false },
-  { left: "18%", delay: "2.4s", duration: "13s", color: "#F0B254", size: 12, leftDrift: true },
-  { left: "31%", delay: "1.1s", duration: "12s", color: "#D96566", size: 14, leftDrift: false },
-  { left: "46%", delay: "4.2s", duration: "14s", color: "#FAD6D1", size: 16, leftDrift: true },
-  { left: "61%", delay: "1.9s", duration: "12.5s", color: "#F4BF6E", size: 13, leftDrift: false },
-  { left: "74%", delay: "3.5s", duration: "11.5s", color: "#F6C3C0", size: 15, leftDrift: true },
-  { left: "86%", delay: "0.7s", duration: "13.5s", color: "#D96566", size: 13, leftDrift: false },
-  { left: "94%", delay: "5.1s", duration: "12s", color: "#F0B254", size: 12, leftDrift: true },
-];
-
-export function DriftingGardenPetals() {
-  return (
-    <div
-      className="pointer-events-none fixed inset-0 z-20 overflow-hidden"
-      aria-hidden="true"
-    >
-      {GARDEN_PETALS.map((petal, idx) => (
-        <div
-          key={idx}
-          className={`absolute -top-12 ${
-            petal.leftDrift ? "animate-float-petal-left" : "animate-float-petal"
-          }`}
-          style={{
-            left: petal.left,
-            animationDelay: petal.delay,
-            animationDuration: petal.duration,
-          }}
-        >
-          <svg
-            width={petal.size}
-            height={petal.size * 1.25}
-            viewBox="0 0 20 25"
-            fill="none"
-          >
-            <path
-              d="M10 1C15 5 19 12 17 18C15 23 11 24 10 24C9 24 5 23 3 18C1 12 5 5 10 1Z"
-              fill={petal.color}
-              fillOpacity="0.72"
-            />
-          </svg>
-        </div>
-      ))}
     </div>
   );
 }

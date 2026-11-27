@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Sparkles } from "lucide-react";
-import { BloomingGarlandCorner, FloralDivider } from "./GardenFlorals";
+import { BloomingGarlandCorner, FloralDivider, WeddingToranGarland } from "./GardenFlorals";
 import { INVITE_INFO } from "@/data/inviteData";
 
 export default function FolioCover({
@@ -50,7 +50,11 @@ export default function FolioCover({
         className="absolute -bottom-4 -right-4 h-40 w-40 sm:h-56 sm:w-56 opacity-80"
       />
 
-      <div className="relative z-10 w-full max-w-lg rounded-t-[200px] rounded-b-[2rem] border-2 border-honey-gold/65 bg-petal-milk/95 px-7 py-11 sm:px-12 sm:py-13 text-center shadow-[0_28px_85px_rgba(110,22,48,0.18)] backdrop-blur-md">
+      <div className="relative z-10 w-full max-w-lg overflow-hidden rounded-t-[200px] rounded-b-[2rem] border-2 border-honey-gold/65 bg-petal-milk/95 text-center shadow-[0_28px_85px_rgba(94,17,41,0.2)] backdrop-blur-md">
+        <div className="pt-2">
+          <WeddingToranGarland />
+        </div>
+        <div className="px-7 pb-11 pt-4 sm:px-12 sm:pb-13">
         <div className="pointer-events-none absolute inset-3 rounded-t-[188px] rounded-b-[1.5rem] border border-coral-rose/30" />
 
         <div className="relative z-10 flex flex-col items-center">
@@ -94,6 +98,7 @@ export default function FolioCover({
           <p className="mt-5 text-[11px] uppercase tracking-[0.24em] text-honey-gold font-semibold">
             {INVITE_INFO.dates} · {INVITE_INFO.venue}
           </p>
+        </div>
         </div>
       </div>
     </div>
