@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { CalendarPlus } from "lucide-react";
+import { CalendarPlus, Sparkles } from "lucide-react";
 import { LotusSeparator } from "./FloralOrnaments";
 import ScrollReveal from "./ScrollReveal";
 import { WEDDING_DETAILS } from "@/data/weddingData";
@@ -20,6 +20,92 @@ function calculateRemaining(targetIso: string): TimeRemaining {
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
   return { days, hours, minutes, seconds };
+}
+
+function RadialCountdownRing({
+  label,
+  value,
+  max,
+  subtext,
+}: {
+  label: string;
+  value: number;
+  max: number;
+  subtext: string;
+}) {
+  const radius = 58;
+  const circumference = 2 * Math.PI * radius;
+  const progress = Math.min(1, Math.max(0.04, value / max));
+  const offset = circumference * (1 - progress);
+
+  return (
+    <div className="group flex flex-col items-center">
+      <div className="relative flex h-36 w-36 sm:h-40 sm:w-40 items-center justify-center">
+        {/* Outer Decorative Dotted Halo */}
+        <svg
+          viewBox="0 0 144 144"
+          className="absolute inset-0 h-full w-full -rotate-90"
+          aria-hidden="true"
+        >
+          <circle
+            cx="72"
+            cy="72"
+            r={radius + 9}
+            fill="none"
+            stroke="#C8943E"
+            strokeOpacity="0.28"
+            strokeWidth="1"
+            strokeDasharray="3 5"
+          />
+          {/* Track Circle */}
+          <circle
+            cx="72"
+            cy="72"
+            r={radius}
+            fill="#4F0E1C"
+            fillOpacity="0.96"
+            stroke="#C8943E"
+            strokeOpacity="0.24"
+            strokeWidth="5"
+          />
+          {/* Animated Gold Progress Arc */}
+          <circle
+            cx="72"
+            cy="72"
+            r={radius}
+            fill="none"
+            stroke="url(#goldRingGrad)"
+            strokeWidth="5"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            className="transition-[stroke-dashoffset] duration-700 ease-out"
+          />
+          <defs>
+            <linearGradient id="goldRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#F6DF9F" />
+              <stop offset="50%" stopColor="#D4A653" />
+              <stop offset="100%" stopColor="#9C6A1F" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        {/* Center Numerals */}
+        <div className="relative z-10 flex flex-col items-center text-center">
+          <span className="font-display text-4xl sm:text-[2.65rem] font-semibold leading-none text-gold-foil tabular-nums">
+            {String(value).padStart(2, "0")}
+          </span>
+          <span className="mt-1.5 text-[10px] uppercase tracking-[0.26em] text-gold-light/90 font-semibold">
+            {label}
+          </span>
+        </div>
+      </div>
+
+      <span className="mt-2.5 text-[10px] uppercase tracking-[0.22em] text-muted">
+        {subtext}
+      </span>
+    </div>
+  );
 }
 
 export default function CountdownSection() {
@@ -69,49 +155,61 @@ export default function CountdownSection() {
     URL.revokeObjectURL(url);
   };
 
-  const blocks = [
-    { label: "Days", value: timeLeft.days },
-    { label: "Hours", value: timeLeft.hours },
-    { label: "Minutes", value: timeLeft.minutes },
-    { label: "Seconds", value: timeLeft.seconds },
-  ];
-
   return (
     <section
       id="countdown"
-      className="relative overflow-hidden bg-cream py-20 px-4 sm:px-8 text-maroon border-y border-gold/40"
+      className="relative overflow-hidden bg-cream py-20 px-4 sm:px-8 text-maroon border-y border-gold/45"
     >
       <div className="pointer-events-none absolute inset-0 bg-jaali-pattern opacity-45" />
 
       <ScrollReveal className="relative z-10 mx-auto max-w-5xl text-center">
-        <p className="text-xs uppercase tracking-[0.34em] text-gold-dark font-semibold">
-          Counting Every Heartbeat
-        </p>
-        <h2 className="mt-3 font-display text-3xl sm:text-5xl font-semibold text-maroon">
+        <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-ivory/90 px-4 py-1 text-[11px] uppercase tracking-[0.28em] text-gold-dark font-semibold">
+          <Sparkles className="h-3.5 w-3.5 text-maroon" />
+          Shubh Muhurat · 15 Feb 2027 · 7:00 PM
+        </span>
+
+        <h2 className="mt-4 font-display text-3xl sm:text-5xl font-semibold text-maroon">
           Until We Tie The Sacred Knot
         </h2>
 
         <LotusSeparator />
 
-        <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto">
-          {blocks.map((item, idx) => (
-            <div
-              key={item.label}
-              style={{ transitionDelay: `${idx * 90}ms` }}
-              className="relative overflow-hidden rounded-t-[90px] rounded-b-2xl border-2 border-gold/65 bg-royal-velvet px-4 py-7 text-ivory shadow-[0_18px_45px_rgba(79,14,28,0.22)] transition duration-300 hover:-translate-y-1"
-            >
-              <div className="pointer-events-none absolute inset-1.5 rounded-t-[82px] rounded-b-xl border border-gold/35" />
-              <span className="block font-display text-4xl sm:text-5xl font-semibold text-gold-foil tabular-nums">
-                {String(item.value).padStart(2, "0")}
-              </span>
-              <span className="mt-2 block text-[11px] uppercase tracking-[0.26em] text-gold-light/90">
-                {item.label}
-              </span>
-            </div>
-          ))}
+        {/* Celestial Gold-Arc Rings Connected by Hairline Rule */}
+        <div className="relative mt-10 mx-auto max-w-4xl">
+          <div
+            className="pointer-events-none hidden md:block absolute top-20 inset-x-16 h-[1px] bg-gradient-to-r from-transparent via-gold/65 to-transparent"
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 justify-items-center">
+            <RadialCountdownRing
+              label="Days"
+              value={timeLeft.days}
+              max={120}
+              subtext="Sunrises Left"
+            />
+            <RadialCountdownRing
+              label="Hours"
+              value={timeLeft.hours}
+              max={24}
+              subtext="Of Anticipation"
+            />
+            <RadialCountdownRing
+              label="Minutes"
+              value={timeLeft.minutes}
+              max={60}
+              subtext="Closer Together"
+            />
+            <RadialCountdownRing
+              label="Seconds"
+              value={timeLeft.seconds}
+              max={60}
+              subtext="Ticking Now"
+            />
+          </div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-11">
           <button
             type="button"
             onClick={handleSaveCalendar}
