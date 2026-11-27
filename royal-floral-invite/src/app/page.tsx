@@ -6,7 +6,10 @@ import { FloatingPetals } from "@/components/FloralOrnaments";
 import HeroSection from "@/components/HeroSection";
 import CountdownSection from "@/components/CountdownSection";
 import StorySection from "@/components/StorySection";
+import SaptapadiVowsWheel from "@/components/SaptapadiVowsWheel";
 import EventsSection from "@/components/EventsSection";
+import WardrobeLookbook from "@/components/WardrobeLookbook";
+import DiyaBlessingRitual from "@/components/DiyaBlessingRitual";
 import VenueSection from "@/components/VenueSection";
 import GallerySection from "@/components/GallerySection";
 import RsvpSection from "@/components/RsvpSection";
@@ -52,7 +55,10 @@ export default function Home() {
         <HeroSection guestName={guestName} />
         <CountdownSection />
         <StorySection />
+        <SaptapadiVowsWheel />
         <EventsSection />
+        <WardrobeLookbook />
+        <DiyaBlessingRitual />
         <VenueSection />
         <GallerySection />
         <RsvpSection guestName={guestName} />
